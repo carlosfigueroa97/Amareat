@@ -3,4 +3,10 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Amareat.Styles.FontSizes">
+    <x:Double x:Key="LargeSize">60</x:Double>
+    <x:Double x:Key="TitleSize">50</x:Double>
+    <x:Double x:Key="SubtitleSize">30</x:Double>
+    <x:Double x:Key="NormalSize">25</x:Double>
+    <x:Double x:Key="MediumSize">20</x:Double>
+    <x:Double x:Key="LargeSize">18</x:Double>
 </ResourceDictionary>

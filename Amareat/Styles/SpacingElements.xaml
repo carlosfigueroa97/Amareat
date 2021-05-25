@@ -3,4 +3,32 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Amareat.Styles.SpacingElements">
+    <!-- Small -->
+    <Thickness x:Key="ShortPadding">10</Thickness>
+    <Thickness x:Key="ShortTopPadding">0,10,0,0</Thickness>
+    <Thickness x:Key="ShortLeftPadding">10,0,0,0</Thickness>
+    <Thickness x:Key="ShortRightPadding">0,0,10,0</Thickness>
+    <Thickness x:Key="ShortDownPadding">0,0,0,10</Thickness>
+    <Thickness x:Key="VerticalShortPadding">0,10</Thickness>
+    <Thickness x:Key="HorizontalShortPadding">10,0</Thickness>
+
+    <!-- Normal -->
+    <Thickness x:Key="NormalPadding">20</Thickness>
+    <Thickness x:Key="NormalTopPadding">0,20,0,0</Thickness>
+    <Thickness x:Key="NormalLeftPadding">20,0,0,0</Thickness>
+    <Thickness x:Key="NormalRightPadding">0,0,20,0</Thickness>
+    <Thickness x:Key="NormalDownPadding">0,0,0,20</Thickness>
+    <Thickness x:Key="VerticalNormalPadding">0,20</Thickness>
+    <Thickness x:Key="HorizontalNormalPadding">20,0</Thickness>
+
+    <!-- Big -->
+    <Thickness x:Key="LongPadding">30</Thickness>
+    <Thickness x:Key="LongTopPadding">0,30,0,0</Thickness>
+    <Thickness x:Key="LongLeftPadding">30,0,0,0</Thickness>
+    <Thickness x:Key="LongRightPadding">0,0,30,0</Thickness>
+    <Thickness x:Key="LongDownPadding">0,0,0,30</Thickness>
+    <Thickness x:Key="VerticalLongPadding">0,30</Thickness>
+    <Thickness x:Key="HorizontalLongPadding">30,0</Thickness>
+
+    <!-- Custom -->
 </ResourceDictionary>
