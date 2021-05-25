@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Amareat.Styles.Styles">
+    <Style
+        TargetType="ActivityIndicator"
+        x:Key="BaseActivityIndicator">
+        <Setter Property="WidthRequest" Value="50"/>
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="Color" Value="{StaticResource BlackColor}"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="IsRunning" Value="True"/>
+        <Setter Property="InputTransparent" Value="True"/>
+    </Style>
+</ResourceDictionary>

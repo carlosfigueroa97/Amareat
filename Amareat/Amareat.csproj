@@ -13,5 +13,86 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Autofac" Version="6.2.0" />
+    <PackageReference Include="Microsoft.AppCenter" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.2.0" />
+    <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.11" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Effects\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Localization\" />
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
+    <Folder Include="Styles\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Components\" />
+    <Folder Include="Utils\Extensions\" />
+    <Folder Include="Utils\ServiceLocator\" />
+    <Folder Include="Services\Api\" />
+    <Folder Include="Services\Api\Interfaces\" />
+    <Folder Include="Services\Api\Implementations\" />
+    <Folder Include="Services\Connection\" />
+    <Folder Include="Services\Connection\Interfaces\" />
+    <Folder Include="Services\Connection\Implementations\" />
+    <Folder Include="Services\Crash\" />
+    <Folder Include="Services\Crash\Interfaces\" />
+    <Folder Include="Services\Crash\Implementations\" />
+    <Folder Include="Services\SecureStorage\" />
+    <Folder Include="Services\SecureStorage\Interfaces\" />
+    <Folder Include="Services\SecureStorage\Implementations\" />
+    <Folder Include="Services\Navigation\" />
+    <Folder Include="Services\Navigation\Interfaces\" />
+    <Folder Include="Services\Navigation\Implementations\" />
+    <Folder Include="Services\Localization\" />
+    <Folder Include="Services\Localization\Interfaces\" />
+    <Folder Include="Services\Localization\Implementations\" />
+    <Folder Include="Services\Messaging\" />
+    <Folder Include="Services\Messaging\Interfaces\" />
+    <Folder Include="Services\Messaging\Implementations\" />
+    <Folder Include="Services\PopupNavigation\" />
+    <Folder Include="Services\PopupNavigation\Interfaces\" />
+    <Folder Include="Services\PopupNavigation\Implementations\" />
+    <Folder Include="Services\Preferences\" />
+    <Folder Include="Services\Preferences\Interfaces\" />
+    <Folder Include="Services\Preferences\Implementations\" />
+    <Folder Include="Components\Base\" />
+    <Folder Include="Components\Popups\" />
+    <Folder Include="Components\Views\" />
+    <Folder Include="Components\Popups\Base\" />
+    <Folder Include="Components\Views\Login\" />
+    <Folder Include="Components\Views\Buildings\" />
+    <Folder Include="Components\Views\Rooms\" />
+    <Folder Include="Components\Views\Users\" />
+    <Folder Include="Components\Views\History\" />
+    <Folder Include="Components\Views\Profile\" />
+    <Folder Include="Components\Views\Buildings\Home\" />
+    <Folder Include="Components\Views\Rooms\Home\" />
+    <Folder Include="Components\Popups\Add\" />
+    <Folder Include="Components\Popups\User\" />
+    <Folder Include="Components\Popups\Building\" />
+    <Folder Include="Components\Popups\Room\" />
+    <Folder Include="Components\Popups\Edit\" />
+    <Folder Include="Components\Views\Buildings\Edit\" />
+    <Folder Include="Components\Views\Rooms\Edit\" />
+    <Folder Include="Components\Views\Devices\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Localization\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Localization\AppResources.Designer.cs">
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
