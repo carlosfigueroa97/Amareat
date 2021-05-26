@@ -92,6 +92,11 @@
     <Folder Include="Models\API\Responses\Devices\" />
     <Folder Include="Models\API\Responses\Users\" />
     <Folder Include="Models\API\Responses\History\" />
+    <Folder Include="Models\API\Requests\Users\" />
+    <Folder Include="Models\API\Requests\Buildings\" />
+    <Folder Include="Models\API\Requests\Rooms\" />
+    <Folder Include="Models\API\Requests\Devices\" />
+    <Folder Include="Models\API\Requests\History\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Localization\AppResources.resx">
