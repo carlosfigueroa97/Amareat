@@ -83,6 +83,10 @@
     <Folder Include="Components\Views\Buildings\Edit\" />
     <Folder Include="Components\Views\Rooms\Edit\" />
     <Folder Include="Components\Views\Devices\" />
+    <Folder Include="Models\API\" />
+    <Folder Include="Models\API\Base\" />
+    <Folder Include="Models\API\Requests\" />
+    <Folder Include="Models\API\Responses\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Localization\AppResources.resx">
