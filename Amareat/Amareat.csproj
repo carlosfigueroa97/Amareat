@@ -83,20 +83,23 @@
     <Folder Include="Components\Views\Buildings\Edit\" />
     <Folder Include="Components\Views\Rooms\Edit\" />
     <Folder Include="Components\Views\Devices\" />
-    <Folder Include="Models\API\" />
-    <Folder Include="Models\API\Base\" />
-    <Folder Include="Models\API\Requests\" />
-    <Folder Include="Models\API\Responses\" />
-    <Folder Include="Models\API\Responses\Buildings\" />
-    <Folder Include="Models\API\Responses\Rooms\" />
-    <Folder Include="Models\API\Responses\Devices\" />
-    <Folder Include="Models\API\Responses\Users\" />
-    <Folder Include="Models\API\Responses\History\" />
-    <Folder Include="Models\API\Requests\Users\" />
-    <Folder Include="Models\API\Requests\Buildings\" />
-    <Folder Include="Models\API\Requests\Rooms\" />
-    <Folder Include="Models\API\Requests\Devices\" />
-    <Folder Include="Models\API\Requests\History\" />
+    <Folder Include="Models\Api\" />
+    <Folder Include="Models\Api\Base\" />
+    <Folder Include="Models\Api\Requests\" />
+    <Folder Include="Models\Api\Responses\" />
+    <Folder Include="Models\Api\Responses\Buildings\" />
+    <Folder Include="Models\Api\Responses\Rooms\" />
+    <Folder Include="Models\Api\Responses\Devices\" />
+    <Folder Include="Models\Api\Responses\Users\" />
+    <Folder Include="Models\Api\Responses\History\" />
+    <Folder Include="Models\Api\Requests\Users\" />
+    <Folder Include="Models\Api\Requests\Buildings\" />
+    <Folder Include="Models\Api\Requests\Rooms\" />
+    <Folder Include="Models\Api\Requests\Devices\" />
+    <Folder Include="Models\Api\Requests\History\" />
+    <Folder Include="Models\Api\Requests\TypeDevices\" />
+    <Folder Include="Models\Api\Responses\TypeDevices\" />
+    <Folder Include="Models\Wrappers\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Localization\AppResources.resx">

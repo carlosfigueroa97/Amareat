@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Amareat.Models.API.Requests.Devices
+namespace Amareat.Models.API.Requests.TypeDevices
 {
     public class SaveTypeDevice
     {

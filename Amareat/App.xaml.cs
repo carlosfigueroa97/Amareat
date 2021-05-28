@@ -117,7 +117,12 @@ namespace Amareat
             _serviceLocator.RegisterSingle<IConnectivityService, ConnectivityService>();
             _serviceLocator.RegisterSingle<ICrashReporting, CrashReporting>();
             _serviceLocator.RegisterSingle<IApiClient, ApiClient>();
-            _serviceLocator.RegisterSingle<IApiService, ApiService>();
+            _serviceLocator.RegisterSingle<IUsersService, UsersService>();
+            _serviceLocator.RegisterSingle<IBuildingsService, BuildingsService>();
+            _serviceLocator.RegisterSingle<IRoomsService, RoomsService>();
+            _serviceLocator.RegisterSingle<IDevicesService, DevicesService>();
+            _serviceLocator.RegisterSingle<ITypeDevicesService, TypeDevicesService>();
+            _serviceLocator.RegisterSingle<IHistoryService, HistoryService>();
             _serviceLocator.RegisterSingle<INavigationService, NavigationService>();
             _serviceLocator.RegisterSingle<IPopupNavigationService, PopupNavigationService>();
             _serviceLocator.RegisterSingle<IMessagingService, MessagingService>();

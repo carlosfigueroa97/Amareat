@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Amareat.Models.API.Requests.Devices
 {
-    public class EditDecive
+    public class EditDevice
     {
         [JsonProperty("_id")]
         public string Id { get; set; }

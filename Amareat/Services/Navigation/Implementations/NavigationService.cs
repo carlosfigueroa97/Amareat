@@ -17,6 +17,43 @@ namespace Amareat.Services.Navigation.Implementations
 
         private IServiceLocator ServiceLocator => ServiceLocatorProvider.Instance.Current;
 
+        private INavigation MainTabbedPageNavigation
+        {
+            get
+            {
+                var tabbedPage = Application.Current.MainPage as TabbedPage;
+
+                if(tabbedPage != null)
+                {
+                    if (tabbedPage.Children.Any())
+                    {
+                        return tabbedPage.Navigation;
+                    }
+                }
+
+                return null;
+            }
+        }
+
+        private bool IsTabbedPageNavigation
+        {
+            get
+            {
+                if(Application.Current.MainPage is TabbedPage tabbedPage)
+                {
+                    if(tabbedPage.Children is MultiPage<Page>)
+                    {
+                        if(tabbedPage.Navigation != null)
+                        {
+                            return true;
+                        }
+                    }
+                }
+
+                return false;
+            }
+        }
+
         private readonly IDictionary<Type, Type> _map = new Dictionary<Type, Type>();
 
         #endregion
