@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Amareat.Components.Views.Login.LoginView">
+    <ContentPage.Content>
+        <Label
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            FontSize="50"
+            Text="¡A LLORAR NO HAY DE OTRA!"></Label>
+    </ContentPage.Content>
+</ContentPage>

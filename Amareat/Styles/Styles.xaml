@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Amareat.Styles.Styles">
+    <!-- Activity Indicator -->
+    <Style
+        TargetType="ActivityIndicator"
+        x:Key="BaseActivityIndicator">
+        <Setter Property="WidthRequest" Value="50"/>
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="Color" Value="{StaticResource BlackColor}"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="IsRunning" Value="True"/>
+        <Setter Property="InputTransparent" Value="True"/>
+    </Style>
+
+    <!-- Labels -->
+    <Style
+        TargetType="Label"
+        x:Key="SmallBoldLightGrayLabel">
+        <Setter Property="TextColor" Value="{StaticResource SecondLightGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SmallSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="SmallSemiBoldOrangeLabel">
+        <Setter Property="TextColor" Value="{StaticResource OrangeColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SmallSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewaySemiBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="NormalBlackGrayLabel">
+        <Setter Property="TextColor" Value="{StaticResource SecondSolidGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource NormalSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBlackFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="SubtitleSemiBoldBlackLabel">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewaySemiBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="LargeBoldWhiteLabel">
+        <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="SubtitleRegularGrayLabel">
+        <Setter Property="TextColor" Value="{StaticResource PrimarySolidGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayRegularFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="TitleSemiBoldBlackLabel">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewaySemiBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="LargeBoldBlackLabel">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+    </Style>
+
+    <!-- Buttons -->
+    <Style
+        TargetType="Button"
+        x:Key="OrangeButton">
+        <Setter Property="BackgroundColor" Value="{StaticResource OrangeColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="CornerRadius" Value="30"/>
+    </Style>
+
+</ResourceDictionary>
