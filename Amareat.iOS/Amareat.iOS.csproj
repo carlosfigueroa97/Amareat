@@ -166,5 +166,8 @@
     <BundleResource Include="Resources\Raleway-SemiBold.ttf" />
     <BundleResource Include="Resources\Raleway-Black.ttf" />
     <BundleResource Include="Resources\Raleway-Regular.ttf" />
+    <BundleResource Include="Resources\img_logo.png" />
+    <BundleResource Include="Resources\img_logo%402x.png" />
+    <BundleResource Include="Resources\img_logo%403x.png" />
   </ItemGroup>
 </Project>

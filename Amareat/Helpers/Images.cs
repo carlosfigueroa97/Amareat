@@ -3,6 +3,6 @@ namespace Amareat.Helpers
 {
     public static class Images
     {
-        // TODO:
+        public static string ImgLogo = "img_logo";
     }
 }
