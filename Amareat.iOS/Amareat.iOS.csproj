@@ -162,5 +162,9 @@
     <BundleResource Include="Resources\Font Awesome 5 Brands-Regular-400.otf" />
     <BundleResource Include="Resources\Font Awesome 5 Free-Regular-400.otf" />
     <BundleResource Include="Resources\Font Awesome 5 Free-Solid-900.otf" />
+    <BundleResource Include="Resources\Raleway-Bold.ttf" />
+    <BundleResource Include="Resources\Raleway-SemiBold.ttf" />
+    <BundleResource Include="Resources\Raleway-Black.ttf" />
+    <BundleResource Include="Resources\Raleway-Regular.ttf" />
   </ItemGroup>
 </Project>
