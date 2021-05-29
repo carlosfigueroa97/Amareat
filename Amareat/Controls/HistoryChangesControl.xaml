@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Amareat.Controls.HistoryChangesControl">
+    <StackLayout>
+        <Label x:Name="DeviceNameLbl" Style="{StaticResource BoldHistoryTitle}"/>
+        <Label x:Name="StatusLbl" Style="{StaticResource NormalHistoryLabel}"/>
+        <Label x:Name="UserLbl" Style="{StaticResource NormalHistoryGrayLabel}"/>
+        <Label x:Name="DateLbl" Style="{StaticResource NormalHistoryGrayLabel}"/>
+    </StackLayout>
+</ContentView>

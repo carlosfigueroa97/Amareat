@@ -92,4 +92,29 @@
         <Setter Property="CornerRadius" Value="30"/>
     </Style>
 
+    <!-- Custom History Changes Control -->
+    <Style
+        TargetType="Label"
+        x:Key="BoldHistoryTitle">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource NormalSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="NormalHistoryLabel">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SmallSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayRegularFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="NormalHistoryGrayLabel">
+        <Setter Property="TextColor" Value="{StaticResource SecondSolidGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource NormalSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayRegularFont}"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+    </Style>
 </ResourceDictionary>
