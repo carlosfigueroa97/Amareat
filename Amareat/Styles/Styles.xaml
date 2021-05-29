@@ -80,4 +80,15 @@
         <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
         <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
     </Style>
+
+    <!-- Buttons -->
+    <Style
+        TargetType="Button"
+        x:Key="OrangeButton">
+        <Setter Property="BackgroundColor" Value="{StaticResource OrangeColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+    </Style>
+
 </ResourceDictionary>
