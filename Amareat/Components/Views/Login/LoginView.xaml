@@ -3,7 +3,6 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Amareat.Components.Views.Login.LoginView"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:local="clr-namespace:Amareat.Localization"
     xmlns:fn="clr-namespace:Amareat.Helpers"
     xmlns:ctrl="clr-namespace:Amareat.Controls"
@@ -22,6 +21,11 @@
                 HeightRequest="550"
                 CornerRadius="30,30,0,0"
                 BackgroundColor="{StaticResource WhiteColor}">
+                <pancake:PancakeView.Shadow>
+                    <pancake:DropShadow
+                        Color="{StaticResource BlackColor}"
+                        Offset="10,10"/>
+                </pancake:PancakeView.Shadow>
                 <StackLayout
                     Padding="{StaticResource NormalPadding}">
                     <Label
@@ -29,17 +33,34 @@
                         HorizontalTextAlignment="Center"
                         FontAttributes="Bold"
                         Style="{StaticResource LargeBoldBlackLabel}"
-                        Text="Iniciar Sesión"/>
+                        Text="{x:Static local:AppResources.SignIn}"/>
                     <ctrl:TitleAndEntry
                         Margin="{StaticResource NormalTopPadding}"
-                        TextLabel="Usuario"
-                        PlaceholderEntry="Ingresa tu usuario"/>
+                        TextLabel="{x:Static local:AppResources.User}"
+                        TextEntry="{Binding User}"
+                        PlaceholderEntry="{x:Static local:AppResources.InsertYourUser}"/>
                     <ctrl:TitleAndEntry
                         HorizontalOptions="FillAndExpand"
                         Margin="{StaticResource NormalTopPadding}"
-                        TextLabel="Contraseña"
-                        PlaceholderEntry="Ingresa tu contraseña"
+                        TextLabel="{x:Static local:AppResources.Password}"
+                        TextEntry="{Binding Password}"
+                        PlaceholderEntry="{x:Static local:AppResources.InsertYourPassword}"
                         IsPassword="True"/>
+                    <Label
+                        Margin="{StaticResource LongDownPadding}"
+                        HorizontalTextAlignment="End"
+                        Text="{x:Static local:AppResources.ForgotYourPassword}"
+                        Style="{StaticResource SubtitleSemiBoldBlackLabel}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding ForgotPasswordCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Button
+                        VerticalOptions="StartAndExpand"
+                        Margin="{StaticResource LongPadding}"
+                        Style="{StaticResource OrangeButton}"
+                        Text="{x:Static local:AppResources.SignIn}"/>
                 </StackLayout>
             </pancake:PancakeView>
         </StackLayout>

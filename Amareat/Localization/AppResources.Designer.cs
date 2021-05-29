@@ -58,5 +58,65 @@ namespace Amareat.Localization {
                 return ResourceManager.GetString("Error", resourceCulture);
             }
         }
+        
+        internal static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        internal static string SignIn {
+            get {
+                return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        internal static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        internal static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        internal static string InsertYourUser {
+            get {
+                return ResourceManager.GetString("InsertYourUser", resourceCulture);
+            }
+        }
+        
+        internal static string InsertYourPassword {
+            get {
+                return ResourceManager.GetString("InsertYourPassword", resourceCulture);
+            }
+        }
+        
+        internal static string ForgotYourPassword {
+            get {
+                return ResourceManager.GetString("ForgotYourPassword", resourceCulture);
+            }
+        }
+        
+        internal static string PleaseContactAdministrator {
+            get {
+                return ResourceManager.GetString("PleaseContactAdministrator", resourceCulture);
+            }
+        }
+        
+        internal static string WrongCredentials {
+            get {
+                return ResourceManager.GetString("WrongCredentials", resourceCulture);
+            }
+        }
+        
+        internal static string CheckYourDataWell {
+            get {
+                return ResourceManager.GetString("CheckYourDataWell", resourceCulture);
+            }
+        }
     }
 }

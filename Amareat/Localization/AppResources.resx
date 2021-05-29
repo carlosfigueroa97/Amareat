@@ -18,4 +18,34 @@
 	<data name="Error" xml:space="preserve">
 		<value>Error</value>
 	</data>
+	<data name="Warning" xml:space="preserve">
+		<value>Advertencia!</value>
+	</data>
+	<data name="SignIn" xml:space="preserve">
+		<value>Iniciar Sesión</value>
+	</data>
+	<data name="User" xml:space="preserve">
+		<value>Usuario</value>
+	</data>
+	<data name="Password" xml:space="preserve">
+		<value>Contraseña</value>
+	</data>
+	<data name="InsertYourUser" xml:space="preserve">
+		<value>Ingresa tu usuario</value>
+	</data>
+	<data name="InsertYourPassword" xml:space="preserve">
+		<value>Ingresa tu contraseña</value>
+	</data>
+	<data name="ForgotYourPassword" xml:space="preserve">
+		<value>¿Olvidaste tu contraseña?</value>
+	</data>
+	<data name="PleaseContactAdministrator" xml:space="preserve">
+		<value>Por favor, contacta a un administrator</value>
+	</data>
+	<data name="WrongCredentials" xml:space="preserve">
+		<value>Credenciales incorrectas</value>
+	</data>
+	<data name="CheckYourDataWell" xml:space="preserve">
+		<value>Revise bien sus datos</value>
+	</data>
 </root>
