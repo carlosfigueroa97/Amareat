@@ -89,6 +89,7 @@
         <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
         <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
         <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="CornerRadius" Value="30"/>
     </Style>
 
 </ResourceDictionary>
