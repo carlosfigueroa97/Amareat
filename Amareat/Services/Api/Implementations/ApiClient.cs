@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -20,6 +21,7 @@ namespace Amareat.Services.Api.Implementations
         private readonly ICrashReporting _crashReporting;
         private readonly IConnectivityService _connectivityService;
         private readonly ISecureStorage _secureStorage;
+        private readonly IUsersService _usersService;
 
         private static HttpClient _httpClient;
         protected HttpClient HttpClient
@@ -44,11 +46,13 @@ namespace Amareat.Services.Api.Implementations
         public ApiClient(
             ICrashReporting crashReporting,
             IConnectivityService connectivityService,
-            ISecureStorage secureStorage)
+            ISecureStorage secureStorage,
+            IUsersService usersService)
         {
             _crashReporting = crashReporting;
             _connectivityService = connectivityService;
             _secureStorage = secureStorage;
+            _usersService = usersService;
         }
 
         #region Public Methods
@@ -79,6 +83,17 @@ namespace Amareat.Services.Api.Implementations
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
                     return await httpResponseMessage.Content.ReadAsStringAsync();
+                }
+
+                if(httpResponseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    var responseToken = await RefreshUserToken();
+                    if (responseToken)
+                    {
+                        return await GetAsync(url, cancellatonToken);
+                    }
+
+                    await CatchRefreshTokenException(httpResponseMessage);
                 }
             }
             catch (OperationCanceledException ex)
@@ -126,6 +141,17 @@ namespace Amareat.Services.Api.Implementations
                 {
                     return await httpResponseMessage.Content.ReadAsStringAsync();
                 }
+
+                if (httpResponseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    var responseToken = await RefreshUserToken();
+                    if (responseToken)
+                    {
+                        return await PostAsync(url, item, cancellatonToken, isAuthorizedCall);
+                    }
+
+                    await CatchRefreshTokenException(httpResponseMessage);
+                }
             }
             catch (OperationCanceledException ex)
             {
@@ -172,6 +198,17 @@ namespace Amareat.Services.Api.Implementations
                 {
                     return await httpResponseMessage.Content.ReadAsStringAsync();
                 }
+
+                if (httpResponseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    var responseToken = await RefreshUserToken();
+                    if (responseToken)
+                    {
+                        return await PutAsync(url, item, cancellationToken, isAuthorizedCall);
+                    }
+
+                    await CatchRefreshTokenException(httpResponseMessage);
+                }
             }
             catch (OperationCanceledException ex)
             {
@@ -186,6 +223,25 @@ namespace Amareat.Services.Api.Implementations
             throw new ApiErrorException
             {
                 StatusCode = httpResponseMessage == null ? System.Net.HttpStatusCode.Ambiguous : httpResponseMessage.StatusCode
+            };
+        }
+
+        private async Task<bool> RefreshUserToken()
+        {
+            var cancellationToken = new CancellationTokenSource().Token;
+            var response = await _usersService.RefreshUserToken(cancellationToken);
+            return response;
+        }
+
+        private async Task CatchRefreshTokenException(HttpResponseMessage httpResponseMessage)
+        {
+            var message = await httpResponseMessage.Content.ReadAsStringAsync();
+
+            throw new RefreshTokenException
+            {
+                StatusCode = httpResponseMessage.StatusCode,
+                ReasonPhrase = httpResponseMessage.ReasonPhrase,
+                ApiMessageResponse = message
             };
         }
 

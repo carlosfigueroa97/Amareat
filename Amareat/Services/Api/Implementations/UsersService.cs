@@ -21,17 +21,20 @@ namespace Amareat.Services.Api.Implementations
         private readonly ICrashReporting _crashReporting;
         private readonly IApiClient _apiClient;
         private readonly ISecureStorage _secureStorage;
+        private readonly ICrashTokenService _crashTokenService;
 
         #endregion
 
         public UsersService(
             ICrashReporting crashReporting,
             IApiClient apiClient,
-            ISecureStorage secureStorage)
+            ISecureStorage secureStorage,
+            ICrashTokenService crashTokenService)
         {
             _crashReporting = crashReporting;
             _apiClient = apiClient;
             _secureStorage = secureStorage;
+            _crashTokenService = crashTokenService;
         }
 
         public async Task<bool> EditUser(EditUser editUser, CancellationToken cancellationToken)
@@ -56,6 +59,10 @@ namespace Amareat.Services.Api.Implementations
             {
                 Debug.WriteLine(ex);
                 throw ex;
+            }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
             }
             catch (Exception ex)
             {
@@ -88,6 +95,10 @@ namespace Amareat.Services.Api.Implementations
                 Debug.WriteLine(ex);
                 throw ex;
             }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
+            }
             catch (Exception ex)
             {
                 _crashReporting.TrackError(ex);
@@ -119,6 +130,10 @@ namespace Amareat.Services.Api.Implementations
                 Debug.WriteLine(ex);
                 throw ex;
             }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
+            }
             catch (Exception ex)
             {
                 _crashReporting.TrackError(ex);
@@ -149,6 +164,10 @@ namespace Amareat.Services.Api.Implementations
             {
                 Debug.WriteLine(ex);
                 throw ex;
+            }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
             }
             catch (Exception ex)
             {
@@ -185,6 +204,10 @@ namespace Amareat.Services.Api.Implementations
                 Debug.WriteLine(ex);
                 throw ex;
             }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
+            }
             catch (Exception ex)
             {
                 _crashReporting.TrackError(ex);
@@ -215,6 +238,10 @@ namespace Amareat.Services.Api.Implementations
             {
                 Debug.WriteLine(ex);
                 throw ex;
+            }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
             }
             catch (Exception ex)
             {
@@ -247,6 +274,10 @@ namespace Amareat.Services.Api.Implementations
                 Debug.WriteLine(ex);
                 throw ex;
             }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
+            }
             catch (Exception ex)
             {
                 _crashReporting.TrackError(ex);
@@ -255,9 +286,39 @@ namespace Amareat.Services.Api.Implementations
             throw new ApiErrorException();
         }
 
-        public Task<bool> SignIn(SignIn signIn, CancellationToken cancellationToken)
+        public async Task<bool> SignIn(SignIn signIn, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await _apiClient.PostAsync($"{ConstantGlobal.Users}signIn", signIn, cancellationToken);
+
+                if (string.IsNullOrEmpty(response))
+                {
+                    return false;
+                }
+
+                return true;
+            }
+            catch (NoInternetConnectionException ex)
+            {
+                Debug.WriteLine(ex);
+                throw ex;
+            }
+            catch (ApiErrorException ex)
+            {
+                Debug.WriteLine(ex);
+                throw ex;
+            }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
+            }
+            catch (Exception ex)
+            {
+                _crashReporting.TrackError(ex);
+            }
+
+            throw new ApiErrorException();
         }
     }
 }

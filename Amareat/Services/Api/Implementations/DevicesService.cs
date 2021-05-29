@@ -18,15 +18,18 @@ namespace Amareat.Services.Api.Implementations
 
         private readonly ICrashReporting _crashReporting;
         private readonly IApiClient _apiClient;
+        private readonly ICrashTokenService _crashTokenService;
 
         #endregion
 
         public DevicesService(
             ICrashReporting crashReporting,
-            IApiClient apiClient)
+            IApiClient apiClient,
+            ICrashTokenService crashTokenService)
         {
             _crashReporting = crashReporting;
             _apiClient = apiClient;
+            _crashTokenService = crashTokenService;
         }
 
         public async Task<bool> EditDevice(EditDevice device, CancellationToken cancellationToken)
@@ -51,6 +54,10 @@ namespace Amareat.Services.Api.Implementations
             {
                 Debug.WriteLine(ex);
                 throw ex;
+            }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
             }
             catch (Exception ex)
             {
@@ -83,6 +90,10 @@ namespace Amareat.Services.Api.Implementations
                 Debug.WriteLine(ex);
                 throw ex;
             }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
+            }
             catch (Exception ex)
             {
                 _crashReporting.TrackError(ex);
@@ -114,6 +125,10 @@ namespace Amareat.Services.Api.Implementations
                 Debug.WriteLine(ex);
                 throw ex;
             }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
+            }
             catch (Exception ex)
             {
                 _crashReporting.TrackError(ex);
@@ -144,6 +159,10 @@ namespace Amareat.Services.Api.Implementations
             {
                 Debug.WriteLine(ex);
                 throw ex;
+            }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
             }
             catch (Exception ex)
             {
