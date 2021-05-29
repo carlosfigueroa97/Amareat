@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Amareat.Controls.TitleAndEntry"
+    xmlns:renderers="clr-namespace:Amareat.Renderers">
+    <StackLayout>
+        <Label
+            FontAttributes="Bold"
+            Style="{StaticResource TitleSemiBoldBlackLabel}"/>
+        <renderers:EntryBottomLine
+            PlaceholderColor="{StaticResource PrimarySolidGrayColor}"
+            IsPassword="False"/>
+    </StackLayout>
+</ContentView>

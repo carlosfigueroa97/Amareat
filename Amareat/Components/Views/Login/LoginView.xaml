@@ -2,14 +2,46 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Amareat.Components.Views.Login.LoginView">
+    x:Class="Amareat.Components.Views.Login.LoginView"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:local="clr-namespace:Amareat.Localization"
+    xmlns:fn="clr-namespace:Amareat.Helpers"
+    xmlns:ctrl="clr-namespace:Amareat.Controls"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundColor="{StaticResource SecondLightBlueSkyColor}"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Label
-            HorizontalOptions="CenterAndExpand"
-            VerticalOptions="CenterAndExpand"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            FontSize="50"
-            Text="¡A LLORAR NO HAY DE OTRA!"></Label>
+        <StackLayout>
+            <Image
+                Margin="{StaticResource LongTopPadding}"
+                Source="{x:Static fn:Images.ImgLogo}"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"></Image>
+            <pancake:PancakeView
+                VerticalOptions="EndAndExpand"
+                HeightRequest="550"
+                CornerRadius="30,30,0,0"
+                BackgroundColor="{StaticResource WhiteColor}">
+                <StackLayout
+                    Padding="{StaticResource NormalPadding}">
+                    <Label
+                        Margin="{StaticResource LongPadding}"
+                        HorizontalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        Style="{StaticResource LargeBoldBlackLabel}"
+                        Text="Iniciar Sesión"/>
+                    <ctrl:TitleAndEntry
+                        Margin="{StaticResource NormalTopPadding}"
+                        TextLabel="Usuario"
+                        PlaceholderEntry="Ingresa tu usuario"/>
+                    <ctrl:TitleAndEntry
+                        HorizontalOptions="FillAndExpand"
+                        Margin="{StaticResource NormalTopPadding}"
+                        TextLabel="Contraseña"
+                        PlaceholderEntry="Ingresa tu contraseña"
+                        IsPassword="True"/>
+                </StackLayout>
+            </pancake:PancakeView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
