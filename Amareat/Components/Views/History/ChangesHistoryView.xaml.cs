@@ -10,6 +10,8 @@ namespace Amareat.Components.Views.History
         public ChangesHistoryView()
         {
             InitializeComponent();
+
+            BindingContext = new ChangesHistoryViewModel();
         }
     }
 }
