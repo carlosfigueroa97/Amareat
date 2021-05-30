@@ -10,6 +10,7 @@
             Style="{StaticResource TitleSemiBoldBlackLabel}"/>
         <renderers:EntryBottomLine
             PlaceholderColor="{StaticResource PrimarySolidGrayColor}"
-            IsPassword="False"/>
+            IsPassword="False"
+            TextColor="{StaticResource BlackColor}"/>
     </StackLayout>
 </ContentView>

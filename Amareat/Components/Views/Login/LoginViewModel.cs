@@ -82,6 +82,16 @@ namespace Amareat.Components.Views.Login
         {
             try
             {
+                IsBusy = true;
+
+                if (!CheckCredentials())
+                {
+                    await _popupNavigationService
+                        .ShowErrorDialog(Resources.Error,
+                        Resources.CheckYourDataWell);
+                    return;
+                }
+
                 var signIn = new SignIn
                 {
                     Username = User,
@@ -104,6 +114,20 @@ namespace Amareat.Components.Views.Login
             {
                 _crashReporting.TrackError(ex);
             }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        private bool CheckCredentials()
+        {
+            if (string.IsNullOrEmpty(User) || string.IsNullOrEmpty(Password))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         #endregion
