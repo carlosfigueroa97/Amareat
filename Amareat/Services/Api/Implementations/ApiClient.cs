@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Amareat.Exceptions;
 using Amareat.Helpers;
+using Amareat.Services.Api.Auth.Interfaces;
 using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Connection.Interfaces;
 using Amareat.Services.Crash.Interfaces;
@@ -21,7 +22,7 @@ namespace Amareat.Services.Api.Implementations
         private readonly ICrashReporting _crashReporting;
         private readonly IConnectivityService _connectivityService;
         private readonly ISecureStorage _secureStorage;
-        private readonly IUsersService _usersService;
+        private readonly IAuthService _authService;
 
         private static HttpClient _httpClient;
         protected HttpClient HttpClient
@@ -47,12 +48,12 @@ namespace Amareat.Services.Api.Implementations
             ICrashReporting crashReporting,
             IConnectivityService connectivityService,
             ISecureStorage secureStorage,
-            IUsersService usersService)
+            IAuthService authService)
         {
             _crashReporting = crashReporting;
             _connectivityService = connectivityService;
             _secureStorage = secureStorage;
-            _usersService = usersService;
+            _authService = authService;
         }
 
         #region Public Methods
@@ -229,7 +230,7 @@ namespace Amareat.Services.Api.Implementations
         private async Task<bool> RefreshUserToken()
         {
             var cancellationToken = new CancellationTokenSource().Token;
-            var response = await _usersService.RefreshUserToken(cancellationToken);
+            var response = await _authService.RefreshUserToken(cancellationToken);
             return response;
         }
 

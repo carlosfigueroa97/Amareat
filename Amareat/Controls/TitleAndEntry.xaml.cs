@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 
 namespace Amareat.Controls
 {
@@ -22,11 +23,15 @@ namespace Amareat.Controls
 
         public static BindableProperty TextEntryProperty = BindableProperty.Create(
             nameof(TextEntry), typeof(string), typeof(TitleAndEntry), null,
-            propertyChanged: OnTextEntry);
+            BindingMode.TwoWay, propertyChanged: OnTextEntry);
 
         public static BindableProperty IsPasswordProperty = BindableProperty.Create(
             nameof(IsPassword), typeof(bool), typeof(TitleAndEntry), null,
             propertyChanged: OnIsPassword);
+
+        public static BindableProperty TextEntryChangedProperty = BindableProperty.Create(
+            nameof(TextEntryChanged), typeof(EventHandler<TextChangedEventArgs>), typeof(TitleAndEntry), null,
+            propertyChanged: OnTextEntryChanged);
 
         public string TextLabel
         {
@@ -76,6 +81,18 @@ namespace Amareat.Controls
             }
         }
 
+        public EventHandler<TextChangedEventArgs> TextEntryChanged
+        {
+            get
+            {
+                return (EventHandler<TextChangedEventArgs>)GetValue(TextEntryChangedProperty);
+            }
+            set
+            {
+                SetValue(TextEntryChangedProperty, value);
+            }
+        }
+
         private static void OnTitleLabel(BindableObject bindable, object oldVal, object newVal)
         {
             var stackLayout = GetStackLayout(bindable);
@@ -95,6 +112,13 @@ namespace Amareat.Controls
             var stackLayout = GetStackLayout(bindable);
             var entry = stackLayout.Children[1] as Entry;
             entry.Text = newVal.ToString();
+        }
+
+        private static void OnTextEntryChanged(BindableObject bindable, object oldVal, object newVal)
+        {
+            var stackLayout = GetStackLayout(bindable);
+            var entry = stackLayout.Children[1] as Entry;
+            entry.TextChanged += (EventHandler<TextChangedEventArgs>)newVal;
         }
 
         private static void OnIsPassword(BindableObject bindable, object oldVal, object newVal)

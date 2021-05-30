@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using Amareat.Components.Base;
 using Amareat.Components.Views.Buildings.Home;
 using Amareat.Helpers;
+using Amareat.Models.API.Requests.Users;
 using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
-using Amareat.Services.Localization.Interfaces;
 using Amareat.Services.Navigation.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
 using Xamarin.Forms;
@@ -23,8 +23,8 @@ namespace Amareat.Components.Views.Login
         private IUsersService _usersService;
         private INavigationService _navigationService;
 
-        private string _user;
-        private string _password;
+        private string _user = string.Empty;
+        private string _password = string.Empty;
 
         private CancellationToken _cancellationToken => new CancellationTokenSource().Token;
 
@@ -82,7 +82,13 @@ namespace Amareat.Components.Views.Login
         {
             try
             {
-                var response = await _usersService.SignIn(null, _cancellationToken);
+                var signIn = new SignIn
+                {
+                    Username = User,
+                    Password = Password
+                };
+
+                var response = await _usersService.SignIn(signIn, _cancellationToken);
 
                 if (!response)
                 {

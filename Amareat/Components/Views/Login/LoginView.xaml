@@ -35,15 +35,15 @@
                         Style="{StaticResource LargeBoldBlackLabel}"
                         Text="{x:Static local:AppResources.SignIn}"/>
                     <ctrl:TitleAndEntry
+                        x:Name="user"
                         Margin="{StaticResource NormalTopPadding}"
                         TextLabel="{x:Static local:AppResources.User}"
-                        TextEntry="{Binding User}"
                         PlaceholderEntry="{x:Static local:AppResources.InsertYourUser}"/>
                     <ctrl:TitleAndEntry
+                        x:Name="password"
                         HorizontalOptions="FillAndExpand"
                         Margin="{StaticResource NormalTopPadding}"
                         TextLabel="{x:Static local:AppResources.Password}"
-                        TextEntry="{Binding Password}"
                         PlaceholderEntry="{x:Static local:AppResources.InsertYourPassword}"
                         IsPassword="True"/>
                     <Label
@@ -60,7 +60,8 @@
                         VerticalOptions="StartAndExpand"
                         Margin="{StaticResource LongPadding}"
                         Style="{StaticResource OrangeButton}"
-                        Text="{x:Static local:AppResources.SignIn}"/>
+                        Text="{x:Static local:AppResources.SignIn}"
+                        Command="{Binding SignInCommand}"/>
                 </StackLayout>
             </pancake:PancakeView>
         </StackLayout>

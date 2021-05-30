@@ -102,6 +102,12 @@
     <Folder Include="Models\Api\Responses\TypeDevices\" />
     <Folder Include="Models\Wrappers\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Services\Encryption\" />
+    <Folder Include="Services\Encryption\Interfaces\" />
+    <Folder Include="Services\Encryption\Implementations\" />
+    <Folder Include="Services\Api\Auth\" />
+    <Folder Include="Services\Api\Auth\Interfaces\" />
+    <Folder Include="Services\Api\Auth\Implementations\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Localization\AppResources.resx">
