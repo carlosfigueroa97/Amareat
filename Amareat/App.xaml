@@ -17,6 +17,8 @@
                     Source="Styles/Converters.xaml"/>
                 <ResourceDictionary
                     Source="Styles/Styles.xaml"/>
+                <ResourceDictionary
+                    Source="Styles/Sizes.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

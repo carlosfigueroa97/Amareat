@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,6 +8,7 @@ using Amareat.Models.API.Requests.Users;
 using Amareat.Models.API.Responses.Users;
 using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
+using Amareat.Services.Encryption.Interfaces;
 using Amareat.Services.SecureStorage.Interfaces;
 using Newtonsoft.Json;
 
@@ -20,21 +20,24 @@ namespace Amareat.Services.Api.Implementations
 
         private readonly ICrashReporting _crashReporting;
         private readonly IApiClient _apiClient;
-        private readonly ISecureStorage _secureStorage;
         private readonly ICrashTokenService _crashTokenService;
+        private readonly IEncryptionService _encryptionService;
+        private readonly ISecureStorage _secureStorage;
 
         #endregion
 
         public UsersService(
             ICrashReporting crashReporting,
             IApiClient apiClient,
-            ISecureStorage secureStorage,
-            ICrashTokenService crashTokenService)
+            ICrashTokenService crashTokenService,
+            IEncryptionService encryptionService,
+            ISecureStorage secureStorage)
         {
             _crashReporting = crashReporting;
             _apiClient = apiClient;
-            _secureStorage = secureStorage;
             _crashTokenService = crashTokenService;
+            _encryptionService = encryptionService;
+            _secureStorage = secureStorage;
         }
 
         public async Task<bool> EditUser(EditUser editUser, CancellationToken cancellationToken)
@@ -177,45 +180,6 @@ namespace Amareat.Services.Api.Implementations
             throw new ApiErrorException();
         }
 
-        public async Task<bool> RefreshUserToken(CancellationToken cancellationToken)
-        {
-            try
-            {
-                var response = await _apiClient.PutAsync($"{ConstantGlobal.Users}refreshToken", null, cancellationToken);
-
-                if (string.IsNullOrEmpty(response))
-                {
-                    return false;
-                }
-
-                var tokenModel = JsonConvert.DeserializeObject<RefreshToken>(response);
-
-                await _secureStorage.SetValue(KeysSecureStorage.Token, tokenModel.Token);
-
-                return true;
-            }
-            catch (NoInternetConnectionException ex)
-            {
-                Debug.WriteLine(ex);
-                throw ex;
-            }
-            catch (ApiErrorException ex)
-            {
-                Debug.WriteLine(ex);
-                throw ex;
-            }
-            catch (RefreshTokenException ex)
-            {
-                await _crashTokenService.TrackRefreshTokenException(ex);
-            }
-            catch (Exception ex)
-            {
-                _crashReporting.TrackError(ex);
-            }
-
-            throw new ApiErrorException();
-        }
-
         public async Task<bool> SaveUser(SaveUser signIn, CancellationToken cancellationToken)
         {
             try
@@ -290,12 +254,19 @@ namespace Amareat.Services.Api.Implementations
         {
             try
             {
+                var passwordEncrypted = _encryptionService.Encrypt(signIn.Password);
+                signIn.Password = passwordEncrypted;
+
                 var response = await _apiClient.PostAsync($"{ConstantGlobal.Users}signIn", signIn, cancellationToken);
 
                 if (string.IsNullOrEmpty(response))
                 {
                     return false;
                 }
+
+                var model = JsonConvert.DeserializeObject<ResponseSignIn>(response);
+
+                await _secureStorage.SetValue(KeysSecureStorage.Token, model.Token);
 
                 return true;
             }

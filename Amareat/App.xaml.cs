@@ -1,4 +1,5 @@
-﻿using Amareat.Components.Popups.Add;
+﻿using System;
+using Amareat.Components.Popups.Add;
 using Amareat.Components.Popups.Building;
 using Amareat.Components.Popups.Edit;
 using Amareat.Components.Popups.Room;
@@ -13,12 +14,16 @@ using Amareat.Components.Views.Rooms.Edit;
 using Amareat.Components.Views.Rooms.Home;
 using Amareat.Components.Views.Users;
 using Amareat.Helpers;
+using Amareat.Services.Api.Auth.Implementations;
+using Amareat.Services.Api.Auth.Interfaces;
 using Amareat.Services.Api.Implementations;
 using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Connection.Implementations;
 using Amareat.Services.Connection.Interfaces;
 using Amareat.Services.Crash.Implementations;
 using Amareat.Services.Crash.Interfaces;
+using Amareat.Services.Encryption.Implementations;
+using Amareat.Services.Encryption.Interfaces;
 using Amareat.Services.Localization.Implementations;
 using Amareat.Services.Localization.Interfaces;
 using Amareat.Services.Messaging.Implementations;
@@ -93,7 +98,7 @@ namespace Amareat
             // Views
             _serviceLocator.Register<EditBuildingDetailViewModel>();
             _serviceLocator.Register<EditBuildingListViewModel>();
-            _serviceLocator.Register<BuildingListView>();
+            _serviceLocator.Register<BuildingListViewModel>();
             _serviceLocator.Register<EditDeviceDetailViewModel>();
             _serviceLocator.Register<ChangesHistoryViewModel>();
             _serviceLocator.Register<LoginViewModel>();
@@ -114,9 +119,14 @@ namespace Amareat
 
         private void RegisterDependencies()
         {
+            _serviceLocator.RegisterSingle<ILocalizationService, LocalizationService>();
+            _serviceLocator.RegisterSingle<ISecureStorage, SecureStorage>();
             _serviceLocator.RegisterSingle<IConnectivityService, ConnectivityService>();
+            _serviceLocator.RegisterSingle<IAuthService, AuthService>();
             _serviceLocator.RegisterSingle<ICrashReporting, CrashReporting>();
+            _serviceLocator.RegisterSingle<ICrashTokenService, CrashTokenService>();
             _serviceLocator.RegisterSingle<IApiClient, ApiClient>();
+            _serviceLocator.RegisterSingle<IEncryptionService, EncryptionService>();
             _serviceLocator.RegisterSingle<IUsersService, UsersService>();
             _serviceLocator.RegisterSingle<IBuildingsService, BuildingsService>();
             _serviceLocator.RegisterSingle<IRoomsService, RoomsService>();
@@ -126,9 +136,7 @@ namespace Amareat
             _serviceLocator.RegisterSingle<INavigationService, NavigationService>();
             _serviceLocator.RegisterSingle<IPopupNavigationService, PopupNavigationService>();
             _serviceLocator.RegisterSingle<IMessagingService, MessagingService>();
-            _serviceLocator.RegisterSingle<ILocalizationService, LocalizationService>();
             _serviceLocator.RegisterSingle<IPreferenceService, PreferenceService>();
-            _serviceLocator.RegisterSingle<ISecureStorage, SecureStorage>();
         }
 
         private void BindViewsAndViewModels()
@@ -210,8 +218,14 @@ namespace Amareat
 
         private void NavigationToFirstViewModel()
         {
-            // TODO: 
-            _navigationService.SetNewNavigationPage<LoginViewModel>();
+            if (_preferenceService.IsUserLoggedIn)
+            {
+                _navigationService.SetNewNavigationPage<BuildingListViewModel>();
+            }
+            else
+            {
+                _navigationService.SetNewNavigationPage<LoginViewModel>();
+            }
         }
 
         #endregion

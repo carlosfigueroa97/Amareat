@@ -11,6 +11,9 @@ namespace Amareat.Helpers
         public const string OK = "OK";
         public const string Authorization = "Authorization";
         public const string Bearer = "Bearer";
+        public const string SecretKey = "uTOS0URkGMpLimGghRmIoprcUNBPqWuo";
+        public const string IV = "C!sV!BjLO28nA4Iz";
+        public const string Algorithm  = "aes256";
 
 #if DEBUG
         public const string ApiUrl = "https://amareat-dev.herokuapp.com/";
@@ -22,12 +25,12 @@ namespace Amareat.Helpers
 
         public const string ApiVersion = "V1";
         public const string ApiRoute = "/app/api/" + ApiVersion + "/";
-        public const string Users = "users/";
-        public const string Buildings = "buildings/";
-        public const string Rooms = "rooms/";
-        public const string Devices = "devices/";
-        public const string TypeDevices = "typeDevices/";
-        public const string History = "history/";
+        public const string Users = ApiRoute + "users/";
+        public const string Buildings = ApiRoute + "buildings/";
+        public const string Rooms = ApiRoute + "rooms/";
+        public const string Devices = ApiRoute + "devices/";
+        public const string TypeDevices = ApiRoute + "typeDevices/";
+        public const string History = ApiRoute + "history/";
 
         #endregion
     }
