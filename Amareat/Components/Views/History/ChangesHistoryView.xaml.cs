@@ -7,11 +7,18 @@ namespace Amareat.Components.Views.History
 {
     public partial class ChangesHistoryView : ContentPage
     {
+        ChangesHistoryViewModel _vm =>
+            BindingContext as ChangesHistoryViewModel;
+
         public ChangesHistoryView()
         {
             InitializeComponent();
+        }
 
-            BindingContext = new ChangesHistoryViewModel();
+        protected override void OnAppearing()
+        {
+            _vm.GetHistoryDataCommand.Execute(null);
+            base.OnAppearing();
         }
     }
 }

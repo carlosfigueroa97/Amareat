@@ -5,7 +5,7 @@
     xmlns:controls="clr-namespace:Amareat.Controls"
     x:Class="Amareat.Components.Views.History.ChangesHistoryView">
 
-    <CollectionView>
+    <CollectionView ItemsSource="{Binding HistoryListData}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout>
