@@ -218,8 +218,14 @@ namespace Amareat
 
         private void NavigationToFirstViewModel()
         {
-            // TODO: 
-            _navigationService.SetNewNavigationPage<LoginViewModel>();
+            if (_preferenceService.IsUserLoggedIn)
+            {
+                _navigationService.SetNewNavigationPage<BuildingListViewModel>();
+            }
+            else
+            {
+                _navigationService.SetNewNavigationPage<LoginViewModel>();
+            }
         }
 
         #endregion

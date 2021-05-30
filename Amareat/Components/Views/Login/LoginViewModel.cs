@@ -9,6 +9,7 @@ using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.Navigation.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
+using Amareat.Services.Preferences.Interfaces;
 using Xamarin.Forms;
 
 namespace Amareat.Components.Views.Login
@@ -22,6 +23,7 @@ namespace Amareat.Components.Views.Login
         private ICrashReporting _crashReporting;
         private IUsersService _usersService;
         private INavigationService _navigationService;
+        private IPreferenceService _preferenceService;
 
         private string _user = string.Empty;
         private string _password = string.Empty;
@@ -53,12 +55,14 @@ namespace Amareat.Components.Views.Login
             IPopupNavigationService popupNavigationService,
             ICrashReporting crashReporting,
             IUsersService usersService,
-            INavigationService navigationService)
+            INavigationService navigationService,
+            IPreferenceService preferenceService)
         {
             _popupNavigationService = popupNavigationService;
             _crashReporting = crashReporting;
             _usersService = usersService;
             _navigationService = navigationService;
+            _preferenceService = preferenceService;
 
             InitCommands();
         }
@@ -107,6 +111,8 @@ namespace Amareat.Components.Views.Login
                         Resources.CheckYourDataWell);
                     return;
                 }
+
+                _preferenceService.IsUserLoggedIn = true;
 
                 await _navigationService.SetNewNavigationPage<BuildingListViewModel>();
             }
