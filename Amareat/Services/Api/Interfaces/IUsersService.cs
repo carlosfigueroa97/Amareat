@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using Amareat.Models.API.Requests.Users;
 using Amareat.Models.API.Responses.Users;
@@ -12,8 +10,6 @@ namespace Amareat.Services.Api.Interfaces
         Task<bool> SaveUser(SaveUser signIn, CancellationToken cancellationToken);
 
         Task<bool> SignIn(SignIn signIn, CancellationToken cancellationToken);
-
-        Task<bool> RefreshUserToken(CancellationToken cancellationToken);
 
         Task<bool> Logout(CancellationToken cancellationToken);
 

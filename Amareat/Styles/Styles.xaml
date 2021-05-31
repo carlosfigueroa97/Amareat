@@ -86,10 +86,12 @@
         TargetType="Button"
         x:Key="OrangeButton">
         <Setter Property="BackgroundColor" Value="{StaticResource OrangeColor}"/>
-        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleSize}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-        <Setter Property="CornerRadius" Value="30"/>
+        <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="CornerRadius" Value="10"/>
     </Style>
 
     <!-- Custom History Changes Control -->
