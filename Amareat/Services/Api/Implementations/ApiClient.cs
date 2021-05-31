@@ -34,7 +34,7 @@ namespace Amareat.Services.Api.Implementations
                     _httpClient = new HttpClient
                     {
                         BaseAddress = new Uri(ConstantGlobal.ApiUrl),
-                        Timeout = TimeSpan.FromSeconds(10)
+                        Timeout = TimeSpan.FromSeconds(30)
                     };
                 }
 
@@ -74,7 +74,7 @@ namespace Amareat.Services.Api.Implementations
                 if (!HttpClient.DefaultRequestHeaders.Contains(ConstantGlobal.Authorization))
                 {
                     string token = await _secureStorage.GetValue(KeysSecureStorage.Token);
-                    HttpClient.DefaultRequestHeaders.Add(ConstantGlobal.Authorization, ConstantGlobal.Bearer + token);
+                    HttpClient.DefaultRequestHeaders.Add(ConstantGlobal.Authorization, $"{ConstantGlobal.Bearer} {token}");
                 }
 
                 httpResponseMessage = await HttpClient.GetAsync(url, cancellatonToken).ConfigureAwait(false);
@@ -129,7 +129,7 @@ namespace Amareat.Services.Api.Implementations
                 if (isAuthorizedCall && !HttpClient.DefaultRequestHeaders.Contains(ConstantGlobal.Authorization))
                 {
                     string token = await _secureStorage.GetValue(KeysSecureStorage.Token);
-                    HttpClient.DefaultRequestHeaders.Add(ConstantGlobal.Authorization, ConstantGlobal.Bearer + token);
+                    HttpClient.DefaultRequestHeaders.Add(ConstantGlobal.Authorization, $"{ConstantGlobal.Bearer} {token}");
                 }
 
                 var json = JsonConvert.SerializeObject(item);
@@ -186,7 +186,7 @@ namespace Amareat.Services.Api.Implementations
                 if (isAuthorizedCall && !HttpClient.DefaultRequestHeaders.Contains(ConstantGlobal.Authorization))
                 {
                     string token = await _secureStorage.GetValue(KeysSecureStorage.Token);
-                    HttpClient.DefaultRequestHeaders.Add(ConstantGlobal.Authorization, ConstantGlobal.Bearer + token);
+                    HttpClient.DefaultRequestHeaders.Add(ConstantGlobal.Authorization, $"{ConstantGlobal.Bearer} {token}");
                 }
 
                 var json = JsonConvert.SerializeObject(item);

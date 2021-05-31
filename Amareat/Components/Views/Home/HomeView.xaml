@@ -12,6 +12,29 @@
     android:TabbedPage.ToolbarPlacement="Bottom"
     SelectedTabColor="{StaticResource OrangeColor}"
     UnselectedTabColor="{StaticResource SecondSolidGrayColor}">
+    <NavigationPage.TitleView>
+        <StackLayout
+            Margin="{StaticResource HorizontalShortPadding}"
+            Orientation="Horizontal">
+            <Label
+                FontSize="{StaticResource LargeSize}"
+                VerticalTextAlignment="Center"
+                IsVisible="{Binding IsAdmin}"
+                FontFamily="{StaticResource FontAwesomeFreeSolid}"
+                Text="{x:Static fn:Icons.PlusIcon}"
+                TextColor="{StaticResource BlackColor}"></Label>
+            <Image
+                HorizontalOptions="CenterAndExpand"
+                Source="{x:Static fn:Images.ImgLogo}"/>
+            <Label
+                FontSize="{StaticResource LargeSize}"
+                VerticalTextAlignment="Center"
+                IsVisible="{Binding IsAdmin}"
+                FontFamily="{StaticResource FontAwesomeFreeSolid}"
+                Text="{x:Static fn:Icons.EditIcon}"
+                TextColor="{StaticResource BlackColor}"></Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
     <TabbedPage.Children>
         <NavigationPage
             Title="{x:Static local:AppResources.Home}"

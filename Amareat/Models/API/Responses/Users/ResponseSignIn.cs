@@ -7,5 +7,8 @@ namespace Amareat.Models.API.Responses.Users
     {
         [JsonProperty("token")]
         public string Token { get; set; }
+
+        [JsonProperty("isAdmin")]
+        public bool IsAdmin { get; set; }
     }
 }

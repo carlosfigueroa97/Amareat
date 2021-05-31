@@ -9,6 +9,7 @@ using Amareat.Models.API.Responses.Users;
 using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.Encryption.Interfaces;
+using Amareat.Services.Preferences.Interfaces;
 using Amareat.Services.SecureStorage.Interfaces;
 using Newtonsoft.Json;
 
@@ -23,6 +24,7 @@ namespace Amareat.Services.Api.Implementations
         private readonly ICrashTokenService _crashTokenService;
         private readonly IEncryptionService _encryptionService;
         private readonly ISecureStorage _secureStorage;
+        private readonly IPreferenceService _preferenceService;
 
         #endregion
 
@@ -31,13 +33,15 @@ namespace Amareat.Services.Api.Implementations
             IApiClient apiClient,
             ICrashTokenService crashTokenService,
             IEncryptionService encryptionService,
-            ISecureStorage secureStorage)
+            ISecureStorage secureStorage,
+            IPreferenceService preferenceService)
         {
             _crashReporting = crashReporting;
             _apiClient = apiClient;
             _crashTokenService = crashTokenService;
             _encryptionService = encryptionService;
             _secureStorage = secureStorage;
+            _preferenceService = preferenceService;
         }
 
         public async Task<bool> EditUser(EditUser editUser, CancellationToken cancellationToken)
@@ -267,6 +271,8 @@ namespace Amareat.Services.Api.Implementations
                 var model = JsonConvert.DeserializeObject<ResponseSignIn>(response);
 
                 await _secureStorage.SetValue(KeysSecureStorage.Token, model.Token);
+
+                _preferenceService.IsAdmin = model.IsAdmin;
 
                 return true;
             }

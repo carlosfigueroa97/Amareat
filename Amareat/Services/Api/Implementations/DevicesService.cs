@@ -137,6 +137,41 @@ namespace Amareat.Services.Api.Implementations
             throw new ApiErrorException();
         }
 
+        public async Task<DeviceListWithRoom> GetDevicesByBuilding(string status, string idBuilding, CancellationToken cancellationToken)
+        {
+            try
+            {
+                var response = await _apiClient.GetAsync($"{ConstantGlobal.Devices}getDevicesByBuilding?status={status}&idBuilding={idBuilding}", cancellationToken);
+
+                if (string.IsNullOrEmpty(response))
+                {
+                    return null;
+                }
+
+                return JsonConvert.DeserializeObject<DeviceListWithRoom>(response);
+            }
+            catch (NoInternetConnectionException ex)
+            {
+                Debug.WriteLine(ex);
+                throw ex;
+            }
+            catch (ApiErrorException ex)
+            {
+                Debug.WriteLine(ex);
+                throw ex;
+            }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
+            }
+            catch (Exception ex)
+            {
+                _crashReporting.TrackError(ex);
+            }
+
+            throw new ApiErrorException();
+        }
+
         public async Task<bool> SaveDevice(SaveDevice device, CancellationToken cancellationToken)
         {
             try

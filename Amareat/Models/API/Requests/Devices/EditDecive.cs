@@ -13,5 +13,8 @@ namespace Amareat.Models.API.Requests.Devices
 
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        [JsonProperty("value")]
+        public bool Value { get; set; }
     }
 }
