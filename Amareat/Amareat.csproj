@@ -108,6 +108,7 @@
     <Folder Include="Services\Api\Auth\" />
     <Folder Include="Services\Api\Auth\Interfaces\" />
     <Folder Include="Services\Api\Auth\Implementations\" />
+    <Folder Include="Components\Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Localization\AppResources.resx">
