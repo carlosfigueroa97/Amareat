@@ -2,8 +2,64 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Amareat.Components.Views.Buildings.Home.BuildingListView">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Class="Amareat.Components.Views.Buildings.Home.BuildingListView"
+    xmlns:local="clr-namespace:Amareat.Localization"
+    NavigationPage.HasNavigationBar="False"
+    x:Name="buildingList">
+    <Grid>
+        <ScrollView>
+            <FlexLayout
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="FillAndExpand"
+                BackgroundColor="{StaticResource SecondLightBlueSkyColor}"
+                BindableLayout.ItemsSource="{Binding BuildingList}"
+                AlignItems="Center"
+                JustifyContent="SpaceAround"
+                AlignContent="SpaceBetween"
+                Wrap="Wrap">
+                <BindableLayout.EmptyView>
+                    <Label
+                        IsVisible="{Binding IsEmpty}"
+                        FontAttributes="Bold"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource SubtitleBoldBlackLabel}"
+                        Text="{x:Static local:AppResources.NoDataFound}"/>
+                </BindableLayout.EmptyView>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <pancake:PancakeView
+                            Margin="{StaticResource NormalTopPadding}"
+                            HorizontalOptions="CenterAndExpand"
+                            CornerRadius="{StaticResource CornerRadiousFrame}"
+                            BackgroundColor="{StaticResource WhiteColor}"
+                            WidthRequest="{StaticResource WidthFrame}"
+                            HeightRequest="{StaticResource HeightFrame}">
+                            <pancake:PancakeView.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    CommandParameter="{Binding .}"
+                                    Command="{Binding Path=BindingContext.SelectedItemCommand,
+                                    Source={x:Reference buildingList}}"/>
+                            </pancake:PancakeView.GestureRecognizers>
+                            <pancake:PancakeView.Shadow>
+                                <pancake:DropShadow
+                                    Color="{StaticResource SecondSolidGrayColor}"
+                                    Offset=".5,.5"/>
+                            </pancake:PancakeView.Shadow>
+                            <Label
+                                FontAttributes="Bold"
+                                VerticalTextAlignment="Center"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource SubtitleBoldBlackLabel}"
+                                Text="{Binding Name}"/>
+                        </pancake:PancakeView>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </ScrollView>
+        <ActivityIndicator
+            IsVisible="{Binding IsBusy}"
+            Style="{StaticResource BaseActivityIndicator}"/>
+    </Grid>
 </ContentPage>

@@ -136,5 +136,11 @@ namespace Amareat.Localization {
                 return ResourceManager.GetString("Account", resourceCulture);
             }
         }
+        
+        internal static string NoDataFound {
+            get {
+                return ResourceManager.GetString("NoDataFound", resourceCulture);
+            }
+        }
     }
 }

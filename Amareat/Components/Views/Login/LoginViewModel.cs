@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
-using Amareat.Components.Views.Buildings.Home;
+using Amareat.Components.Views.Home;
 using Amareat.Helpers;
 using Amareat.Models.API.Requests.Users;
 using Amareat.Services.Api.Interfaces;
@@ -114,7 +114,7 @@ namespace Amareat.Components.Views.Login
 
                 _preferenceService.IsUserLoggedIn = true;
 
-                await _navigationService.SetNewNavigationPage<BuildingListViewModel>();
+                await _navigationService.SetNewNavigationPage<HomeViewModel>();
             }
             catch (Exception ex)
             {

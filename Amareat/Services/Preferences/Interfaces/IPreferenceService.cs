@@ -7,6 +7,8 @@ namespace Amareat.Services.Preferences.Interfaces
 
         bool IsFirstTimer { get; set; }
 
+        bool IsAdmin { get; set; }
+
         void SavePreference(string key, object value);
 
         object GetPreference(string key);
