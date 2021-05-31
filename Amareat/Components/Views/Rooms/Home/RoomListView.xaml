@@ -6,7 +6,8 @@
     xmlns:fn="clr-namespace:Amareat.Helpers"
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     x:Class="Amareat.Components.Views.Rooms.Home.RoomListView"
-    Title="{Binding Building.Name}">
+    Title="{Binding Building.Name}"
+    x:Name="roomList">
     <Grid
         BackgroundColor="{StaticResource SecondLightBlueSkyColor}">
         <CollectionView
@@ -59,7 +60,14 @@
                                 HorizontalTextAlignment="End"
                                 FontFamily="{StaticResource FontAwesomeFreeSolid}"
                                 Text="{x:Static fn:Icons.PowerIcon}"
-                                TextColor="{Binding Value, Converter={StaticResource ChangeColorPowerIconConverter}}"/>
+                                TextColor="{Binding Value, Converter={StaticResource ChangeColorPowerIconConverter}}">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        CommandParameter="{Binding .}"
+                                        Command="{Binding Path=BindingContext.ChangePowerCommand,
+                                        Source={x:Reference roomList}}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
                         </StackLayout>
                     </pancake:PancakeView>
                 </DataTemplate>

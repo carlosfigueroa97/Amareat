@@ -60,4 +60,7 @@
 	<data name="NoDataFound" xml:space="preserve">
 		<value>No se encontraron datos</value>
 	</data>
+	<data name="AnUnexpectedErrorHasOcurred" xml:space="preserve">
+		<value>Ha ocurrido un error inesperado</value>
+	</data>
 </root>

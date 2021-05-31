@@ -34,7 +34,7 @@ namespace Amareat.Services.Api.Implementations
                     _httpClient = new HttpClient
                     {
                         BaseAddress = new Uri(ConstantGlobal.ApiUrl),
-                        Timeout = TimeSpan.FromSeconds(10)
+                        Timeout = TimeSpan.FromSeconds(30)
                     };
                 }
 

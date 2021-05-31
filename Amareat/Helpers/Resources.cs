@@ -23,6 +23,7 @@ namespace Amareat.Helpers
         public static string PleaseContactAdministrator = GetResources("PleaseContactAdministrator");
         public static string WrongCredentials = GetResources("WrongCredentials");
         public static string CheckYourDataWell = GetResources("CheckYourDataWell");
+        public static string AnUnexpectedErrorHasOcurred = GetResources("AnUnexpectedErrorHasOcurred");
 
         private static string GetResources(string key)
         {

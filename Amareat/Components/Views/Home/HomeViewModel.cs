@@ -92,6 +92,8 @@ namespace Amareat.Components.Views.Home
 
             await _navigationService
                 .NavigateTo<RoomListViewModel, Building>(SelectedItem);
+
+            SelectedItem = null;
         }
 
         private async Task OnGetBuildingsAsync()

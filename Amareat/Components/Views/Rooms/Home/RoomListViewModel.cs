@@ -4,11 +4,14 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
+using Amareat.Helpers;
+using Amareat.Models.API.Requests.Devices;
 using Amareat.Models.API.Responses.Buildings;
 using Amareat.Models.API.Responses.Devices;
 using Amareat.Models.Wrappers;
 using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
+using Amareat.Services.PopupNavigation.Interfaces;
 using Xamarin.Forms;
 
 namespace Amareat.Components.Views.Rooms.Home
@@ -19,6 +22,7 @@ namespace Amareat.Components.Views.Rooms.Home
 
         private IDevicesService _devicesService;
         private ICrashReporting _crashReporting;
+        private IPopupNavigationService _popupNavigationService;
 
         private Building _building;
 
@@ -26,11 +30,14 @@ namespace Amareat.Components.Views.Rooms.Home
 
         private bool _isEmpty;
 
+        private Models.API.Responses.Devices.Device _deviceSelected;
+
         #endregion
 
         #region Public Properties
 
         public Command GetDataCommand { get; set; }
+        public Command ChangePowerCommand { get; set; }
 
         public Building Building
         {
@@ -50,14 +57,22 @@ namespace Amareat.Components.Views.Rooms.Home
             set => SetProperty(ref _isEmpty, value);
         }
 
+        public Models.API.Responses.Devices.Device DeviceSelected
+        {
+            get => _deviceSelected;
+            set => SetProperty(ref _deviceSelected, value);
+        }
+
         #endregion
 
         public RoomListViewModel(
             IDevicesService devicesService,
-            ICrashReporting crashReporting)
+            ICrashReporting crashReporting,
+            IPopupNavigationService popupNavigationService)
         {
             _devicesService = devicesService;
             _crashReporting = crashReporting;
+            _popupNavigationService = popupNavigationService;
 
             InitCommand();
         }
@@ -73,6 +88,61 @@ namespace Amareat.Components.Views.Rooms.Home
         private void InitCommand()
         {
             GetDataCommand = new Command(async () => await OnGetDataAsync());
+            ChangePowerCommand = new Command(async (obj) => await OnChangePowerAsync(obj));
+        }
+
+        private async Task OnChangePowerAsync(object obj)
+        {
+            try
+            {
+                IsBusy = true;
+
+                if(obj == null)
+                {
+                    return;
+                }
+
+                DeviceSelected = (Models.API.Responses.Devices.Device)obj;
+
+                var model = new EditDevice {
+                    Id = DeviceSelected.Id,
+                    Name = DeviceSelected.Name,
+                    Status = DeviceSelected.Status,
+                    Value = !DeviceSelected.Value
+                };
+
+                var response = await _devicesService.EditDevice(model, default);
+
+                if (response)
+                {
+                    foreach (var devices in DeviceList)
+                    {
+                        foreach (var item in devices)
+                        {
+                            if (item.Id == DeviceSelected.Id)
+                            {
+                                item.Value = !DeviceSelected.Value;
+                            }
+                        }
+                    }
+
+                    OnPropertyChanged(nameof(DeviceList));
+                }
+                else
+                {
+                    await _popupNavigationService
+                        .ShowErrorDialog(Resources.Error, Resources.AnUnexpectedErrorHasOcurred);
+                }
+            }
+            catch (Exception ex)
+            {
+                _crashReporting.TrackError(ex);
+            }
+            finally
+            {
+                DeviceSelected = null;
+                IsBusy = false;
+            }
         }
 
         private async Task OnGetDataAsync()
