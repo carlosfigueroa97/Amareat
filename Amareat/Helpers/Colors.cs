@@ -1,6 +1,5 @@
-﻿using System;
-using System.Drawing;
-using Amareat.Utils.Extensions;
+﻿using Amareat.Utils.Extensions;
+using Xamarin.Forms;
 
 namespace Amareat.Helpers
 {

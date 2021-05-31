@@ -9,4 +9,7 @@
     <x:Double x:Key="HeightFrame">120</x:Double>
     <x:Double x:Key="CornerRadiousFrame">5</x:Double>
 
+    <!-- Custom -->
+    <x:Double x:Key="SpacingStackLayout">30</x:Double>
+    <x:Double x:Key="WidthRequestImage">50</x:Double>
 </ResourceDictionary>
