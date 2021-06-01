@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Amareat.Components.Views.Home;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace Amareat.Components.Views.Buildings.Home
 {
     public partial class BuildingListView : ContentPage
     {
-        private HomeViewModel Vm => BindingContext as HomeViewModel;
+        private BuildingListViewModel Vm => BindingContext as BuildingListViewModel;
 
         public BuildingListView()
         {

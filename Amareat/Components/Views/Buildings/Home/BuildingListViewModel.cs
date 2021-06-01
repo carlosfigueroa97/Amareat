@@ -3,10 +3,12 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
+using Amareat.Components.Views.Rooms.Home;
 using Amareat.Models.API.Responses.Buildings;
 using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.Navigation.Interfaces;
+using Amareat.Services.Preferences.Interfaces;
 using Xamarin.Forms;
 
 namespace Amareat.Components.Views.Buildings.Home
@@ -23,18 +25,33 @@ namespace Amareat.Components.Views.Buildings.Home
 
         private bool _isEmpty;
 
-        private ObservableCollection<Building> BuildingList { get; set; }
+        private ObservableCollection<Building> _buildingList;
+
+        private Building _selectedItem;
 
         #endregion
 
         #region Public Properties
 
         public Command GetBuildingsCommand { get; set; }
+        public Command SelectedItemCommand { get; set; }
 
         public bool IsEmpty
         {
             get => _isEmpty;
             set => SetProperty(ref _isEmpty, value);
+        }
+
+        public ObservableCollection<Building> BuildingList
+        {
+            get => _buildingList;
+            set => SetProperty(ref _buildingList, value);
+        }
+
+        public Building SelectedItem
+        {
+            get => _selectedItem;
+            set => SetProperty(ref _selectedItem, value);
         }
 
         #endregion
@@ -55,32 +72,55 @@ namespace Amareat.Components.Views.Buildings.Home
 
         private void InitCommand()
         {
-            GetBuildingsCommand = new Command(async async => await OnGetBuildingsAsync());
+            GetBuildingsCommand = new Command(async () => await OnGetBuildingsAsync());
+            SelectedItemCommand = new Command(async (object obj) => await OnSelectedItemAsync(obj));
+        }
+
+        private async Task OnSelectedItemAsync(object obj)
+        {
+            if (obj is null)
+            {
+                return;
+            }
+
+            SelectedItem = obj as Building;
+
+            await _navigationService
+                .NavigateTo<RoomListViewModel, Building>(SelectedItem);
+
+            SelectedItem = null;
         }
 
         private async Task OnGetBuildingsAsync()
         {
             try
             {
+                IsBusy = true;
+                IsEmpty = false;
+
                 var response = await _buildingsService.GetBuildings("0", _cancellationToken);
 
-                if(response?.Data?.Count == 0)
+                if (response?.Data?.Count == 0)
                 {
                     IsEmpty = true;
-                    return;
+                    BuildingList = new ObservableCollection<Building>();
+                }
+                else
+                {
+                    BuildingList = new ObservableCollection<Building>(response.Data);
                 }
 
-                BuildingList = new ObservableCollection<Building>(response.Data);
+                OnPropertyChanged(nameof(BuildingList));
             }
             catch (Exception ex)
             {
                 _crashReporting.TrackError(ex);
             }
+            finally
+            {
+                IsBusy = false;
+            }
         }
-
-        #endregion
-
-        #region Public Methods
 
         #endregion
     }

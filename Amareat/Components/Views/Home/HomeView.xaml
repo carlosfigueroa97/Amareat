@@ -11,7 +11,8 @@
     xmlns:account="clr-namespace:Amareat.Components.Views.Profile"
     android:TabbedPage.ToolbarPlacement="Bottom"
     SelectedTabColor="{StaticResource OrangeColor}"
-    UnselectedTabColor="{StaticResource SecondSolidGrayColor}">
+    UnselectedTabColor="{StaticResource SecondSolidGrayColor}"
+    x:Name="homeView">
     <NavigationPage.TitleView>
         <StackLayout
             Margin="{StaticResource HorizontalShortPadding}"
@@ -37,6 +38,8 @@
     </NavigationPage.TitleView>
     <TabbedPage.Children>
         <NavigationPage
+            BindingContext="{Binding BindingContext.BuildingListViewModel,
+            Source={x:Reference homeView}}"
             Title="{x:Static local:AppResources.Home}"
             IconImageSource="{x:Static fn:Images.ImgHome}">
             <x:Arguments>
@@ -44,6 +47,8 @@
             </x:Arguments>
         </NavigationPage>
         <NavigationPage
+            BindingContext="{Binding BindingContext.ChangesHistoryViewModel,
+            Source={x:Reference homeView}}"
             Title="{x:Static local:AppResources.History}"
             IconImageSource="{x:Static fn:Images.ImgHistory}">
             <x:Arguments>
@@ -51,6 +56,8 @@
             </x:Arguments>
         </NavigationPage>
         <NavigationPage
+            BindingContext="{Binding BindingContext.ProfileViewModel,
+            Source={x:Reference homeView}}"
             Title="{x:Static local:AppResources.Account}"
             IconImageSource="{x:Static fn:Images.ImgAccount}">
             <x:Arguments>
