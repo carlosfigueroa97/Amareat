@@ -27,6 +27,14 @@
                     TextLabel="{x:Static local:AppResources.Status}"
                     TextFrame="{Binding User.Status,
                     Converter={StaticResource StatusConverter}}"/>
+                <Button
+                    Margin="{StaticResource LongPadding}"
+                    WidthRequest="{StaticResource WidthRequestButton}"
+                    Style="{StaticResource OrangeButton}"
+                    HorizontalOptions="CenterAndExpand"
+                    FontAttributes="Bold"
+                    Text="{x:Static local:AppResources.Logout}"
+                    Command="{Binding LogoutCommand}"/>
             </StackLayout>
         </ScrollView>
         <ActivityIndicator

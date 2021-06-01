@@ -219,11 +219,11 @@ namespace Amareat.Services.Api.Implementations
             throw new ApiErrorException();
         }
 
-        public async Task<bool> SaveUser(SaveUser signIn, CancellationToken cancellationToken)
+        public async Task<bool> SaveUser(SaveUser user, CancellationToken cancellationToken)
         {
             try
             {
-                var response = await _apiClient.PostAsync($"{ConstantGlobal.Users}saveUser", signIn, cancellationToken);
+                var response = await _apiClient.PostAsync($"{ConstantGlobal.Users}saveUser", user, cancellationToken);
 
                 if (string.IsNullOrEmpty(response))
                 {

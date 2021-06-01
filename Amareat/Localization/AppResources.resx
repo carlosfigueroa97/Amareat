@@ -78,4 +78,7 @@
 	<data name="Inactive" xml:space="preserve">
 		<value>Inactivo</value>
 	</data>
+	<data name="Logout" xml:space="preserve">
+		<value>Cerrar sesión</value>
+	</data>
 </root>

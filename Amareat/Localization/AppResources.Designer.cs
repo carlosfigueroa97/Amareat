@@ -178,5 +178,11 @@ namespace Amareat.Localization {
                 return ResourceManager.GetString("Inactive", resourceCulture);
             }
         }
+        
+        internal static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
     }
 }
