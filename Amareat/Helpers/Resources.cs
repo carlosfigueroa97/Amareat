@@ -24,6 +24,8 @@ namespace Amareat.Helpers
         public static string WrongCredentials = GetResources("WrongCredentials");
         public static string CheckYourDataWell = GetResources("CheckYourDataWell");
         public static string AnUnexpectedErrorHasOcurred = GetResources("AnUnexpectedErrorHasOcurred");
+        public static string Active = GetResources("Active");
+        public static string Inactive = GetResources("Inactive");
 
         private static string GetResources(string key)
         {

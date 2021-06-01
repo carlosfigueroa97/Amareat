@@ -114,6 +114,41 @@ namespace Amareat.Services.Api.Implementations
             throw new ApiErrorException();
         }
 
+        public async Task<User> GetUserProfile(CancellationToken cancellationToken)
+        {
+            try
+            {
+                var response = await _apiClient.GetAsync($"{ConstantGlobal.Users}getUserProfile", cancellationToken);
+
+                if (string.IsNullOrEmpty(response))
+                {
+                    return null;
+                }
+
+                return JsonConvert.DeserializeObject<User>(response);
+            }
+            catch (NoInternetConnectionException ex)
+            {
+                Debug.WriteLine(ex);
+                throw ex;
+            }
+            catch (ApiErrorException ex)
+            {
+                Debug.WriteLine(ex);
+                throw ex;
+            }
+            catch (RefreshTokenException ex)
+            {
+                await _crashTokenService.TrackRefreshTokenException(ex);
+            }
+            catch (Exception ex)
+            {
+                _crashReporting.TrackError(ex);
+            }
+
+            throw new ApiErrorException();
+        }
+
         public async Task<UserList> GetUsers(CancellationToken cancellationToken)
         {
             try

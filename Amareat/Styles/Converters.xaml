@@ -6,4 +6,5 @@
     x:Class="Amareat.Styles.Converters">
     <converters:InverterBoolConverter x:Key="InverseBoolConverter"/>
     <converters:ChangeColorPowerIconConverter x:Key="ChangeColorPowerIconConverter"/>
+    <converters:StatusConverter x:Key="StatusConverter"/>
 </ResourceDictionary>

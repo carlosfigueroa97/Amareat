@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Amareat.Controls.ItemProfile">
+    <StackLayout
+        Padding="{StaticResource HorizontalNormalPadding}">
+        <Label
+            Style="{StaticResource TitleSemiBoldBlackLabel}"
+            FontAttributes="Bold"/>
+        <Frame
+            HasShadow="False"
+            BorderColor="{StaticResource ThirdLightGrayColor}"
+            BackgroundColor="{StaticResource PrimaryLightGrayColor}"
+            HeightRequest="{StaticResource HeightRequestFrame}"
+            Padding="{StaticResource NormalPadding}">
+            <Label
+                VerticalTextAlignment="Center"
+                Style="{StaticResource TitleSemiBoldGrayLabel}"
+                FontAttributes="Bold"/>
+        </Frame>
+    </StackLayout>
+</ContentView>
