@@ -10,6 +10,8 @@ namespace Amareat.Services.Api.Interfaces
     {
         Task<bool> SaveDevice(SaveDevice device, CancellationToken cancellationToken);
 
+        Task<DeviceListWithRoom> GetDevicesByBuilding(string status, string idBuilding, CancellationToken cancellationToken);
+
         Task<Device> GetDevice(string id, CancellationToken cancellationToken);
 
         Task<DeviceList> GetDevices(string status, CancellationToken cancellationToken);

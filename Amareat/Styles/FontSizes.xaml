@@ -8,4 +8,7 @@
     <x:Double x:Key="SubtitleSize">13</x:Double>
     <x:Double x:Key="NormalSize">12</x:Double>
     <x:Double x:Key="SmallSize">10</x:Double>
+
+    <!-- Custom -->
+    <x:Double x:Key="PowerIconFontSize">30</x:Double>
 </ResourceDictionary>

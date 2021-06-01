@@ -118,5 +118,35 @@ namespace Amareat.Localization {
                 return ResourceManager.GetString("CheckYourDataWell", resourceCulture);
             }
         }
+        
+        internal static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        internal static string History {
+            get {
+                return ResourceManager.GetString("History", resourceCulture);
+            }
+        }
+        
+        internal static string Account {
+            get {
+                return ResourceManager.GetString("Account", resourceCulture);
+            }
+        }
+        
+        internal static string NoDataFound {
+            get {
+                return ResourceManager.GetString("NoDataFound", resourceCulture);
+            }
+        }
+        
+        internal static string AnUnexpectedErrorHasOcurred {
+            get {
+                return ResourceManager.GetString("AnUnexpectedErrorHasOcurred", resourceCulture);
+            }
+        }
     }
 }

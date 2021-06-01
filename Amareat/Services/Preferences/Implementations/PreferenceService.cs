@@ -28,6 +28,12 @@ namespace Amareat.Services.Preferences.Implementations
             set => Xamarin.Essentials.Preferences.Set(nameof(IsFirstTimer), value);
         }
 
+        public bool IsAdmin
+        {
+            get => Xamarin.Essentials.Preferences.Get(nameof(IsAdmin), false);
+            set => Xamarin.Essentials.Preferences.Set(nameof(IsAdmin), value);
+        }
+
         public object GetPreference(string key)
         {
             object value = null;

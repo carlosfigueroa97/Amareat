@@ -100,7 +100,6 @@
     <Folder Include="Models\Api\Requests\History\" />
     <Folder Include="Models\Api\Requests\TypeDevices\" />
     <Folder Include="Models\Api\Responses\TypeDevices\" />
-    <Folder Include="Models\Wrappers\" />
     <Folder Include="Renderers\" />
     <Folder Include="Services\Encryption\" />
     <Folder Include="Services\Encryption\Interfaces\" />

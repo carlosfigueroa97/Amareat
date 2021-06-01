@@ -8,6 +8,7 @@ using Amareat.Components.Views.Buildings.Edit;
 using Amareat.Components.Views.Buildings.Home;
 using Amareat.Components.Views.Devices;
 using Amareat.Components.Views.History;
+using Amareat.Components.Views.Home;
 using Amareat.Components.Views.Login;
 using Amareat.Components.Views.Profile;
 using Amareat.Components.Views.Rooms.Edit;
@@ -107,6 +108,7 @@ namespace Amareat
             _serviceLocator.Register<RoomListViewModel>();
             _serviceLocator.Register<EditUserDetailViewModel>();
             _serviceLocator.Register<EditUserListViewModel>();
+            _serviceLocator.Register<HomeViewModel>();
 
             // Popups
             _serviceLocator.Register<AddViewModel>();
@@ -175,6 +177,9 @@ namespace Amareat
             _navigationService.RegisterViewMapping(
                 typeof(EditUserListViewModel),
                 typeof(EditUserListView));
+            _navigationService.RegisterViewMapping(
+                typeof(HomeViewModel),
+                typeof(HomeView));
 
             // Register all the popups
             _popupNavigationService.RegisterViewMapping(
@@ -220,7 +225,7 @@ namespace Amareat
         {
             if (_preferenceService.IsUserLoggedIn)
             {
-                _navigationService.SetNewNavigationPage<BuildingListViewModel>();
+                _navigationService.SetNewNavigationPage<HomeViewModel>();
             }
             else
             {

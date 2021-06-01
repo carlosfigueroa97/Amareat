@@ -51,6 +51,14 @@
 
     <Style
         TargetType="Label"
+        x:Key="SubtitleBoldBlackLabel">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
         x:Key="LargeBoldWhiteLabel">
         <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
         <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
