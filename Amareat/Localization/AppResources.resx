@@ -63,4 +63,22 @@
 	<data name="AnUnexpectedErrorHasOcurred" xml:space="preserve">
 		<value>Ha ocurrido un error inesperado</value>
 	</data>
+	<data name="Id" xml:space="preserve">
+		<value>ID</value>
+	</data>
+	<data name="Email" xml:space="preserve">
+		<value>Email</value>
+	</data>
+	<data name="Status" xml:space="preserve">
+		<value>Estado</value>
+	</data>
+	<data name="Active" xml:space="preserve">
+		<value>Activo</value>
+	</data>
+	<data name="Inactive" xml:space="preserve">
+		<value>Inactivo</value>
+	</data>
+	<data name="Logout" xml:space="preserve">
+		<value>Cerrar sesión</value>
+	</data>
 </root>

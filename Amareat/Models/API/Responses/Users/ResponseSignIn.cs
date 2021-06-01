@@ -10,5 +10,8 @@ namespace Amareat.Models.API.Responses.Users
 
         [JsonProperty("isAdmin")]
         public bool IsAdmin { get; set; }
+
+        [JsonProperty("_id")]
+        public string Id { get; set; }
     }
 }

@@ -15,6 +15,8 @@ namespace Amareat.Services.Api.Interfaces
 
         Task<User> GetUser(string id, CancellationToken cancellationToken);
 
+        Task<User> GetUserProfile(CancellationToken cancellationToken);
+
         Task<UserList> GetUsers(CancellationToken cancellationToken);
 
         Task<bool> EditUser(EditUser editUser, CancellationToken cancellationToken);

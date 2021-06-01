@@ -55,8 +55,10 @@ namespace Amareat.Services.Preferences.Implementations
         public void ResetProperties()
         {
             IsUserLoggedIn = false;
+            IsAdmin = false;
             UserHasCompletedEnrollment = false;
             IsFirstTimer = false;
+            Xamarin.Essentials.Preferences.Clear();
         }
     }
 }

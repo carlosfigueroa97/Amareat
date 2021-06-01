@@ -83,6 +83,14 @@
 
     <Style
         TargetType="Label"
+        x:Key="TitleSemiBoldGrayLabel">
+        <Setter Property="TextColor" Value="{StaticResource SecondSolidGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewaySemiBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
         x:Key="LargeBoldBlackLabel">
         <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
         <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>

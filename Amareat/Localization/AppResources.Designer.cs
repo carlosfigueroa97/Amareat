@@ -148,5 +148,41 @@ namespace Amareat.Localization {
                 return ResourceManager.GetString("AnUnexpectedErrorHasOcurred", resourceCulture);
             }
         }
+        
+        internal static string Id {
+            get {
+                return ResourceManager.GetString("Id", resourceCulture);
+            }
+        }
+        
+        internal static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        internal static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        internal static string Active {
+            get {
+                return ResourceManager.GetString("Active", resourceCulture);
+            }
+        }
+        
+        internal static string Inactive {
+            get {
+                return ResourceManager.GetString("Inactive", resourceCulture);
+            }
+        }
+        
+        internal static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
     }
 }

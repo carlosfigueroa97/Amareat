@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -71,9 +72,10 @@ namespace Amareat.Services.Api.Implementations
             {
                 cancellatonToken.ThrowIfCancellationRequested();
 
-                if (!HttpClient.DefaultRequestHeaders.Contains(ConstantGlobal.Authorization))
+                string token = await _secureStorage.GetValue(KeysSecureStorage.Token);
+                if(token != null)
                 {
-                    string token = await _secureStorage.GetValue(KeysSecureStorage.Token);
+                    HttpClient.DefaultRequestHeaders.Clear();
                     HttpClient.DefaultRequestHeaders.Add(ConstantGlobal.Authorization, $"{ConstantGlobal.Bearer} {token}");
                 }
 
@@ -81,9 +83,15 @@ namespace Amareat.Services.Api.Implementations
 
                 cancellatonToken.ThrowIfCancellationRequested();
 
+                var readString = await httpResponseMessage.Content.ReadAsStringAsync();
+
+#if DEBUG
+                Debug.WriteLine(readString);
+#endif
+
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
-                    return await httpResponseMessage.Content.ReadAsStringAsync();
+                    return readString;
                 }
 
                 if(httpResponseMessage.StatusCode == HttpStatusCode.Unauthorized)
@@ -126,21 +134,33 @@ namespace Amareat.Services.Api.Implementations
             {
                 cancellatonToken.ThrowIfCancellationRequested();
 
-                if (isAuthorizedCall && !HttpClient.DefaultRequestHeaders.Contains(ConstantGlobal.Authorization))
+                string token = await _secureStorage.GetValue(KeysSecureStorage.Token);
+                if (token != null)
                 {
-                    string token = await _secureStorage.GetValue(KeysSecureStorage.Token);
+                    HttpClient.DefaultRequestHeaders.Clear();
                     HttpClient.DefaultRequestHeaders.Add(ConstantGlobal.Authorization, $"{ConstantGlobal.Bearer} {token}");
                 }
 
-                var json = JsonConvert.SerializeObject(item);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                StringContent content = null;
+
+                if(item != null)
+                {
+                    var json = JsonConvert.SerializeObject(item);
+                    content = new StringContent(json, Encoding.UTF8, "application/json");
+                }
+
                 httpResponseMessage = await HttpClient.PostAsync(url, content, cancellatonToken).ConfigureAwait(false);
 
                 cancellatonToken.ThrowIfCancellationRequested();
 
+                var readString = await httpResponseMessage.Content.ReadAsStringAsync();
+#if DEBUG
+                Debug.WriteLine(readString);
+#endif
+
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
-                    return await httpResponseMessage.Content.ReadAsStringAsync();
+                    return readString;
                 }
 
                 if (httpResponseMessage.StatusCode == HttpStatusCode.Unauthorized)
@@ -183,21 +203,33 @@ namespace Amareat.Services.Api.Implementations
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
-                if (isAuthorizedCall && !HttpClient.DefaultRequestHeaders.Contains(ConstantGlobal.Authorization))
+                string token = await _secureStorage.GetValue(KeysSecureStorage.Token);
+                if (token != null)
                 {
-                    string token = await _secureStorage.GetValue(KeysSecureStorage.Token);
+                    HttpClient.DefaultRequestHeaders.Clear();
                     HttpClient.DefaultRequestHeaders.Add(ConstantGlobal.Authorization, $"{ConstantGlobal.Bearer} {token}");
                 }
+                StringContent content = null;
 
-                var json = JsonConvert.SerializeObject(item);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                if(item != null)
+                {
+                    var json = JsonConvert.SerializeObject(item);
+                    content = new StringContent(json, Encoding.UTF8, "application/json");
+                }
+
                 httpResponseMessage = await HttpClient.PutAsync(url, content, cancellationToken).ConfigureAwait(false);
 
                 cancellationToken.ThrowIfCancellationRequested();
 
+                var readString = await httpResponseMessage.Content.ReadAsStringAsync();
+
+#if DEBUG
+                Debug.WriteLine(readString);
+#endif
+
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
-                    return await httpResponseMessage.Content.ReadAsStringAsync();
+                    return readString;
                 }
 
                 if (httpResponseMessage.StatusCode == HttpStatusCode.Unauthorized)
