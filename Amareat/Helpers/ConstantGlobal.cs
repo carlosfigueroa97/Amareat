@@ -32,6 +32,10 @@ namespace Amareat.Helpers
         public const string TypeDevices = ApiRoute + "typeDevices/";
         public const string History = ApiRoute + "history/";
 
+
+        // Preference key
+        public const string IdUser = "idUser";
+
         #endregion
     }
 }

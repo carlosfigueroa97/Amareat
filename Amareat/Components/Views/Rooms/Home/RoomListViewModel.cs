@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using Amareat.Components.Base;
 using Amareat.Helpers;
 using Amareat.Models.API.Requests.Devices;
+using Amareat.Models.API.Requests.History;
 using Amareat.Models.API.Responses.Buildings;
 using Amareat.Models.API.Responses.Devices;
 using Amareat.Models.Wrappers;
 using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
+using Amareat.Services.Preferences.Interfaces;
 using Xamarin.Forms;
 
 namespace Amareat.Components.Views.Rooms.Home
@@ -23,6 +25,8 @@ namespace Amareat.Components.Views.Rooms.Home
         private IDevicesService _devicesService;
         private ICrashReporting _crashReporting;
         private IPopupNavigationService _popupNavigationService;
+        private IHistoryService _historyService;
+        private IPreferenceService _preferenceService;
 
         private Building _building;
 
@@ -68,11 +72,15 @@ namespace Amareat.Components.Views.Rooms.Home
         public RoomListViewModel(
             IDevicesService devicesService,
             ICrashReporting crashReporting,
-            IPopupNavigationService popupNavigationService)
+            IPopupNavigationService popupNavigationService,
+            IHistoryService historyService,
+            IPreferenceService preferenceService)
         {
             _devicesService = devicesService;
             _crashReporting = crashReporting;
             _popupNavigationService = popupNavigationService;
+            _historyService = historyService;
+            _preferenceService = preferenceService;
 
             InitCommand();
         }
@@ -126,6 +134,8 @@ namespace Amareat.Components.Views.Rooms.Home
                         }
                     }
 
+                    await OnSaveChange();
+
                     OnPropertyChanged(nameof(DeviceList));
                 }
                 else
@@ -143,6 +153,22 @@ namespace Amareat.Components.Views.Rooms.Home
                 DeviceSelected = null;
                 IsBusy = false;
             }
+        }
+
+        private async Task OnSaveChange()
+        {
+            var idUser = _preferenceService.GetPreference(ConstantGlobal.IdUser);
+
+            var history = new SaveHistory
+            {
+                IdBuilding = DeviceSelected.IdBuilding,
+                Change = !DeviceSelected.Value,
+                IdDevice = DeviceSelected.Id,
+                IdRoom = DeviceSelected.IdRoom,
+                IdUser = idUser.ToString()
+            };
+
+            await _historyService.SaveHistory(history, default);
         }
 
         private async Task OnGetDataAsync()

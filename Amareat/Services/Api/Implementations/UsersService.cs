@@ -308,6 +308,7 @@ namespace Amareat.Services.Api.Implementations
                 await _secureStorage.SetValue(KeysSecureStorage.Token, model.Token);
 
                 _preferenceService.IsAdmin = model.IsAdmin;
+                _preferenceService.SavePreference(ConstantGlobal.IdUser, model.Id);
 
                 return true;
             }
