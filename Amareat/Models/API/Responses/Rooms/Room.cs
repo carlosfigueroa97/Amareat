@@ -15,7 +15,7 @@ namespace Amareat.Models.API.Responses.Rooms
         public string Name { get; set; }
 
         [JsonProperty("status")]
-        public string status { get; set; }
+        public string Status { get; set; }
 
         [JsonProperty("createdAt")]
         public DateTime CreatedAt { get; set; }
