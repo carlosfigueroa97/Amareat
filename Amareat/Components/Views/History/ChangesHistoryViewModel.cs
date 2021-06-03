@@ -6,7 +6,6 @@ using Amareat.Components.Base;
 using HistoryApi = Amareat.Models.API.Responses.History;
 using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
-using Amareat.Services.Localization.Interfaces;
 using MvvmHelpers.Commands;
 
 namespace Amareat.Components.Views.History
@@ -15,19 +14,31 @@ namespace Amareat.Components.Views.History
     {
         #region Properties & Commands
 
+        #region Private Properties
+
         private readonly ICrashReporting _crashReporting;
         private readonly IHistoryService _historyService;
 
         private CancellationToken cancellationToken =
             new CancellationTokenSource().Token;
 
+        private bool _isEmpty;
+
+        #endregion
+
+        #region Public Properties
+
         public Command GetHistoryDataCommand { get; set; }
 
         public List<HistoryApi.History> HistoryListData { get; set; }
-        /*public string DeviceName { get; set; }
-        public string Status { get; set; }
-        public string User { get; set; }
-        public DateTime Date { get; set; }*/
+
+        public bool IsEmpty
+        {
+            get => _isEmpty;
+            set => SetProperty(ref _isEmpty, value);
+        }
+
+        #endregion
 
         #endregion
 
@@ -48,12 +59,16 @@ namespace Amareat.Components.Views.History
         {
             try
             {
+                IsBusy = true;
+                IsEmpty = true;
+
                 var apiResponse =
                     await _historyService.GetHistory(cancellationToken);
 
-                if (apiResponse != null)
+                if (apiResponse?.Data?.Count != 0)
                 {
                     HistoryListData = apiResponse.Data;
+                    IsEmpty = false;
                 }
 
                 OnPropertyChanged(nameof(HistoryListData));
@@ -61,6 +76,10 @@ namespace Amareat.Components.Views.History
             catch (Exception ex)
             {
                 _crashReporting.TrackError(ex);
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
 
