@@ -125,7 +125,7 @@
         TargetType="Label"
         x:Key="BoldHistoryTitle">
         <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
-        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleSize}"/>
         <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
     </Style>
 
@@ -133,7 +133,7 @@
         TargetType="Label"
         x:Key="NormalHistoryLabel">
         <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
-        <Setter Property="FontSize" Value="{StaticResource NormalSize}"/>
+        <Setter Property="FontSize" Value="{StaticResource BigSize}"/>
         <Setter Property="FontFamily" Value="{StaticResource RalewayRegularFont}"/>
     </Style>
 
@@ -141,7 +141,7 @@
         TargetType="Label"
         x:Key="NormalHistoryGrayLabel">
         <Setter Property="TextColor" Value="{StaticResource SecondSolidGrayColor}"/>
-        <Setter Property="FontSize" Value="{StaticResource NormalSize}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
         <Setter Property="FontFamily" Value="{StaticResource RalewayRegularFont}"/>
         <Setter Property="HorizontalOptions" Value="End"/>
     </Style>
