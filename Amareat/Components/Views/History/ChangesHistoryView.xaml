@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:controls="clr-namespace:Amareat.Controls"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     NavigationPage.HasNavigationBar="False"
     x:Class="Amareat.Components.Views.History.ChangesHistoryView">
 
@@ -10,11 +11,20 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout>
-                    <controls:HistoryChangesControl 
-			            DeviceNameText="{Binding IdDevice.Name}"
-						StatusText="{Binding Change}"
-						UserText="{Binding IdUser.Username}"
-						DateText="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"/>
+                    <pancake:PancakeView
+			            Style="{StaticResource DefaultPancakeView}">
+                        <pancake:PancakeView.Shadow>
+                            <pancake:DropShadow
+                                    Color="{StaticResource SecondSolidGrayColor}"
+                                    Offset=".5,.5"/>
+                        </pancake:PancakeView.Shadow>
+                        <controls:HistoryChangesControl 
+						    DeviceNameText="{Binding IdDevice.Name}"
+							StatusText="{Binding Change}"
+							UserText="{Binding IdUser.Username}"
+							DateText="{Binding Date, 
+			                    StringFormat='{0:MMMM dd, yyyy}'}"/>
+                    </pancake:PancakeView>
                 </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>
