@@ -16,11 +16,7 @@
             <CollectionView.EmptyView>
                 <Label
                     IsVisible="{Binding IsEmpty}"
-                    FontAttributes="Bold"
-                    VerticalTextAlignment="Center"
-                    HorizontalTextAlignment="Center"
-                    Style="{StaticResource SubtitleBoldBlackLabel}"
-                    Text="{x:Static local:AppResources.NoDataFound}"/>
+					Style="{StaticResource EmptyViewLabel}"/>
             </CollectionView.EmptyView>
             <CollectionView.GroupHeaderTemplate>
                 <DataTemplate>
