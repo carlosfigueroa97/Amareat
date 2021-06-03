@@ -26,6 +26,9 @@ namespace Amareat.Helpers
         public static string AnUnexpectedErrorHasOcurred = GetResources("AnUnexpectedErrorHasOcurred");
         public static string Active = GetResources("Active");
         public static string Inactive = GetResources("Inactive");
+        public static string On = GetResources("On");
+        public static string Off = GetResources("Off");
+
 
         private static string GetResources(string key)
         {

@@ -20,7 +20,8 @@
                         </pancake:PancakeView.Shadow>
                         <controls:HistoryChangesControl 
 						    DeviceNameText="{Binding IdDevice.Name}"
-							StatusText="{Binding Change}"
+							StatusText="{Binding Change,
+			                    Converter={StaticResource StatusOnOffConverter}}"
 							UserText="{Binding IdUser.Username}"
 							DateText="{Binding Date, 
 			                    StringFormat='{0:MMMM dd, yyyy}'}"/>

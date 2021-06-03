@@ -78,6 +78,12 @@
 	<data name="Inactive" xml:space="preserve">
 		<value>Inactivo</value>
 	</data>
+	<data name="On" xml:space="preserve">
+		<value>Encendido</value>
+	</data>
+	<data name="Off" xml:space="preserve">
+		<value>Apagado</value>
+	</data>
 	<data name="Logout" xml:space="preserve">
 		<value>Cerrar sesión</value>
 	</data>
