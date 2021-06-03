@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:controls="clr-namespace:Amareat.Controls"
+    NavigationPage.HasNavigationBar="False"
     x:Class="Amareat.Components.Views.History.ChangesHistoryView">
 
     <CollectionView ItemsSource="{Binding HistoryListData}">
@@ -10,10 +11,10 @@
             <DataTemplate>
                 <StackLayout>
                     <controls:HistoryChangesControl 
-			            DeviceNameText="{Binding DeviceName}"
-						StatusText="{Binding Status}"
-						UserText="{Binding User}"
-						DateText="{Binding Date}"/>
+			            DeviceNameText="{Binding IdDevice.Name}"
+						StatusText="{Binding Change}"
+						UserText="{Binding IdUser.Username}"
+						DateText="{Binding Date, StringFormat='{0:MMMM dd, yyyy}'}"/>
                 </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>
