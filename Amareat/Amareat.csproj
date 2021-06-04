@@ -84,6 +84,7 @@
     <Folder Include="Components\Views\Buildings\Edit\" />
     <Folder Include="Components\Views\Rooms\Edit\" />
     <Folder Include="Components\Views\Devices\" />
+    <Folder Include="Components\Views\Home\" />
     <Folder Include="Models\Api\" />
     <Folder Include="Models\Api\Base\" />
     <Folder Include="Models\Api\Requests\" />
@@ -100,6 +101,7 @@
     <Folder Include="Models\Api\Requests\History\" />
     <Folder Include="Models\Api\Requests\TypeDevices\" />
     <Folder Include="Models\Api\Responses\TypeDevices\" />
+    <Folder Include="Models\Wrappers\" />
     <Folder Include="Renderers\" />
     <Folder Include="Services\Encryption\" />
     <Folder Include="Services\Encryption\Interfaces\" />
