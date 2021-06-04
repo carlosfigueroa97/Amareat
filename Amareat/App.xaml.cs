@@ -111,7 +111,7 @@ namespace Amareat
             _serviceLocator.Register<HomeViewModel>();
 
             // Popups
-            _serviceLocator.Register<AddViewModel>();
+            _serviceLocator.Register<AddPopupViewModel>();
             _serviceLocator.Register<AddedBuildingRoomViewModel>();
             _serviceLocator.Register<AddedBuildingViewModel>();
             _serviceLocator.Register<EditViewModel>();
@@ -183,7 +183,7 @@ namespace Amareat
 
             // Register all the popups
             _popupNavigationService.RegisterViewMapping(
-                typeof(AddViewModel),
+                typeof(AddPopupViewModel),
                 typeof(AddPopup));
             _popupNavigationService.RegisterViewMapping(
                 typeof(AddedBuildingViewModel),

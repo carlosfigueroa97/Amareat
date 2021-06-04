@@ -2,9 +2,9 @@
 
 namespace Amareat.Components.Popups.Add
 {
-    public class AddViewModel : BaseVm
+    public class AddPopupViewModel : BaseVm
     {
-        public AddViewModel()
+        public AddPopupViewModel()
         {
         }
     }
