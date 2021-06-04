@@ -179,6 +179,18 @@ namespace Amareat.Localization {
             }
         }
         
+        internal static string On {
+            get {
+                return ResourceManager.GetString("On", resourceCulture);
+            }
+        }
+        
+        internal static string Off {
+            get {
+                return ResourceManager.GetString("Off", resourceCulture);
+            }
+        }
+        
         internal static string Logout {
             get {
                 return ResourceManager.GetString("Logout", resourceCulture);

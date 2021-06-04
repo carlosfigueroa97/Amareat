@@ -1,5 +1,9 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Amareat.Models.API.Responses.Users;
+using Amareat.Models.API.Responses.Buildings;
+using Amareat.Models.API.Responses.Rooms;
+using Amareat.Models.API.Responses.Devices;
 
 namespace Amareat.Models.API.Responses.History
 {
@@ -9,16 +13,16 @@ namespace Amareat.Models.API.Responses.History
         public string Id { get; set; }
 
         [JsonProperty("idUser")]
-        public string IdUser { get; set; }
+        public User IdUser { get; set; }
 
         [JsonProperty("idBuilding")]
-        public string IdBuilding { get; set; }
+        public Building IdBuilding { get; set; }
 
         [JsonProperty("idRoom")]
-        public string IdRoom { get; set; }
+        public Room IdRoom { get; set; }
 
         [JsonProperty("idDevice")]
-        public string IdDevice { get; set; }
+        public Device IdDevice { get; set; }
 
         [JsonProperty("change")]
         public bool Change { get; set; }

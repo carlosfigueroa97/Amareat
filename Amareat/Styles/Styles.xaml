@@ -2,6 +2,8 @@
 <ResourceDictionary
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:local="clr-namespace:Amareat.Localization"
     x:Class="Amareat.Styles.Styles">
     <!-- Activity Indicator -->
     <Style
@@ -110,4 +112,51 @@
         <Setter Property="CornerRadius" Value="10"/>
     </Style>
 
+    <!-- Custom History Changes Control -->
+    <Style
+	    TargetType="pancake:PancakeView"
+	    x:Key="DefaultPancakeView">
+        <Setter Property="Margin" Value="{StaticResource NormalPadding}"/>
+        <Setter Property="Padding" Value="{StaticResource NormalPadding}"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="BoldHistoryTitle">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="NormalHistoryLabel">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource BigSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayRegularFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="NormalHistoryGrayLabel">
+        <Setter Property="TextColor" Value="{StaticResource SecondSolidGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayRegularFont}"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+    </Style>
+
+    <!-- Empty View Label -->
+    <Style
+	    TargetType="Label"
+	    x:Key="EmptyViewLabel">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="Text" Value="{x:Static local:AppResources.NoDataFound}"/>
+    </Style>
 </ResourceDictionary>

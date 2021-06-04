@@ -7,4 +7,5 @@
     <converters:InverterBoolConverter x:Key="InverseBoolConverter"/>
     <converters:ChangeColorPowerIconConverter x:Key="ChangeColorPowerIconConverter"/>
     <converters:StatusConverter x:Key="StatusConverter"/>
+    <converters:StatusOnOffConverter x:Key="StatusOnOffConverter"/>
 </ResourceDictionary>

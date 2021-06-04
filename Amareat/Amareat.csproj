@@ -84,6 +84,7 @@
     <Folder Include="Components\Views\Buildings\Edit\" />
     <Folder Include="Components\Views\Rooms\Edit\" />
     <Folder Include="Components\Views\Devices\" />
+    <Folder Include="Components\Views\Home\" />
     <Folder Include="Models\Api\" />
     <Folder Include="Models\Api\Base\" />
     <Folder Include="Models\Api\Requests\" />
@@ -108,7 +109,6 @@
     <Folder Include="Services\Api\Auth\" />
     <Folder Include="Services\Api\Auth\Interfaces\" />
     <Folder Include="Services\Api\Auth\Implementations\" />
-    <Folder Include="Components\Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Localization\AppResources.resx">
