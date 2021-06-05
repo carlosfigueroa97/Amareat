@@ -166,7 +166,6 @@
 	    x:Key="MenuPopupPancake">
         <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
         <Setter Property="CornerRadius" Value="10,10,0,0"/>
-        <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
         <Setter Property="VerticalOptions" Value="EndAndExpand"/>
     </Style>
 
