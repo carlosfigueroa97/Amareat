@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
+using Amareat.Helpers;
 using Amareat.Services.Navigation.Interfaces;
 using Amareat.Utils.ServiceLocator;
 using Xamarin.Forms;
@@ -138,7 +139,7 @@ namespace Amareat.Services.Navigation.Implementations
         public async Task NavigateTo<TVM>() where TVM : BaseVm
         {
             Page view = CreatePageAndBind(typeof(TVM));
-            //view.BackgroundColor = Colors.BlueBackgroundColor;
+            //view.BackgroundColor = Colors.WhiteColor;
             var vm = view.BindingContext as BaseVm;
             await vm.Init();
 
@@ -190,8 +191,8 @@ namespace Amareat.Services.Navigation.Implementations
             //view.BackgroundColor = Colors.BlueBackgroundColor;
             Application.Current.MainPage = new NavigationPage(view)
             {
-                //BarTextColor = Colors.BarTextColor,
-                //BarBackgroundColor = Colors.BackgroundBarColor
+                BarTextColor = Colors.BlackColor,
+                BarBackgroundColor = Colors.WhiteColor
             };
 
             var vm = view.BindingContext as BaseVm;
@@ -204,8 +205,8 @@ namespace Amareat.Services.Navigation.Implementations
             //view.BackgroundColor = Colors.BlueBackgroundColor;
             Application.Current.MainPage = new NavigationPage(view)
             {
-                //BarTextColor = Colors.BarTextColor,
-                //BarBackgroundColor = Colors.BackgroundBarColor
+                BarTextColor = Colors.BlackColor,
+                BarBackgroundColor = Colors.WhiteColor
             };
             var vm = view.BindingContext as BaseViewModel<TInitParameter>;
             await vm.Init(parameter);

@@ -12,9 +12,11 @@
     android:TabbedPage.ToolbarPlacement="Bottom"
     SelectedTabColor="{StaticResource OrangeColor}"
     UnselectedTabColor="{StaticResource SecondSolidGrayColor}"
-    x:Name="homeView">
+    x:Name="homeView"
+    BackgroundColor="{StaticResource WhiteColor}">
     <NavigationPage.TitleView>
         <StackLayout
+            BackgroundColor="{StaticResource WhiteColor}"
             Margin="{StaticResource HorizontalShortPadding}"
             Orientation="Horizontal">
             <Label
@@ -25,6 +27,7 @@
                 Text="{x:Static fn:Icons.PlusIcon}"
                 TextColor="{StaticResource BlackColor}"></Label>
             <Image
+                WidthRequest="{StaticResource WidthImageTitleView}"
                 HorizontalOptions="CenterAndExpand"
                 Source="{x:Static fn:Images.ImgLogo}"/>
             <Label
