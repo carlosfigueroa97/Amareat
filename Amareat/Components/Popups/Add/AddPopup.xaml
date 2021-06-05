@@ -10,27 +10,57 @@
         <StackLayout>
             <Label 
 		        Text="Agregar Usuario" 
-		        Style="{StaticResource NormalPopupLabel}"/>
+		        Style="{StaticResource NormalPopupLabel}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+			            Command="{Binding TapCommand}"
+			            CommandParameter="User"/>
+                </Label.GestureRecognizers>
+            </Label>
             <BoxView Style="{StaticResource SeparatorLinePopup}"/>
 
             <Label 
 		        Text="Agregar Edificio"
-		        Style="{StaticResource NormalPopupLabel}"/>
+		        Style="{StaticResource NormalPopupLabel}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+			            Command="{Binding TapCommand}"
+			            CommandParameter="Building"/>
+                </Label.GestureRecognizers>
+            </Label>
             <BoxView Style="{StaticResource SeparatorLinePopup}"/>
 
             <Label 
 		        Text="Agregar Sala"
-		        Style="{StaticResource NormalPopupLabel}"/>
+		        Style="{StaticResource NormalPopupLabel}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+			            Command="{Binding TapCommand}"
+			            CommandParameter="Room"/>
+                </Label.GestureRecognizers>
+            </Label>
             <BoxView Style="{StaticResource SeparatorLinePopup}"/>
 
             <Label 
 		        Text="Agregar Dispositivo"
-		        Style="{StaticResource NormalPopupLabel}"/>
+		        Style="{StaticResource NormalPopupLabel}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+			            Command="{Binding TapCommand}"
+			            CommandParameter="Device"/>
+                </Label.GestureRecognizers>
+            </Label>
             <BoxView Style="{StaticResource SeparatorLinePopup}"/>
 
             <Label 
 		        Text="Cancelar"
-		        Style="{StaticResource CancelPopupLabel}"/>
+		        Style="{StaticResource CancelPopupLabel}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+			            Command="{Binding TapCommand}"
+			            CommandParameter="Cancel"/>
+                </Label.GestureRecognizers>
+            </Label>
             <BoxView Style="{StaticResource SeparatorLinePopup}"/>
         </StackLayout>
     </pancake:PancakeView>
