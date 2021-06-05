@@ -6,7 +6,8 @@
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:local="clr-namespace:Amareat.Localization"
     NavigationPage.HasNavigationBar="False"
-    x:Class="Amareat.Components.Views.History.ChangesHistoryView">
+    x:Class="Amareat.Components.Views.History.ChangesHistoryView"
+    BackgroundColor="{StaticResource SecondLightBlueSkyColor}">
 
     <Grid>
         <CollectionView ItemsSource="{Binding HistoryListData}">

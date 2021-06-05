@@ -6,6 +6,7 @@
 
     <x:Double x:Key="NormalTopCornerRadious">30,0</x:Double>
     <x:Double x:Key="WidthFrame">120</x:Double>
+    <x:Double x:Key="WidthImageTitleView">100</x:Double>
     <x:Double x:Key="HeightFrame">120</x:Double>
     <x:Double x:Key="CornerRadiousFrame">5</x:Double>
     <x:Double x:Key="NormalCornerRadious">10</x:Double>
