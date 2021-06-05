@@ -6,13 +6,32 @@
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     x:Class="Amareat.Components.Popups.Add.AddPopup">
     <pancake:PancakeView
-	    VerticalOptions="EndAndExpand">
+        Style="{StaticResource MenuPopupPancake}">
         <StackLayout>
-            <Label Text="Agregar Usuario"/>
-            <Label Text="Agregar Edificio"/>
-            <Label Text="Agregar Sala"/>
-            <Label Text="Agregar Dispositivo"/>
-            <Label Text="Cancelar"/>
+            <Label 
+		        Text="Agregar Usuario" 
+		        Style="{StaticResource NormalPopupLabel}"/>
+            <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+
+            <Label 
+		        Text="Agregar Edificio"
+		        Style="{StaticResource NormalPopupLabel}"/>
+            <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+
+            <Label 
+		        Text="Agregar Sala"
+		        Style="{StaticResource NormalPopupLabel}"/>
+            <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+
+            <Label 
+		        Text="Agregar Dispositivo"
+		        Style="{StaticResource NormalPopupLabel}"/>
+            <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+
+            <Label 
+		        Text="Cancelar"
+		        Style="{StaticResource CancelPopupLabel}"/>
+            <BoxView Style="{StaticResource SeparatorLinePopup}"/>
         </StackLayout>
     </pancake:PancakeView>
 </base:BasePopupPage>
