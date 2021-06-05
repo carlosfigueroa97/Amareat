@@ -7,61 +7,79 @@
     x:Class="Amareat.Components.Popups.Add.AddPopup">
     <pancake:PancakeView
         Style="{StaticResource MenuPopupPancake}">
-        <StackLayout>
-            <Label 
-		        Text="Agregar Usuario" 
-		        Style="{StaticResource NormalPopupLabel}">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-			            Command="{Binding TapCommand}"
-			            CommandParameter="User"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+        <Grid
+	        RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+	        ColumnDefinitions="*"
+	        RowSpacing="0">
+            <StackLayout Grid.Row="0"
+			    BackgroundColor="{StaticResource WhiteColor}">
+                <Label 
+		            Text="Agregar Usuario" 
+					Style="{StaticResource NormalPopupLabel}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+						    Command="{Binding TapCommand}"
+						    CommandParameter="User"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+            </StackLayout>
 
-            <Label 
-		        Text="Agregar Edificio"
-		        Style="{StaticResource NormalPopupLabel}">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-			            Command="{Binding TapCommand}"
-			            CommandParameter="Building"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+            <StackLayout Grid.Row="1"
+			    BackgroundColor="{StaticResource WhiteColor}">
+                <Label 
+					Text="Agregar Edificio"
+					Style="{StaticResource NormalPopupLabel}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+						    Command="{Binding TapCommand}"
+						    CommandParameter="Building"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+            </StackLayout>
 
-            <Label 
-		        Text="Agregar Sala"
-		        Style="{StaticResource NormalPopupLabel}">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-			            Command="{Binding TapCommand}"
-			            CommandParameter="Room"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+            <StackLayout Grid.Row="2"
+				 BackgroundColor="{StaticResource WhiteColor}">
+                <Label 
+					Text="Agregar Sala"
+					Style="{StaticResource NormalPopupLabel}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+						    Command="{Binding TapCommand}"
+						    CommandParameter="Room"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+            </StackLayout>
 
-            <Label 
-		        Text="Agregar Dispositivo"
-		        Style="{StaticResource NormalPopupLabel}">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-			            Command="{Binding TapCommand}"
-			            CommandParameter="Device"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+            <StackLayout Grid.Row="3"
+			    BackgroundColor="{StaticResource WhiteColor}">
+                <Label 
+					Text="Agregar Dispositivo"
+					Style="{StaticResource NormalPopupLabel}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+						    Command="{Binding TapCommand}"
+						    CommandParameter="Device"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+            </StackLayout>
 
-            <Label 
-		        Text="Cancelar"
-		        Style="{StaticResource CancelPopupLabel}">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-			            Command="{Binding TapCommand}"
-			            CommandParameter="Cancel"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <BoxView Style="{StaticResource SeparatorLinePopup}"/>
-        </StackLayout>
+            <StackLayout Grid.Row="4"
+			    BackgroundColor="{StaticResource SecondLightBlueSkyColor}">
+                <Label 
+					Text="Cancelar"
+					Style="{StaticResource CancelPopupLabel}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+						    Command="{Binding TapCommand}"
+						    CommandParameter="Cancel"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <BoxView Style="{StaticResource SeparatorLinePopup}"/>
+            </StackLayout>
+        </Grid>
     </pancake:PancakeView>
 </base:BasePopupPage>

@@ -167,6 +167,8 @@
         <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
         <Setter Property="CornerRadius" Value="10,10,0,0"/>
         <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+        <Setter Property="Padding" Value="{StaticResource NoPadding}"/>
+        <!--<Setter Property="BackgroundColor" Value="{StaticResource SecondLightBlueSkyColor}"/>-->
     </Style>
 
     <!-- Normal Label -->
@@ -179,7 +181,6 @@
         <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
         <Setter Property="VerticalTextAlignment" Value="Center"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
-        <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
         <Setter Property="Margin" Value="{StaticResource VerticalShortPadding}"/>
     </Style>
 
@@ -193,14 +194,15 @@
         <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
         <Setter Property="VerticalTextAlignment" Value="Center"/>
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
-        <Setter Property="BackgroundColor" Value="{StaticResource SecondLightBlueSkyColor}"/>
+        <Setter Property="Margin" Value="{StaticResource VerticalShortPadding}"/>
     </Style>
 
     <Style
 	    TargetType="BoxView"
 	    x:Key="SeparatorLinePopup">
-        <Setter Property="HeightRequest" Value="2"/>
+        <Setter Property="HeightRequest" Value="1"/>
         <Setter Property="Color" Value="{StaticResource SecondLightBlueSkyColor}"/>
         <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="Margin" Value="{StaticResource NoPadding}"/>
     </Style>
 </ResourceDictionary>
