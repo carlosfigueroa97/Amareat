@@ -1,18 +1,28 @@
-﻿using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 using Amareat.Components.Base;
 using Amareat.Components.Views.Buildings.Home;
 using Amareat.Components.Views.History;
 using Amareat.Components.Views.Profile;
 using Amareat.Services.Preferences.Interfaces;
+using Amareat.Services.PopupNavigation.Interfaces;
+using Amareat.Components.Popups.Add;
+using Amareat.Services.Crash.Interfaces;
+using System;
 
 namespace Amareat.Components.Views.Home
 {
-    public class HomeViewModel : BaseVm
+    public class HomeViewModel : BaseVm, INotifyPropertyChanged
     {
         private IPreferenceService _preferenceService;
         private BuildingListViewModel _buildingListViewModel;
         private ChangesHistoryViewModel _changesHistoryViewModel;
         private ProfileViewModel _profileViewModel;
+        private readonly IPopupNavigationService _popupNavigationService;
+        private readonly ICrashReporting _crashReporting;
+
+        public Command<string> TapCommand { get; set; }
 
         public BuildingListViewModel BuildingListViewModel
         {
@@ -38,12 +48,19 @@ namespace Amareat.Components.Views.Home
             BuildingListViewModel buildingListViewModel,
             ChangesHistoryViewModel changesHistoryViewModel,
             ProfileViewModel profileViewModel,
-            IPreferenceService preferenceService)
+            IPreferenceService preferenceService,
+            IPopupNavigationService popupNavigationService,
+            ICrashReporting crashReporting)
         {
             BuildingListViewModel = buildingListViewModel;
             ChangesHistoryViewModel = changesHistoryViewModel;
             ProfileViewModel = profileViewModel;
             _preferenceService = preferenceService;
+            _popupNavigationService = popupNavigationService;
+            _crashReporting = crashReporting;
+
+            TapCommand = new Command<string>(async (param) =>
+                await ExecuteTapCommand(param));
         }
 
         public async override Task Init()
@@ -51,6 +68,21 @@ namespace Amareat.Components.Views.Home
             await BuildingListViewModel.Init();
             await ChangesHistoryViewModel.Init();
             await ProfileViewModel.Init();
+        }
+
+        async Task ExecuteTapCommand(string optionClicked)
+        {
+            try
+            {
+                if (optionClicked == "AddPopup")
+                {
+                    await _popupNavigationService.PresentPopupPage<AddPopupViewModel>();
+                }
+            }
+            catch (Exception ex)
+            {
+                _crashReporting.TrackError(ex);
+            }
         }
     }
 }

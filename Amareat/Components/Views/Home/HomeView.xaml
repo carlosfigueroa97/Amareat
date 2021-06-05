@@ -23,7 +23,13 @@
                 IsVisible="{Binding IsAdmin}"
                 FontFamily="{StaticResource FontAwesomeFreeSolid}"
                 Text="{x:Static fn:Icons.PlusIcon}"
-                TextColor="{StaticResource BlackColor}"></Label>
+                TextColor="{StaticResource BlackColor}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+			            Command="{Binding TapCommand}"
+			            CommandParameter="AddPopup"/>
+                </Label.GestureRecognizers>
+            </Label>
             <Image
                 HorizontalOptions="CenterAndExpand"
                 Source="{x:Static fn:Images.ImgLogo}"/>
