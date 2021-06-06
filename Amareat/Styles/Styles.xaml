@@ -169,7 +169,6 @@
         <Setter Property="CornerRadius" Value="10,10,0,0"/>
         <Setter Property="VerticalOptions" Value="EndAndExpand"/>
         <Setter Property="Padding" Value="{StaticResource NoPadding}"/>
-        <!--<Setter Property="BackgroundColor" Value="{StaticResource SecondLightBlueSkyColor}"/>-->
     </Style>
 
     <Style
@@ -228,7 +227,5 @@
         <Setter Property="HorizontalTextAlignment" Value="End"/>
         <Setter Property="Margin" Value="{StaticResource ShortPadding}"/>
     </Style>
-
-    <!-- Entry style -->
 
 </ResourceDictionary>
