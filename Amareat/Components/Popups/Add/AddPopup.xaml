@@ -3,7 +3,7 @@
     xmlns:base="clr-namespace:Amareat.Components.Popups.Base"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:controls="clr-namespace:Amareat.Controls"
     x:Class="Amareat.Components.Popups.Add.AddPopup">
     <pancake:PancakeView
         Style="{StaticResource MenuPopupPancake}">
@@ -11,6 +11,38 @@
 	        RowDefinitions="Auto,Auto,Auto,Auto,Auto"
 	        ColumnDefinitions="*"
 	        RowSpacing="0">
+
+            <controls:PopupItemMainMenu 
+		        Grid.Row="0"
+		        BackgroundStackColor="{StaticResource WhiteColor}"
+		        ItemText="A"
+		        ItemStyle="{StaticResource NormalPopupLabel}"/>
+
+            <controls:PopupItemMainMenu 
+		        Grid.Row="1"
+		        BackgroundStackColor="{StaticResource WhiteColor}"
+		        ItemText="B"
+		        ItemStyle="{StaticResource NormalPopupLabel}"/>
+
+            <controls:PopupItemMainMenu 
+		        Grid.Row="2"
+		        BackgroundStackColor="{StaticResource WhiteColor}"
+		        ItemText="C"
+		        ItemStyle="{StaticResource NormalPopupLabel}"/>
+
+            <controls:PopupItemMainMenu 
+		        Grid.Row="3"
+		        BackgroundStackColor="{StaticResource WhiteColor}"
+		        ItemText="A"
+		        ItemStyle="{StaticResource NormalPopupLabel}"/>
+
+            <controls:PopupItemMainMenu 
+		        Grid.Row="4"
+		        BackgroundStackColor="{StaticResource SecondLightBlueSkyColor}"
+		        ItemText="Cancelar"
+		        ItemStyle="{StaticResource CancelPopupLabel}"/>
+
+            <!--
             <StackLayout Grid.Row="0"
 			    BackgroundColor="{StaticResource WhiteColor}">
                 <Label 
@@ -80,6 +112,7 @@
                 </Label>
                 <BoxView Style="{StaticResource SeparatorLinePopup}"/>
             </StackLayout>
+	    -->
         </Grid>
     </pancake:PancakeView>
 </base:BasePopupPage>
