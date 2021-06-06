@@ -4,4 +4,35 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Amareat.Components.Popups.User.AddUserPopup">
+    <StackLayout
+        BackgroundColor="{StaticResource WhiteColor}">
+        <!-- Close popup icon-->
+        <Label Text="Icon"/>
+
+        <!-- Username -->
+        <Label Text="Usuario"/>
+        <Entry Placeholder="Ingrese el nombre del usuario"/>
+
+        <!-- Password -->
+        <Label Text="Contraseña"/>
+        <Entry Placeholder="Ingrese la contraseña"/>
+
+        <!-- Email -->
+        <Label Text="Correo electrónico"/>
+        <Entry Placeholder="Ingrese el correo electrónico"/>
+
+        <!-- Is admin? -->
+        <StackLayout Orientation="Horizontal">
+            <Label 
+		        Text="Administrador"/>
+            <Switch 
+		        IsToggled="False"
+		        OnColor="{StaticResource OrangeColor}"
+		        ThumbColor="{StaticResource LightBlueSkyColor}"/>
+        </StackLayout>
+
+        <!-- Add button -->
+        <Button
+	        Text="Agregar"/>
+    </StackLayout>
 </base:BasePopupPage>

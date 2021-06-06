@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
+using Amareat.Components.Popups.User;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
 using Amareat.Services.Preferences.Interfaces;
@@ -17,6 +18,8 @@ namespace Amareat.Components.Popups.Add
         private readonly IPreferenceService _preferenceService;
         private readonly IPopupNavigationService _popupNavigationService;
         private readonly ICrashReporting _crashReporting;
+
+        private bool IsAdmin => _preferenceService.IsAdmin;
 
         #endregion
 
@@ -49,12 +52,13 @@ namespace Amareat.Components.Popups.Add
         {
             try
             {
-                if (optionClicked == null)
+                if (optionClicked == null || !IsAdmin)
                     return;
 
                 switch (optionClicked)
                 {
                     case "User":
+                        await _popupNavigationService.PresentPopupPage<AddUserViewModel>();
                         break;
 
                     case "Building":
