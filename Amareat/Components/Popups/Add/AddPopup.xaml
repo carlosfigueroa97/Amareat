@@ -4,7 +4,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:controls="clr-namespace:Amareat.Controls"
-    x:Class="Amareat.Components.Popups.Add.AddPopup">
+    xmlns:local="clr-namespace:Amareat.Localization"
+    x:Class="Amareat.Components.Popups.Add.AddPopup"
+    x:Name="addPopupMainMenu">
     <pancake:PancakeView
         Style="{StaticResource MenuPopupPancake}">
         <Grid
@@ -15,7 +17,7 @@
             <controls:PopupItemMainMenu 
 		        Grid.Row="0"
 		        BackgroundStackColor="{StaticResource WhiteColor}"
-		        ItemText="A"
+		        ItemText="{x:Static local:AppResources.AddUser}"
 		        ItemStyle="{StaticResource NormalPopupLabel}">
                 <controls:PopupItemMainMenu.GestureRecognizers>
                     <TapGestureRecognizer
@@ -27,7 +29,7 @@
             <controls:PopupItemMainMenu 
 		        Grid.Row="1"
 		        BackgroundStackColor="{StaticResource WhiteColor}"
-		        ItemText="B"
+		        ItemText="{x:Static local:AppResources.AddBuilding}"
 		        ItemStyle="{StaticResource NormalPopupLabel}">
                 <controls:PopupItemMainMenu.GestureRecognizers>
                     <TapGestureRecognizer
@@ -39,7 +41,7 @@
             <controls:PopupItemMainMenu 
 		        Grid.Row="2"
 		        BackgroundStackColor="{StaticResource WhiteColor}"
-		        ItemText="C"
+		        ItemText="{x:Static local:AppResources.AddRoom}"
 		        ItemStyle="{StaticResource NormalPopupLabel}">
                 <controls:PopupItemMainMenu.GestureRecognizers>
                     <TapGestureRecognizer
@@ -51,7 +53,7 @@
             <controls:PopupItemMainMenu 
 		        Grid.Row="3"
 		        BackgroundStackColor="{StaticResource WhiteColor}"
-		        ItemText="A"
+		        ItemText="{x:Static local:AppResources.AddDevice}"
 		        ItemStyle="{StaticResource NormalPopupLabel}">
                 <controls:PopupItemMainMenu.GestureRecognizers>
                     <TapGestureRecognizer
@@ -63,7 +65,7 @@
             <controls:PopupItemMainMenu 
 		        Grid.Row="4"
 		        BackgroundStackColor="{StaticResource SecondLightBlueSkyColor}"
-		        ItemText="Cancelar"
+		        ItemText="{x:Static local:AppResources.Cancel}"
 		        ItemStyle="{StaticResource CancelPopupLabel}">
                 <controls:PopupItemMainMenu.GestureRecognizers>
                     <TapGestureRecognizer

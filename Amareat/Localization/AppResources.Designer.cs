@@ -196,5 +196,35 @@ namespace Amareat.Localization {
                 return ResourceManager.GetString("Logout", resourceCulture);
             }
         }
+        
+        internal static string AddUser {
+            get {
+                return ResourceManager.GetString("AddUser", resourceCulture);
+            }
+        }
+        
+        internal static string AddBuilding {
+            get {
+                return ResourceManager.GetString("AddBuilding", resourceCulture);
+            }
+        }
+        
+        internal static string AddRoom {
+            get {
+                return ResourceManager.GetString("AddRoom", resourceCulture);
+            }
+        }
+        
+        internal static string AddDevice {
+            get {
+                return ResourceManager.GetString("AddDevice", resourceCulture);
+            }
+        }
+        
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
     }
 }
