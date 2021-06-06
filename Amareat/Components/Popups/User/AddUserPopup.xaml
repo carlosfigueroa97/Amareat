@@ -3,36 +3,55 @@
     xmlns:base="clr-namespace:Amareat.Components.Popups.Base"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+    xmlns:controls="clr-namespace:Amareat.Controls"
     x:Class="Amareat.Components.Popups.User.AddUserPopup">
-    <StackLayout
-        BackgroundColor="{StaticResource WhiteColor}">
-        <!-- Close popup icon-->
-        <Label Text="Icon"/>
+    <pancake:PancakeView
+        Style="{StaticResource InputMenuPopupPancake}">
 
-        <!-- Username -->
-        <Label Text="Usuario"/>
-        <Entry Placeholder="Ingrese el nombre del usuario"/>
+        <StackLayout
+	        Margin="{StaticResource HorizontalShortPadding}">
+            <!-- Close popup icon-->
+            <Label Style="{StaticResource ClosePopup}"/>
 
-        <!-- Password -->
-        <Label Text="Contraseña"/>
-        <Entry Placeholder="Ingrese la contraseña"/>
+            <!-- Username -->
+            <controls:TitleAndEntry
+		        x:Name="user"
+		        TextLabel="Usuario"
+		        PlaceholderEntry="Ingrese el nombre del usuario"/>
 
-        <!-- Email -->
-        <Label Text="Correo electrónico"/>
-        <Entry Placeholder="Ingrese el correo electrónico"/>
+            <!-- Password -->
+            <controls:TitleAndEntry
+		        x:Name="password"
+		        TextLabel="Contraseña"
+		        PlaceholderEntry="Ingrese la contraseña"
+		        IsPassword="True"/>
 
-        <!-- Is admin? -->
-        <StackLayout Orientation="Horizontal">
-            <Label 
-		        Text="Administrador"/>
-            <Switch 
-		        IsToggled="False"
-		        OnColor="{StaticResource OrangeColor}"
-		        ThumbColor="{StaticResource LightBlueSkyColor}"/>
+            <!-- Email -->
+            <controls:TitleAndEntry
+		        x:Name="email"
+		        TextLabel="Correo electrónico"
+		        PlaceholderEntry="Ingrese el correo electrónico"/>
+
+            <!-- Is admin? -->
+            <StackLayout Orientation="Horizontal">
+                <Label 
+					Text="Administrador"
+		            Style="{StaticResource TitleSemiBoldBlackLabel}"
+		            HorizontalOptions="Start"/>
+                <Switch 
+					IsToggled="False"
+					OnColor="{StaticResource OrangeColor}"
+					ThumbColor="{StaticResource LightBlueSkyColor}"
+		            HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+
+            <!-- Add button -->
+            <Button
+				Text="Agregar"
+		        Style="{StaticResource OrangeButton}"
+                VerticalOptions="End"
+		        Margin="{StaticResource ButtonPadding}"/>
         </StackLayout>
-
-        <!-- Add button -->
-        <Button
-	        Text="Agregar"/>
-    </StackLayout>
+    </pancake:PancakeView>
 </base:BasePopupPage>
