@@ -200,7 +200,7 @@
     <Style
 	    TargetType="BoxView"
 	    x:Key="SeparatorLinePopup">
-        <Setter Property="HeightRequest" Value="1"/>
+        <Setter Property="HeightRequest" Value="2"/>
         <Setter Property="Color" Value="{StaticResource SecondLightBlueSkyColor}"/>
         <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
         <Setter Property="Margin" Value="{StaticResource NoPadding}"/>

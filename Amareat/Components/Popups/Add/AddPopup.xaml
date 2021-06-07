@@ -3,77 +3,31 @@
     xmlns:base="clr-namespace:Amareat.Components.Popups.Base"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:controls="clr-namespace:Amareat.Controls"
-    xmlns:local="clr-namespace:Amareat.Localization"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     x:Class="Amareat.Components.Popups.Add.AddPopup"
     x:Name="addPopupMainMenu">
     <pancake:PancakeView
         Style="{StaticResource MenuPopupPancake}">
-        <Grid
-	        RowDefinitions="Auto,Auto,Auto,Auto,Auto"
-	        ColumnDefinitions="*"
-	        RowSpacing="0">
-
-            <controls:PopupItemMainMenu 
-		        Grid.Row="0"
-		        BackgroundStackColor="{StaticResource WhiteColor}"
-		        ItemText="{x:Static local:AppResources.AddUser}"
-		        ItemStyle="{StaticResource NormalPopupLabel}">
-                <controls:PopupItemMainMenu.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding TapCommand}"
-						CommandParameter="User"/>
-                </controls:PopupItemMainMenu.GestureRecognizers>
-            </controls:PopupItemMainMenu>
-
-            <controls:PopupItemMainMenu 
-		        Grid.Row="1"
-		        BackgroundStackColor="{StaticResource WhiteColor}"
-		        ItemText="{x:Static local:AppResources.AddBuilding}"
-		        ItemStyle="{StaticResource NormalPopupLabel}">
-                <controls:PopupItemMainMenu.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding TapCommand}"
-						CommandParameter="Building"/>
-                </controls:PopupItemMainMenu.GestureRecognizers>
-            </controls:PopupItemMainMenu>
-
-            <controls:PopupItemMainMenu 
-		        Grid.Row="2"
-		        BackgroundStackColor="{StaticResource WhiteColor}"
-		        ItemText="{x:Static local:AppResources.AddRoom}"
-		        ItemStyle="{StaticResource NormalPopupLabel}">
-                <controls:PopupItemMainMenu.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding TapCommand}"
-						CommandParameter="Room"/>
-                </controls:PopupItemMainMenu.GestureRecognizers>
-            </controls:PopupItemMainMenu>
-
-            <controls:PopupItemMainMenu 
-		        Grid.Row="3"
-		        BackgroundStackColor="{StaticResource WhiteColor}"
-		        ItemText="{x:Static local:AppResources.AddDevice}"
-		        ItemStyle="{StaticResource NormalPopupLabel}">
-                <controls:PopupItemMainMenu.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding TapCommand}"
-						CommandParameter="Device"/>
-                </controls:PopupItemMainMenu.GestureRecognizers>
-            </controls:PopupItemMainMenu>
-
-            <controls:PopupItemMainMenu 
-		        Grid.Row="4"
-		        BackgroundStackColor="{StaticResource SecondLightBlueSkyColor}"
-		        ItemText="{x:Static local:AppResources.Cancel}"
-		        ItemStyle="{StaticResource CancelPopupLabel}">
-                <controls:PopupItemMainMenu.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding TapCommand}"
-						CommandParameter="Cancel"/>
-                </controls:PopupItemMainMenu.GestureRecognizers>
-            </controls:PopupItemMainMenu>
-
-        </Grid>
+        <CollectionView
+            BackgroundColor="{StaticResource SecondLightBlueSkyColor}"
+            HeightRequest="{StaticResource HeightRequestAddMenu}"
+            VerticalOptions="End"
+            ItemsSource="{Binding AddList}"
+            SelectedItem="{Binding ItemSelected}"
+            SelectionChangedCommand="{Binding ItemSelectedCommand}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                        <StackLayout
+	                        BackgroundColor="{Binding BackgrounStackColor}">
+                            <Label
+	                            Text="{Binding ItemText}"
+	                            Style="{Binding ItemStyle}"/>
+                            <BoxView
+                                Style="{StaticResource SeparatorLinePopup}"/>
+                        </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </pancake:PancakeView>
 </base:BasePopupPage>
