@@ -3,5 +3,31 @@
     xmlns:base="clr-namespace:Amareat.Components.Popups.Base"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Amareat.Components.Popups.Add.AddPopup">
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Class="Amareat.Components.Popups.Add.AddPopup"
+    x:Name="addPopupMainMenu">
+    <pancake:PancakeView
+        Style="{StaticResource MenuPopupPancake}">
+        <CollectionView
+            BackgroundColor="{StaticResource SecondLightBlueSkyColor}"
+            HeightRequest="{StaticResource HeightRequestAddMenu}"
+            VerticalOptions="End"
+            ItemsSource="{Binding AddList}"
+            SelectedItem="{Binding ItemSelected}"
+            SelectionChangedCommand="{Binding ItemSelectedCommand}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                        <StackLayout
+	                        BackgroundColor="{Binding BackgrounStackColor}">
+                            <Label
+	                            Text="{Binding ItemText}"
+	                            Style="{Binding ItemStyle}"/>
+                            <BoxView
+                                Style="{StaticResource SeparatorLinePopup}"/>
+                        </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </pancake:PancakeView>
 </base:BasePopupPage>

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Amareat.Components.Popups.Base;
-using Xamarin.Forms;
+﻿using Amareat.Components.Popups.Base;
 
 namespace Amareat.Components.Popups.Add
 {

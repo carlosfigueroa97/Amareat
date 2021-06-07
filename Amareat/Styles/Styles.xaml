@@ -159,4 +159,50 @@
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
         <Setter Property="Text" Value="{x:Static local:AppResources.NoDataFound}"/>
     </Style>
+
+    <!-- Popup Menu Styles -->
+    <Style
+	    TargetType="pancake:PancakeView"
+	    x:Key="MenuPopupPancake">
+        <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
+        <Setter Property="CornerRadius" Value="10,10,0,0"/>
+        <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+        <Setter Property="Padding" Value="{StaticResource NoPadding}"/>
+        <!--<Setter Property="BackgroundColor" Value="{StaticResource SecondLightBlueSkyColor}"/>-->
+    </Style>
+
+    <!-- Normal Label -->
+    <Style
+	    TargetType="Label"
+	    x:Key="NormalPopupLabel">
+        <Setter Property="FontAttributes" Value="None"/>
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="{StaticResource VerticalShortPadding}"/>
+    </Style>
+
+    <!-- Cancel Label -->
+    <Style
+	    TargetType="Label"
+	    x:Key="CancelPopupLabel">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{StaticResource SecondSolidGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="{StaticResource VerticalShortPadding}"/>
+    </Style>
+
+    <Style
+	    TargetType="BoxView"
+	    x:Key="SeparatorLinePopup">
+        <Setter Property="HeightRequest" Value="2"/>
+        <Setter Property="Color" Value="{StaticResource SecondLightBlueSkyColor}"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="Margin" Value="{StaticResource NoPadding}"/>
+    </Style>
 </ResourceDictionary>

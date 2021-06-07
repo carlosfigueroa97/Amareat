@@ -87,4 +87,19 @@
 	<data name="Logout" xml:space="preserve">
 		<value>Cerrar sesión</value>
 	</data>
+	<data name="AddUser" xml:space="preserve">
+		<value>Agregar Usuario</value>
+	</data>
+	<data name="AddBuilding" xml:space="preserve">
+		<value>Agregar Edificio</value>
+	</data>
+	<data name="AddRoom" xml:space="preserve">
+		<value>Agregar Sala</value>
+	</data>
+	<data name="AddDevice" xml:space="preserve">
+		<value>Agregar Dispositivo</value>
+	</data>
+	<data name="Cancel" xml:space="preserve">
+		<value>Cancelar</value>
+	</data>
 </root>

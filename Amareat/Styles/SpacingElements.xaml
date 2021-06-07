@@ -31,4 +31,5 @@
     <Thickness x:Key="HorizontalLongPadding">30,0</Thickness>
 
     <!-- Custom -->
+    <Thickness x:Key="NoPadding">0</Thickness>
 </ResourceDictionary>
