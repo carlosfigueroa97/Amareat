@@ -224,7 +224,7 @@
         <Setter Property="FontFamily" Value="{StaticResource FontAwesomeFreeSolid}"/>
         <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
         <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
-        <Setter Property="HorizontalTextAlignment" Value="End"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
         <Setter Property="Margin" Value="{StaticResource ShortPadding}"/>
     </Style>
 
