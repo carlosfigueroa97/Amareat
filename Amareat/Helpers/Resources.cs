@@ -30,7 +30,11 @@ namespace Amareat.Helpers
         public static string Off = GetResources("Off");
         public static string UserNotSaved = GetResources("UserNotSaved");
         public static string UserSaved = GetResources("UserSaved");
-
+        public static string AddUser = GetResources("AddUser");
+        public static string AddBuilding = GetResources("AddBuilding");
+        public static string AddRoom = GetResources("AddRoom");
+        public static string AddDevice = GetResources("AddDevice");
+        public static string Cancel = GetResources("Cancel");
 
         private static string GetResources(string key)
         {

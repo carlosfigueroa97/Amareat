@@ -8,26 +8,27 @@
     NavigationPage.HasNavigationBar="False"
     x:Name="buildingList">
     <Grid>
-        <ScrollView>
-            <FlexLayout
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="FillAndExpand"
-                BackgroundColor="{StaticResource SecondLightBlueSkyColor}"
-                BindableLayout.ItemsSource="{Binding BuildingList}"
-                AlignItems="Center"
-                JustifyContent="SpaceAround"
-                AlignContent="SpaceBetween"
-                Wrap="Wrap">
-                <BindableLayout.EmptyView>
-                    <Label
-                        IsVisible="{Binding IsEmpty}"
-                        Style="{StaticResource EmptyViewLabel}"/>
-                </BindableLayout.EmptyView>
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
+        <CollectionView
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="FillAndExpand"
+            BackgroundColor="{StaticResource SecondLightBlueSkyColor}"
+            ItemsSource="{Binding BuildingList}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="2"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.EmptyView>
+                <Label
+                    IsVisible="{Binding IsEmpty}"
+                    Style="{StaticResource EmptyViewLabel}"/>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        Padding="{StaticResource NormalPadding}">
                         <pancake:PancakeView
-                            Margin="{StaticResource NormalTopPadding}"
-                            HorizontalOptions="CenterAndExpand"
+                            HorizontalOptions="Center"
                             CornerRadius="{StaticResource CornerRadiousFrame}"
                             BackgroundColor="{StaticResource WhiteColor}"
                             WidthRequest="{StaticResource WidthFrame}"
@@ -50,10 +51,10 @@
                                 Style="{StaticResource SubtitleBoldBlackLabel}"
                                 Text="{Binding Name}"/>
                         </pancake:PancakeView>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </FlexLayout>
-        </ScrollView>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         <ActivityIndicator
             IsVisible="{Binding IsBusy}"
             Style="{StaticResource BaseActivityIndicator}"/>
