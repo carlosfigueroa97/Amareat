@@ -102,4 +102,10 @@
 	<data name="Cancel" xml:space="preserve">
 		<value>Cancelar</value>
 	</data>
+	<data name="UserNotSaved" xml:space="preserve">
+		<value>No se pudo guardar el usuario uwu</value>
+	</data>
+	<data name="UserSaved" xml:space="preserve">
+		<value>¡Usuario guardado exitosamente!</value>
+	</data>
 </root>

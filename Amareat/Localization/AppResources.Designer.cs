@@ -226,5 +226,17 @@ namespace Amareat.Localization {
                 return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
+        
+        internal static string UserNotSaved {
+            get {
+                return ResourceManager.GetString("UserNotSaved", resourceCulture);
+            }
+        }
+        
+        internal static string UserSaved {
+            get {
+                return ResourceManager.GetString("UserSaved", resourceCulture);
+            }
+        }
     }
 }

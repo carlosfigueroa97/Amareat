@@ -12,7 +12,12 @@
         <StackLayout
 	        Margin="{StaticResource HorizontalShortPadding}">
             <!-- Close popup icon-->
-            <Label Style="{StaticResource ClosePopup}"/>
+            <Label Style="{StaticResource ClosePopup}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+			            Command="{Binding ClosePopup}"/>
+                </Label.GestureRecognizers>
+            </Label>
 
             <!-- Username -->
             <controls:TitleAndEntry
@@ -40,6 +45,7 @@
 		            Style="{StaticResource TitleSemiBoldBlackLabel}"
 		            HorizontalOptions="Start"/>
                 <Switch 
+                    x:Name="isAdmin"
 					IsToggled="False"
 					OnColor="{StaticResource OrangeColor}"
 					ThumbColor="{StaticResource LightBlueSkyColor}"
@@ -51,7 +57,8 @@
 				Text="Agregar"
 		        Style="{StaticResource OrangeButton}"
                 VerticalOptions="End"
-		        Margin="{StaticResource ButtonPadding}"/>
+		        Margin="{StaticResource ButtonPadding}"
+		        Command="{Binding ValidateData}"/>
         </StackLayout>
     </pancake:PancakeView>
 </base:BasePopupPage>

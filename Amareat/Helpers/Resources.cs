@@ -28,6 +28,8 @@ namespace Amareat.Helpers
         public static string Inactive = GetResources("Inactive");
         public static string On = GetResources("On");
         public static string Off = GetResources("Off");
+        public static string UserNotSaved = GetResources("UserNotSaved");
+        public static string UserSaved = GetResources("UserSaved");
 
 
         private static string GetResources(string key)
