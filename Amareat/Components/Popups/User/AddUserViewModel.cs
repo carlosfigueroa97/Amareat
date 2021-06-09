@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
 using Amareat.Components.Popups.Base;
+using Amareat.Components.Popups.Dialogs;
 using Amareat.Helpers;
 using Amareat.Models.API.Requests.Users;
 using Amareat.Services.Api.Interfaces;
@@ -146,9 +147,9 @@ namespace Amareat.Components.Popups.User
                 }
                 else
                 {
-                    await _popupNavigationService
-                       .ShowErrorDialog(Resources.UserSaved,
-                       null);
+                    await ExecuteClosePopupCommand();
+
+                    await _popupNavigationService.ShowToastDialog(Resources.UserSaved, 3000);
                     return;
                 }
             }
