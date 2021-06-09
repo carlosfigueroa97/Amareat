@@ -181,6 +181,17 @@
         <Setter Property="Margin" Value="{StaticResource NormalPadding}"/>
     </Style>
 
+    <Style
+	    TargetType="pancake:PancakeView"
+	    x:Key="ToastPopup">
+        <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="Margin" Value="{StaticResource LongPadding}"/>
+        <Setter Property="Padding" Value="{StaticResource ShortPadding}"/>
+    </Style>
+
     <!-- Normal Label -->
     <Style
 	    TargetType="Label"
