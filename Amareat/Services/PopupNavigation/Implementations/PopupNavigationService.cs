@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
 using Amareat.Components.Popups;
+using Amareat.Components.Popups.Dialogs;
 using Amareat.Services.Navigation.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
 using Amareat.Utils.ServiceLocator;
@@ -111,6 +112,15 @@ namespace Amareat.Services.PopupNavigation.Implementations
         {
             // TODO:
             throw new NotImplementedException();
+        }
+
+        public async Task ShowToastDialog(string textMessage, long miliseconds)
+        {
+            await Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new ToastPopup(textMessage));
+
+            await Task.Delay(TimeSpan.FromMilliseconds(miliseconds));
+
+            await Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync();
         }
     }
 }
