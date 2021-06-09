@@ -22,6 +22,7 @@
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.763-beta" />
+    <PackageReference Include="SocketIOClient" Version="2.2.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
