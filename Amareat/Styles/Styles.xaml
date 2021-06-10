@@ -100,6 +100,14 @@
         <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
     </Style>
 
+    <Style
+        TargetType="Label"
+        x:Key="InvalidEntryLabel">
+        <Setter Property="TextColor" Value="{StaticResource RedColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewaySemiBoldFont}"/>
+    </Style>
+
     <!-- Buttons -->
     <Style
         TargetType="Button"

@@ -33,6 +33,14 @@ namespace Amareat.Controls
             nameof(TextEntryChanged), typeof(EventHandler<TextChangedEventArgs>), typeof(TitleAndEntry), null,
             propertyChanged: OnTextEntryChanged);
 
+        public static BindableProperty ErrorMessageProperty = BindableProperty.Create(
+            nameof(ErrorMessage), typeof(string), typeof(TitleAndEntry), null,
+            propertyChanged: OnErrorMessage);
+
+        public static BindableProperty IsEntryWrongProperty = BindableProperty.Create(
+            nameof(IsEntryWrong), typeof(bool), typeof(TitleAndEntry),
+            propertyChanged: OnWrongEntry);
+
         public string TextLabel
         {
             get
@@ -78,6 +86,32 @@ namespace Amareat.Controls
             set
             {
                 SetValue(IsPasswordProperty, value);
+            }
+        }
+
+        public string ErrorMessage
+        {
+            get
+            {
+                return (string)GetValue(ErrorMessageProperty);
+            }
+
+            set
+            {
+                SetValue(ErrorMessageProperty, value);
+            }
+        }
+
+        public bool IsEntryWrong
+        {
+            get
+            {
+                return (bool)GetValue(IsEntryWrongProperty);
+            }
+
+            set
+            {
+                SetValue(IsEntryWrongProperty, value);
             }
         }
 
@@ -132,6 +166,18 @@ namespace Amareat.Controls
         {
             var contentView = bindable as ContentView;
             return contentView.Content as StackLayout;
+        }
+
+        private static void OnErrorMessage(BindableObject bindable, object oldVal, object newVal)
+        {
+            var control = (TitleAndEntry)bindable;
+            control.ErrorMessageLbl.Text = newVal.ToString();
+        }
+
+        private static void OnWrongEntry(BindableObject bindable, object oldVal, object newVal)
+        {
+            var control = (TitleAndEntry)bindable;
+            control.ErrorMessageLbl.IsVisible = (bool)newVal;
         }
     }
 }
