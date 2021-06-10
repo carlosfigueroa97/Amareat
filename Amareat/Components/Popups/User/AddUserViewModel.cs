@@ -113,6 +113,9 @@ namespace Amareat.Components.Popups.User
                     return;
                 }
 
+                User = User.TrimEnd();
+                Email = Email.TrimEnd();
+
                 await SaveNewUser();
             }
             catch (Exception ex)
