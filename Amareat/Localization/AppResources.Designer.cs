@@ -95,6 +95,12 @@ namespace Amareat.Localization {
             }
         }
         
+        internal static string InsertYourEmail {
+            get {
+                return ResourceManager.GetString("InsertYourEmail", resourceCulture);
+            }
+        }
+        
         internal static string ForgotYourPassword {
             get {
                 return ResourceManager.GetString("ForgotYourPassword", resourceCulture);
@@ -221,6 +227,12 @@ namespace Amareat.Localization {
             }
         }
         
+        internal static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
         internal static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
@@ -248,6 +260,12 @@ namespace Amareat.Localization {
         internal static string InvalidEmailError {
             get {
                 return ResourceManager.GetString("InvalidEmailError", resourceCulture);
+            }
+        }
+        
+        internal static string Admin {
+            get {
+                return ResourceManager.GetString("Admin", resourceCulture);
             }
         }
     }

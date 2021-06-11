@@ -36,6 +36,9 @@
 	<data name="InsertYourPassword" xml:space="preserve">
 		<value>Ingresa tu contraseña</value>
 	</data>
+	<data name="InsertYourEmail" xml:space="preserve">
+		<value>Ingresa tu email</value>
+	</data>
 	<data name="ForgotYourPassword" xml:space="preserve">
 		<value>¿Olvidaste tu contraseña?</value>
 	</data>
@@ -99,6 +102,9 @@
 	<data name="AddDevice" xml:space="preserve">
 		<value>Agregar Dispositivo</value>
 	</data>
+	<data name="Add" xml:space="preserve">
+		<value>Agregar</value>
+	</data>
 	<data name="Cancel" xml:space="preserve">
 		<value>Cancelar</value>
 	</data>
@@ -113,5 +119,8 @@
 	</data>
 	<data name="InvalidEmailError" xml:space="preserve">
 		<value>Email no válido</value>
+	</data>
+	<data name="Admin" xml:space="preserve">
+		<value>Administrador</value>
 	</data>
 </root>
