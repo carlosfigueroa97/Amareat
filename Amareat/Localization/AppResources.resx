@@ -108,4 +108,10 @@
 	<data name="UserSaved" xml:space="preserve">
 		<value>¡Usuario guardado exitosamente!</value>
 	</data>
+	<data name="ShortPasswordError" xml:space="preserve">
+		<value>La contraseña debe tener más de 6 caracteres</value>
+	</data>
+	<data name="InvalidEmailError" xml:space="preserve">
+		<value>Email no válido</value>
+	</data>
 </root>

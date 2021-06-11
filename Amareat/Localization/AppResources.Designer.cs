@@ -238,5 +238,17 @@ namespace Amareat.Localization {
                 return ResourceManager.GetString("UserSaved", resourceCulture);
             }
         }
+        
+        internal static string ShortPasswordError {
+            get {
+                return ResourceManager.GetString("ShortPasswordError", resourceCulture);
+            }
+        }
+        
+        internal static string InvalidEmailError {
+            get {
+                return ResourceManager.GetString("InvalidEmailError", resourceCulture);
+            }
+        }
     }
 }
