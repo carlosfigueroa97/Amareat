@@ -30,13 +30,17 @@
 		        x:Name="password"
 		        TextLabel="Contraseña"
 		        PlaceholderEntry="Ingrese la contraseña"
-		        IsPassword="True"/>
+		        IsPassword="True"
+		        ErrorMessage="{Binding ErrorPasswordMessage}"
+		        IsEntryWrong="{Binding IsPasswordWrong}"/>
 
             <!-- Email -->
             <controls:TitleAndEntry
 		        x:Name="email"
 		        TextLabel="Correo electrónico"
-		        PlaceholderEntry="Ingrese el correo electrónico"/>
+		        PlaceholderEntry="Ingrese el correo electrónico"
+		        ErrorMessage="{Binding ErrorEmailMessage}"
+		        IsEntryWrong="{Binding IsEmailWrong}"/>
 
             <!-- Is admin? -->
             <StackLayout Orientation="Horizontal">

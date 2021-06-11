@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Mail;
 using System.Threading;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
@@ -32,6 +33,10 @@ namespace Amareat.Components.Popups.User
         private string _password = string.Empty;
         private string _email = string.Empty;
         private bool _isAdmin;
+        private string _errorPasswordMessage = string.Empty;
+        private bool _isPasswordWrong;
+        private string _errorEmailMessage = string.Empty;
+        private bool _isEmailWrong;
 
         #endregion
 
@@ -62,6 +67,50 @@ namespace Amareat.Components.Popups.User
         {
             get => _isAdmin;
             set => SetProperty(ref _isAdmin, value);
+        }
+
+        public string ErrorPasswordMessage
+        {
+            get => _errorPasswordMessage;
+
+            set
+            {
+                SetProperty(ref _errorPasswordMessage, value);
+                OnPropertyChanged(nameof(Password));
+            }
+        }
+
+        public bool IsPasswordWrong
+        {
+            get => _isPasswordWrong;
+
+            set
+            {
+                SetProperty(ref _isPasswordWrong, value);
+                OnPropertyChanged(nameof(Password));
+            }
+        }
+
+        public string ErrorEmailMessage
+        {
+            get => _errorEmailMessage;
+
+            set
+            {
+                SetProperty(ref _errorEmailMessage, value);
+                OnPropertyChanged(nameof(Email));
+            }
+        }
+
+        public bool IsEmailWrong
+        {
+            get => _isEmailWrong;
+
+            set
+            {
+                SetProperty(ref _isEmailWrong, value);
+                OnPropertyChanged(nameof(Email));
+            }
         }
 
         #endregion
@@ -103,6 +152,8 @@ namespace Amareat.Components.Popups.User
         {
             try
             {
+                InitializeErrorMessages();
+
                 if (string.IsNullOrEmpty(User) ||
                     string.IsNullOrEmpty(Password) ||
                     string.IsNullOrEmpty(Email))
@@ -116,11 +167,61 @@ namespace Amareat.Components.Popups.User
                 User = User.TrimEnd();
                 Email = Email.TrimEnd();
 
+                bool validPassword = ValidatePassword(Password);
+                bool validEmail = ValidateEmail(Email);
+
+                if (!validPassword || !validEmail) return;
+
                 await SaveNewUser();
+
             }
             catch (Exception ex)
             {
                 _crashReporting.TrackError(ex);
+            }
+        }
+
+        private void InitializeErrorMessages()
+        {
+            IsPasswordWrong = false;
+            ErrorPasswordMessage = string.Empty;
+            IsEmailWrong = false;
+            ErrorEmailMessage = string.Empty;
+        }
+
+        private bool ValidatePassword(string password)
+        {
+            if (password.Length <= 6)
+            {
+                IsPasswordWrong = true;
+                ErrorPasswordMessage = Resources.ShortPasswordError;
+                return false;
+            }
+
+            OnPropertyChanged(nameof(Password));
+            OnPropertyChanged(nameof(IsPasswordWrong));
+            OnPropertyChanged(nameof(ErrorPasswordMessage));
+
+            return true;
+        }
+
+        private bool ValidateEmail(string email)
+        {
+            try
+            {
+                MailAddress mail = new MailAddress(email);
+
+                OnPropertyChanged(nameof(Email));
+                OnPropertyChanged(nameof(IsEmailWrong));
+                OnPropertyChanged(nameof(ErrorEmailMessage));
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                IsEmailWrong = true;
+                ErrorEmailMessage = Resources.InvalidEmailError;
+                return false;
             }
         }
 
