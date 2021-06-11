@@ -3,5 +3,76 @@
     xmlns:base="clr-namespace:Amareat.Components.Popups.Base"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+    xmlns:controls="clr-namespace:Amareat.Controls"
+    xmlns:local="clr-namespace:Amareat.Localization"
     x:Class="Amareat.Components.Popups.User.AddUserPopup">
+    <pancake:PancakeView
+        Style="{StaticResource InputMenuPopupPancake}">
+
+        <ScrollView
+	        VerticalScrollBarVisibility="Never">
+
+            <!-- Desgin -->
+            <StackLayout
+				Margin="{StaticResource HorizontalShortPadding}">
+
+                <!-- Close popup icon-->
+                <Label Style="{StaticResource ClosePopup}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+						    Command="{Binding ClosePopup}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <!-- Username -->
+                <controls:TitleAndEntry
+					x:Name="user"
+					TextLabel="{x:Static local:AppResources.User}"
+					PlaceholderEntry="{x:Static 
+		                local:AppResources.InsertYourUser}"/>
+
+                <!-- Password -->
+                <controls:TitleAndEntry
+					x:Name="password"
+					TextLabel="{x:Static local:AppResources.Password}"
+					PlaceholderEntry="{x:Static 
+		                local:AppResources.InsertYourPassword}"
+					IsPassword="True"
+					ErrorMessage="{Binding ErrorPasswordMessage}"
+					IsEntryWrong="{Binding IsPasswordWrong}"/>
+
+                <!-- Email -->
+                <controls:TitleAndEntry
+					x:Name="email"
+					TextLabel="{x:Static local:AppResources.Email}"
+					PlaceholderEntry="{x:Static 
+		                local:AppResources.InsertYourEmail}"
+					ErrorMessage="{Binding ErrorEmailMessage}"
+					IsEntryWrong="{Binding IsEmailWrong}"/>
+
+                <!-- Is admin? -->
+                <StackLayout Orientation="Horizontal">
+                    <Label 
+						Text="{x:Static local:AppResources.Admin}"
+					    Style="{StaticResource TitleSemiBoldBlackLabel}"
+					    HorizontalOptions="Start"/>
+                    <Switch 
+					    x:Name="isAdmin"
+						IsToggled="False"
+						OnColor="{StaticResource OrangeColor}"
+						ThumbColor="{StaticResource LightBlueSkyColor}"
+					    HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <!-- Add button -->
+                <Button
+					Text="{x:Static local:AppResources.Add}"
+					Style="{StaticResource OrangeButton}"
+					VerticalOptions="End"
+					Margin="{StaticResource ButtonPadding}"
+					Command="{Binding ValidateData}"/>
+            </StackLayout>
+        </ScrollView>
+    </pancake:PancakeView>
 </base:BasePopupPage>

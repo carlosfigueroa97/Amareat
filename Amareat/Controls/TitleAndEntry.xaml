@@ -12,5 +12,9 @@
             PlaceholderColor="{StaticResource PrimarySolidGrayColor}"
             IsPassword="False"
             TextColor="{StaticResource BlackColor}"/>
+        <Label
+            x:Name="ErrorMessageLbl"
+	        IsVisible="False"
+	        Style="{StaticResource InvalidEntryLabel}"/>
     </StackLayout>
 </ContentView>

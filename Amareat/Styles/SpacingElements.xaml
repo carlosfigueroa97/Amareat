@@ -32,4 +32,5 @@
 
     <!-- Custom -->
     <Thickness x:Key="NoPadding">0</Thickness>
+    <Thickness x:Key="ButtonPadding">20,60,20,20</Thickness>
 </ResourceDictionary>

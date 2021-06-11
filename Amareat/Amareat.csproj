@@ -110,6 +110,7 @@
     <Folder Include="Services\Api\Auth\" />
     <Folder Include="Services\Api\Auth\Interfaces\" />
     <Folder Include="Services\Api\Auth\Implementations\" />
+    <Folder Include="Components\Popups\Dialogs\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Localization\AppResources.resx">
@@ -121,5 +122,8 @@
     <Compile Update="Localization\AppResources.Designer.cs">
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Components\Popups\Dialogs\" />
   </ItemGroup>
 </Project>

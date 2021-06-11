@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Amareat.Styles.Colors">
-     <Color x:Key="PrimaryLightGrayColor">#EBEBEB</Color>
+    <Color x:Key="PrimaryLightGrayColor">#EBEBEB</Color>
     <Color x:Key="SecondLightGrayColor">#A4A4A4</Color>
     <Color x:Key="ThirdLightGrayColor">#D1D1D1</Color>
     <Color x:Key="GreenColor">#18978C</Color>
@@ -15,4 +15,5 @@
     <Color x:Key="LightBlueSkyColor">#DDE3E8</Color>
     <Color x:Key="SecondLightBlueSkyColor">#EEF0F3</Color>
     <Color x:Key="PurpleColor">#6C63FF</Color>
+    <Color x:Key="RedColor">#ff0000</Color>
 </ResourceDictionary>

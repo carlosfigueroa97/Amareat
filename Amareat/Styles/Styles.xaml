@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:local="clr-namespace:Amareat.Localization"
+    xmlns:fn="clr-namespace:Amareat.Helpers"
     x:Class="Amareat.Styles.Styles">
     <!-- Activity Indicator -->
     <Style
@@ -99,6 +100,15 @@
         <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
     </Style>
 
+    <Style
+        TargetType="Label"
+        x:Key="InvalidEntryLabel">
+        <Setter Property="TextColor" Value="{StaticResource RedColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewaySemiBoldFont}"/>
+        <Setter Property="Margin" Value="{StaticResource ShortDownPadding}"/>
+    </Style>
+
     <!-- Buttons -->
     <Style
         TargetType="Button"
@@ -168,7 +178,27 @@
         <Setter Property="CornerRadius" Value="10,10,0,0"/>
         <Setter Property="VerticalOptions" Value="EndAndExpand"/>
         <Setter Property="Padding" Value="{StaticResource NoPadding}"/>
-        <!--<Setter Property="BackgroundColor" Value="{StaticResource SecondLightBlueSkyColor}"/>-->
+    </Style>
+
+    <Style
+	    TargetType="pancake:PancakeView"
+	    x:Key="InputMenuPopupPancake">
+        <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Padding" Value="{StaticResource ShortPadding}"/>
+        <Setter Property="Margin" Value="{StaticResource NormalPadding}"/>
+    </Style>
+
+    <Style
+	    TargetType="pancake:PancakeView"
+	    x:Key="ToastPopup">
+        <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="Margin" Value="{StaticResource LongPadding}"/>
+        <Setter Property="Padding" Value="{StaticResource ShortPadding}"/>
     </Style>
 
     <!-- Normal Label -->
@@ -205,4 +235,17 @@
         <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
         <Setter Property="Margin" Value="{StaticResource NoPadding}"/>
     </Style>
+
+    <!-- Close popup Style -->
+    <Style
+	    TargetType="Label"
+	    x:Key="ClosePopup">
+        <Setter Property="Text" Value="{x:Static fn:Icons.CloseIcon}"/>
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeFreeSolid}"/>
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="Margin" Value="{StaticResource ShortPadding}"/>
+    </Style>
+
 </ResourceDictionary>

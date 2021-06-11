@@ -22,5 +22,7 @@ namespace Amareat.Services.PopupNavigation.Interfaces
         Task DismissPopupPage(bool animated = true);
 
         Task ShowErrorDialog(string title, string detail, string cancel = null);
+
+        Task ShowToastDialog(string textMessage, long miliseconds);
     }
 }
