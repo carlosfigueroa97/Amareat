@@ -106,6 +106,7 @@
         <Setter Property="TextColor" Value="{StaticResource RedColor}"/>
         <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
         <Setter Property="FontFamily" Value="{StaticResource RalewaySemiBoldFont}"/>
+        <Setter Property="Margin" Value="{StaticResource ShortDownPadding}"/>
     </Style>
 
     <!-- Buttons -->
