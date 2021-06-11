@@ -3,8 +3,6 @@ using System.Net.Mail;
 using System.Threading;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
-using Amareat.Components.Popups.Base;
-using Amareat.Components.Popups.Dialogs;
 using Amareat.Helpers;
 using Amareat.Models.API.Requests.Users;
 using Amareat.Services.Api.Interfaces;
@@ -170,7 +168,10 @@ namespace Amareat.Components.Popups.User
                 bool validPassword = ValidatePassword(Password);
                 bool validEmail = ValidateEmail(Email);
 
-                if (!validPassword || !validEmail) return;
+                if (!validPassword || !validEmail)
+                {
+                    return;
+                }
 
                 await SaveNewUser();
 
@@ -198,10 +199,6 @@ namespace Amareat.Components.Popups.User
                 return false;
             }
 
-            OnPropertyChanged(nameof(Password));
-            OnPropertyChanged(nameof(IsPasswordWrong));
-            OnPropertyChanged(nameof(ErrorPasswordMessage));
-
             return true;
         }
 
@@ -211,18 +208,15 @@ namespace Amareat.Components.Popups.User
             {
                 MailAddress mail = new MailAddress(email);
 
-                OnPropertyChanged(nameof(Email));
-                OnPropertyChanged(nameof(IsEmailWrong));
-                OnPropertyChanged(nameof(ErrorEmailMessage));
-
                 return true;
             }
             catch (FormatException)
             {
                 IsEmailWrong = true;
                 ErrorEmailMessage = Resources.InvalidEmailError;
-                return false;
             }
+
+            return false;
         }
 
         private async Task SaveNewUser()
@@ -249,13 +243,10 @@ namespace Amareat.Components.Popups.User
                        Resources.PleaseContactAdministrator);
                     return;
                 }
-                else
-                {
-                    await ExecuteClosePopupCommand();
 
-                    await _popupNavigationService.ShowToastDialog(Resources.UserSaved, 3000);
-                    return;
-                }
+                await ExecuteClosePopupCommand();
+
+                await _popupNavigationService.ShowToastDialog(Resources.UserSaved, 2000);
             }
             catch (Exception ex)
             {
