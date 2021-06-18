@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:local="clr-namespace:Amareat.Localization"
+    xmlns:fn="clr-namespace:Amareat.Helpers"
+    x:Class="Amareat.Styles.Styles">
+    <!-- Activity Indicator -->
+    <Style
+        TargetType="ActivityIndicator"
+        x:Key="BaseActivityIndicator">
+        <Setter Property="WidthRequest" Value="50"/>
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="Color" Value="{StaticResource BlackColor}"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="IsRunning" Value="True"/>
+        <Setter Property="InputTransparent" Value="True"/>
+    </Style>
+
+    <!-- Labels -->
+    <Style
+        TargetType="Label"
+        x:Key="SmallBoldLightGrayLabel">
+        <Setter Property="TextColor" Value="{StaticResource SecondLightGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SmallSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="SmallSemiBoldOrangeLabel">
+        <Setter Property="TextColor" Value="{StaticResource OrangeColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SmallSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewaySemiBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="NormalBlackGrayLabel">
+        <Setter Property="TextColor" Value="{StaticResource SecondSolidGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource NormalSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBlackFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="SubtitleSemiBoldBlackLabel">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewaySemiBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="SubtitleBoldBlackLabel">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="LargeBoldWhiteLabel">
+        <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="SubtitleRegularGrayLabel">
+        <Setter Property="TextColor" Value="{StaticResource PrimarySolidGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayRegularFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="TitleSemiBoldBlackLabel">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewaySemiBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="TitleSemiBoldGrayLabel">
+        <Setter Property="TextColor" Value="{StaticResource SecondSolidGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewaySemiBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="LargeBoldBlackLabel">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="InvalidEntryLabel">
+        <Setter Property="TextColor" Value="{StaticResource RedColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewaySemiBoldFont}"/>
+        <Setter Property="Margin" Value="{StaticResource ShortDownPadding}"/>
+    </Style>
+
+    <!-- Buttons -->
+    <Style
+        TargetType="Button"
+        x:Key="OrangeButton">
+        <Setter Property="BackgroundColor" Value="{StaticResource OrangeColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleSize}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+        <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="CornerRadius" Value="10"/>
+    </Style>
+
+    <!-- Custom History Changes Control -->
+    <Style
+	    TargetType="pancake:PancakeView"
+	    x:Key="DefaultPancakeView">
+        <Setter Property="Margin" Value="{StaticResource NormalPadding}"/>
+        <Setter Property="Padding" Value="{StaticResource NormalPadding}"/>
+        <Setter Property="CornerRadius" Value="5"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="BoldHistoryTitle">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource TitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="NormalHistoryLabel">
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource BigSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayRegularFont}"/>
+    </Style>
+
+    <Style
+        TargetType="Label"
+        x:Key="NormalHistoryGrayLabel">
+        <Setter Property="TextColor" Value="{StaticResource SecondSolidGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayRegularFont}"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+    </Style>
+
+    <!-- Empty View Label -->
+    <Style
+	    TargetType="Label"
+	    x:Key="EmptyViewLabel">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource SubtitleSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="Text" Value="{x:Static local:AppResources.NoDataFound}"/>
+    </Style>
+
+    <!-- Popup Menu Styles -->
+    <Style
+	    TargetType="pancake:PancakeView"
+	    x:Key="MenuPopupPancake">
+        <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
+        <Setter Property="CornerRadius" Value="10,10,0,0"/>
+        <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+        <Setter Property="Padding" Value="{StaticResource NoPadding}"/>
+    </Style>
+
+    <Style
+	    TargetType="pancake:PancakeView"
+	    x:Key="InputMenuPopupPancake">
+        <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Padding" Value="{StaticResource ShortPadding}"/>
+        <Setter Property="Margin" Value="{StaticResource NormalPadding}"/>
+    </Style>
+
+    <Style
+	    TargetType="pancake:PancakeView"
+	    x:Key="ToastPopup">
+        <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+        <Setter Property="Margin" Value="{StaticResource LongPadding}"/>
+        <Setter Property="Padding" Value="{StaticResource ShortPadding}"/>
+    </Style>
+
+    <!-- Normal Label -->
+    <Style
+	    TargetType="Label"
+	    x:Key="NormalPopupLabel">
+        <Setter Property="FontAttributes" Value="None"/>
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="{StaticResource VerticalShortPadding}"/>
+    </Style>
+
+    <!-- Cancel Label -->
+    <Style
+	    TargetType="Label"
+	    x:Key="CancelPopupLabel">
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{StaticResource SecondSolidGrayColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="{StaticResource VerticalShortPadding}"/>
+    </Style>
+
+    <Style
+	    TargetType="BoxView"
+	    x:Key="SeparatorLinePopup">
+        <Setter Property="HeightRequest" Value="2"/>
+        <Setter Property="Color" Value="{StaticResource SecondLightBlueSkyColor}"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="Margin" Value="{StaticResource NoPadding}"/>
+    </Style>
+
+    <!-- Close popup Style -->
+    <Style
+	    TargetType="Label"
+	    x:Key="ClosePopup">
+        <Setter Property="Text" Value="{x:Static fn:Icons.CloseIcon}"/>
+        <Setter Property="FontFamily" Value="{StaticResource FontAwesomeFreeSolid}"/>
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="FontSize" Value="{StaticResource LargeSize}"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="Margin" Value="{StaticResource ShortPadding}"/>
+    </Style>
+
+</ResourceDictionary>

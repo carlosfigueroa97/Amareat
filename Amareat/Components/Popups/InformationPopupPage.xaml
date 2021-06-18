@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<base:BasePopupPage
+    xmlns:base="clr-namespace:Amareat.Components.Popups.Base"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Amareat.Components.Popups.InformationPopupPage"
+    xmlns:local="clr-namespace:Amareat.Localization">
+    <StackLayout
+        Margin="30,0"
+        VerticalOptions="Center">
+        <Frame
+            CornerRadius="10"
+            Padding="16,20,16,12"
+            BackgroundColor="White"
+            HasShadow="false">
+            <StackLayout
+                HorizontalOptions="CenterAndExpand">
+                <Label
+                    x:Name="TheTitle"
+                    FontFamily="Bold"
+                    FontSize="18"
+                    HorizontalTextAlignment="Center"
+                    TextColor="Black"
+                    Text="Title" />
+                <Label
+                    x:Name="TheBody"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    FontFamily="Regular"
+                    TextColor="Black"
+                    Margin="10"/>
+                <Grid
+                    x:Name="InflatedView"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start">
+                    <Label Text=" " />
+                </Grid>
+                <Button
+                    x:Name="TheOkButton"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    Text="{x:Static local:AppResources.OK}"
+                    FontFamily="Bold"
+                    TextColor="Black"
+                    Clicked="TheButtonClicked"/>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</base:BasePopupPage>

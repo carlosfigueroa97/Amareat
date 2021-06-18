@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Amareat.Styles.Fonts">
+    <!-- Raleway -->
+    <OnPlatform
+        x:TypeArguments="x:String"
+        x:Key="RalewayBlackFont">
+        <On
+            Platform="Android"
+            Value="Raleway-Black.ttf#Raleway-Black"/>
+        <On
+            Platform="iOS"
+            Value="Raleway-Black"/>
+    </OnPlatform>
+
+    <OnPlatform
+        x:TypeArguments="x:String"
+        x:Key="RalewayBoldFont">
+        <On
+            Platform="Android"
+            Value="Raleway-Bold.ttf#Raleway-Bold"/>
+        <On
+            Platform="iOS"
+            Value="Raleway-Bold"/>
+    </OnPlatform>
+
+    <OnPlatform
+        x:TypeArguments="x:String"
+        x:Key="RalewayRegularFont">
+        <On
+            Platform="Android"
+            Value="Raleway-Regular.ttf#Raleway-Regular"/>
+        <On
+            Platform="iOS"
+            Value="Raleway-Regular"/>
+    </OnPlatform>
+
+    <OnPlatform
+        x:TypeArguments="x:String"
+        x:Key="RalewaySemiBoldFont">
+        <On
+            Platform="Android"
+            Value="Raleway-SemiBold.ttf#Raleway-SemiBold"/>
+        <On
+            Platform="iOS"
+            Value="Raleway-SemiBold"/>
+    </OnPlatform>
+
+    <!-- FontAwesome -->
+    <!-- Solid -->
+    <OnPlatform
+        x:TypeArguments="x:String"
+        x:Key="FontAwesomeFreeSolid">
+        <On
+            Platform="Android"
+            Value="Font Awesome 5 Free-Solid-900.otf#Font Awesome 5 Free Solid"/>
+        <On
+            Platform="iOS"
+            Value="Font Awesome 5 Free Solid"/>
+    </OnPlatform>
+
+    <!-- Brands -->
+    <OnPlatform
+        x:TypeArguments="x:String"
+        x:Key="FontAwesomeFreeBrands">
+        <On
+            Platform="Android"
+            Value="Font Awesome 5 Brands-Regular-400.otf#Font Awesome 5 Free Regular"/>
+        <On
+            Platform="iOS"
+            Value="Font Awesome 5 Brands"/>
+    </OnPlatform>
+
+    <!-- Regular -->
+    <OnPlatform
+        x:TypeArguments="x:String"
+        x:Key="FontAwesomeFreeRegular">
+        <On
+            Platform="Android"
+            Value="Font Awesome 5 Free-Regular-400.otf#Font Awesome 5 Free Regular"/>
+        <On
+            Platform="iOS"
+            Value="Font Awesome 5 Free"/>
+    </OnPlatform>
+</ResourceDictionary>

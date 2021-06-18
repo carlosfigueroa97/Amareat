@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="OK" xml:space="preserve">
+		<value>OK</value>
+	</data>
+	<data name="Error" xml:space="preserve">
+		<value>Error</value>
+	</data>
+	<data name="Warning" xml:space="preserve">
+		<value>Advertencia!</value>
+	</data>
+	<data name="SignIn" xml:space="preserve">
+		<value>Iniciar Sesión</value>
+	</data>
+	<data name="User" xml:space="preserve">
+		<value>Usuario</value>
+	</data>
+	<data name="Password" xml:space="preserve">
+		<value>Contraseña</value>
+	</data>
+	<data name="InsertYourUser" xml:space="preserve">
+		<value>Ingresa tu usuario</value>
+	</data>
+	<data name="InsertYourPassword" xml:space="preserve">
+		<value>Ingresa tu contraseña</value>
+	</data>
+	<data name="InsertYourEmail" xml:space="preserve">
+		<value>Ingresa tu email</value>
+	</data>
+	<data name="ForgotYourPassword" xml:space="preserve">
+		<value>¿Olvidaste tu contraseña?</value>
+	</data>
+	<data name="PleaseContactAdministrator" xml:space="preserve">
+		<value>Por favor, contacta a un administrator</value>
+	</data>
+	<data name="WrongCredentials" xml:space="preserve">
+		<value>Credenciales incorrectas</value>
+	</data>
+	<data name="CheckYourDataWell" xml:space="preserve">
+		<value>Revise bien sus datos</value>
+	</data>
+	<data name="Home" xml:space="preserve">
+		<value>Inicio</value>
+	</data>
+	<data name="History" xml:space="preserve">
+		<value>Historial</value>
+	</data>
+	<data name="Account" xml:space="preserve">
+		<value>Cuenta</value>
+	</data>
+	<data name="NoDataFound" xml:space="preserve">
+		<value>No se encontraron datos</value>
+	</data>
+	<data name="AnUnexpectedErrorHasOcurred" xml:space="preserve">
+		<value>Ha ocurrido un error inesperado</value>
+	</data>
+	<data name="Id" xml:space="preserve">
+		<value>ID</value>
+	</data>
+	<data name="Email" xml:space="preserve">
+		<value>Email</value>
+	</data>
+	<data name="Status" xml:space="preserve">
+		<value>Estado</value>
+	</data>
+	<data name="Active" xml:space="preserve">
+		<value>Activo</value>
+	</data>
+	<data name="Inactive" xml:space="preserve">
+		<value>Inactivo</value>
+	</data>
+	<data name="On" xml:space="preserve">
+		<value>Encendido</value>
+	</data>
+	<data name="Off" xml:space="preserve">
+		<value>Apagado</value>
+	</data>
+	<data name="Logout" xml:space="preserve">
+		<value>Cerrar sesión</value>
+	</data>
+	<data name="AddUser" xml:space="preserve">
+		<value>Agregar Usuario</value>
+	</data>
+	<data name="AddBuilding" xml:space="preserve">
+		<value>Agregar Edificio</value>
+	</data>
+	<data name="AddRoom" xml:space="preserve">
+		<value>Agregar Sala</value>
+	</data>
+	<data name="AddDevice" xml:space="preserve">
+		<value>Agregar Dispositivo</value>
+	</data>
+	<data name="Add" xml:space="preserve">
+		<value>Agregar</value>
+	</data>
+	<data name="Cancel" xml:space="preserve">
+		<value>Cancelar</value>
+	</data>
+	<data name="UserNotSaved" xml:space="preserve">
+		<value>No se pudo guardar el usuario uwu</value>
+	</data>
+	<data name="UserSaved" xml:space="preserve">
+		<value>¡Usuario guardado exitosamente!</value>
+	</data>
+	<data name="ShortPasswordError" xml:space="preserve">
+		<value>La contraseña debe tener más de 6 caracteres</value>
+	</data>
+	<data name="InvalidEmailError" xml:space="preserve">
+		<value>Email no válido</value>
+	</data>
+	<data name="Admin" xml:space="preserve">
+		<value>Administrador</value>
+	</data>
+</root>

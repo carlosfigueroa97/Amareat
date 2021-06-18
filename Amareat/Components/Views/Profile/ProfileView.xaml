@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Amareat.Controls"
+    xmlns:local="clr-namespace:Amareat.Localization"
+    x:Class="Amareat.Components.Views.Profile.ProfileView"
+    NavigationPage.HasNavigationBar="False"
+    BackgroundColor="{StaticResource SecondLightBlueSkyColor}">
+    <Grid>
+        <ScrollView>
+            <StackLayout>
+                <controls:ItemProfile
+                    Margin="{StaticResource NormalTopPadding}"
+                    TextLabel="{x:Static local:AppResources.Id}"
+                    TextFrame="{Binding User.Id}"/>
+                <controls:ItemProfile
+                    Margin="{StaticResource NormalTopPadding}"
+                    TextLabel="{x:Static local:AppResources.User}"
+                    TextFrame="{Binding User.Username}"/>
+                <controls:ItemProfile
+                    Margin="{StaticResource NormalTopPadding}"
+                    TextLabel="{x:Static local:AppResources.Email}"
+                    TextFrame="{Binding User.Email}"/>
+                <controls:ItemProfile
+                    Margin="{StaticResource NormalTopPadding}"
+                    TextLabel="{x:Static local:AppResources.Status}"
+                    TextFrame="{Binding User.Status,
+                    Converter={StaticResource StatusConverter}}"/>
+                <Button
+                    Margin="{StaticResource LongPadding}"
+                    WidthRequest="{StaticResource WidthRequestButton}"
+                    Style="{StaticResource OrangeButton}"
+                    HorizontalOptions="CenterAndExpand"
+                    FontAttributes="Bold"
+                    Text="{x:Static local:AppResources.Logout}"
+                    Command="{Binding LogoutCommand}"/>
+            </StackLayout>
+        </ScrollView>
+        <ActivityIndicator
+            IsVisible="{Binding IsBusy}"
+            Style="{StaticResource BaseActivityIndicator}"/>
+    </Grid>
+</ContentPage>

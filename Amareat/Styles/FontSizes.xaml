@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Amareat.Styles.FontSizes">
+    <x:Double x:Key="LargeSize">22</x:Double>
+    <x:Double x:Key="TitleSize">17</x:Double>
+    <x:Double x:Key="SubtitleSize">13</x:Double>
+    <x:Double x:Key="NormalSize">12</x:Double>
+    <x:Double x:Key="SmallSize">10</x:Double>
+
+    <!-- Custom -->
+    <x:Double x:Key="PowerIconFontSize">30</x:Double>
+    <x:Double x:Key="BigSize">15</x:Double>
+</ResourceDictionary>

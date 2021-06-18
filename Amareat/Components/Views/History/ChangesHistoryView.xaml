@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:controls="clr-namespace:Amareat.Controls"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:local="clr-namespace:Amareat.Localization"
+    NavigationPage.HasNavigationBar="False"
+    x:Class="Amareat.Components.Views.History.ChangesHistoryView"
+    BackgroundColor="{StaticResource SecondLightBlueSkyColor}">
+
+    <Grid>
+        <CollectionView ItemsSource="{Binding HistoryListData}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <pancake:PancakeView
+						    Style="{StaticResource DefaultPancakeView}">
+                            <pancake:PancakeView.Shadow>
+                                <pancake:DropShadow
+                                    Color="{StaticResource SecondSolidGrayColor}"
+                                    Offset=".5,.5"/>
+                            </pancake:PancakeView.Shadow>
+                            <controls:HistoryChangesControl 
+							    DeviceNameText="{Binding IdDevice.Name}"
+								StatusText="{Binding Change,
+								    Converter={StaticResource StatusOnOffConverter}}"
+								UserText="{Binding IdUser.Username}"
+								DateText="{Binding Date, 
+								    StringFormat='{0:MMMM dd, yyyy}'}"/>
+                        </pancake:PancakeView>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyView>
+                <ContentView>
+                    <Label
+                        IsVisible="{Binding IsEmpty}"
+                        Style="{StaticResource EmptyViewLabel}"/>
+                </ContentView>
+            </CollectionView.EmptyView>
+        </CollectionView>
+
+        <ActivityIndicator
+		    IsVisible="{Binding IsBusy}"
+	        Style="{StaticResource BaseActivityIndicator}"/>
+    </Grid>
+</ContentPage>
