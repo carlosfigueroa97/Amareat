@@ -123,4 +123,20 @@
 	<data name="Admin" xml:space="preserve">
 		<value>Administrador</value>
 	</data>
+	<data name="Building" xml:space="preserve">
+		<value>Edificio</value>
+	</data>
+	<data name="InsertBuildingName" xml:space="preserve">
+		<value>Ingrese el nombre del edificio</value>
+	</data>
+	<data name="Room" xml:space="preserve">
+		<value>Sala</value>
+	</data>
+	<data name="InsertRoomName" xml:space="preserve">
+		<value>Ingrese el nombre de la sala</value>
+	</data>
+    <data name="EmptyRoomLV" xml:space="preserve">
+		<value>No se ha agregado ninguna sala aún</value>
+	</data>
+
 </root>
