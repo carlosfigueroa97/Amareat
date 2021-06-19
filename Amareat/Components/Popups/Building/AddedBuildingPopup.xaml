@@ -43,7 +43,7 @@
                 <ListView
                     x:Name="roomsAddedLV"
                     ItemsSource="{Binding RoomsToSaveList}"
-                    IsVisible="{Binding isListViewVisible}">
+                    IsVisible="{Binding IsListViewVisible}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Name}"/>
@@ -55,7 +55,7 @@
                 <Label 
                     Text="{x:Static local:AppResources.EmptyRoomLV}"
                     Style="{StaticResource NormalBlackGrayLabel}"
-                    IsVisible="{Binding isListViewVisible, 
+                    IsVisible="{Binding IsListViewVisible, 
                         Converter={StaticResource InverseBoolConverter}}"/>
 
                 <!-- Add Button -->
