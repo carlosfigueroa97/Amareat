@@ -15,7 +15,7 @@
         <ScrollView
 	        VerticalScrollBarVisibility="Never">
 
-            <!-- Desgin -->
+            <!-- Desing -->
             <StackLayout
 		        Margin="{StaticResource HorizontalShortPadding}">
 
