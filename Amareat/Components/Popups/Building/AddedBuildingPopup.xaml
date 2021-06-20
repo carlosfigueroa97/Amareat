@@ -37,7 +37,8 @@
                 <!-- Add Room Button -->
                 <Button
                     Text="{x:Static local:AppResources.AddRoom}"
-                    Style="{StaticResource SecondaryButton}"/>
+                    Style="{StaticResource SecondaryButton}"
+                    Command="{Binding AddRoomCommand}"/>
 
                 <!-- Room List View-->
                 <ListView
@@ -63,7 +64,7 @@
 					Text="{x:Static local:AppResources.Add}"
 					Style="{StaticResource OrangeButton}"
 					VerticalOptions="End"
-					Margin="{StaticResource ShortDownPadding}"/>
+					Margin="{StaticResource VerticalShortPadding}"/>
 
             </StackLayout>
         </ScrollView>
