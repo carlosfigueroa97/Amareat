@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
+using Amareat.Models.API.Requests.Rooms;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
 using MvvmHelpers.Commands;
 
 namespace Amareat.Components.Popups.Building
 {
-    public class AddedBuildingRoomViewModel : BaseVm
+    public class AddedBuildingRoomViewModel : GeneralBuildingVM
     {
         #region Properties & Commands
         
@@ -23,6 +24,7 @@ namespace Amareat.Components.Popups.Building
         #region Public Properties
 
         public Command ClosePopup { get; set; }
+        public Command AddRoom { get; set; }
 
         public string RoomName
         {
@@ -43,6 +45,8 @@ namespace Amareat.Components.Popups.Building
 
             ClosePopup = new Command(async () =>
                 await ExecuteClosePopupCommand());
+            AddRoom = new Command(async () =>
+                await ExecuteAddRoomCommand());
         }
 
         #region Public Methods
@@ -58,6 +62,30 @@ namespace Amareat.Components.Popups.Building
                 _crashReporting.TrackError(ex);
             }
 
+        }
+
+        async Task ExecuteAddRoomCommand()
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(RoomName))
+                {
+                    var model = new SimpleRoom
+                    {
+                        Name = RoomName 
+                    };
+
+                    RoomsToSaveList.Add(model);
+
+                    OnPropertyChanged(nameof(RoomsToSaveList));
+
+                    await ExecuteClosePopupCommand();
+                }
+            }
+            catch (Exception ex)
+            {
+                _crashReporting.TrackError(ex);
+            }
         }
 
         #endregion

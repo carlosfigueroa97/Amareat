@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
+using Amareat.Models.API.Requests.Rooms;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
 using MvvmHelpers.Commands;
 
 namespace Amareat.Components.Popups.Building
 {
-    public class AddedBuildingViewModel : BaseVm
+    public class AddedBuildingViewModel : GeneralBuildingVM
     {
         #region Properties & Commands
 
@@ -54,6 +55,13 @@ namespace Amareat.Components.Popups.Building
                 await ExecuteClosePopupCommand());
             AddRoomCommand = new Command(async () =>
                 await ExecuteAddRoomCommand());
+
+            //var model = new SimpleRoom
+            //{
+            //    Name = "Salón del maaaal"
+            //};
+
+            //RoomsToSaveList.Add(model);
         }
 
         #region Public Methods
@@ -77,6 +85,15 @@ namespace Amareat.Components.Popups.Building
             {
                 await _popupNavigationService.
                     PresentPopupPage<AddedBuildingRoomViewModel>();
+
+                if(RoomsToSaveList.Count > 0)
+                {
+                    IsListViewVisible = true; 
+                }
+                else
+                {
+                    IsListViewVisible = false; 
+                }
             }
             catch (Exception ex)
             {

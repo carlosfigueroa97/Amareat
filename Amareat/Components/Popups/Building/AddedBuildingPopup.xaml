@@ -43,11 +43,19 @@
                 <!-- Room List View-->
                 <ListView
                     x:Name="roomsAddedLV"
+                    BackgroundColor="AntiqueWhite"
+                    HeightRequest="100"
                     ItemsSource="{Binding RoomsToSaveList}"
                     IsVisible="{Binding IsListViewVisible}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Name}"/>
+                            <ViewCell>
+                                <Label 
+                                    Text="{Binding Name}"
+                                    TextColor="{StaticResource BlackColor}"
+                                    Margin="10"
+                                    Padding="5"/>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

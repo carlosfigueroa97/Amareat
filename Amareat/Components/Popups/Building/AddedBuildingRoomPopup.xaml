@@ -28,14 +28,16 @@
                 x:Name="room"
                 TextLabel="{x:Static local:AppResources.Room}"
                 PlaceholderEntry="{x:Static
-                    local:AppResources.InsertRoomName}"/>
+                    local:AppResources.InsertRoomName}"
+                Margin="{StaticResource NormalPadding}"/>
 
             <!-- Add Button -->
             <Button
                 Text="{x:Static local:AppResources.Add}"
                 Style="{StaticResource OrangeButton}"
                 VerticalOptions="End"
-                Margin="{StaticResource ShortDownPadding}"/>
+                Margin="{StaticResource ShortDownPadding}"
+                Command="{Binding AddRoom}"/>
 
         </StackLayout>
     </pancake:PancakeView>
