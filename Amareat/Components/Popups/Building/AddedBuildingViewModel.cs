@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
 using Amareat.Models.API.Requests.Rooms;
+using Amareat.Models.Wrappers;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
 using MvvmHelpers.Commands;
 
 namespace Amareat.Components.Popups.Building
 {
-    public class AddedBuildingViewModel : GeneralBuildingVM
+    public class AddedBuildingViewModel : BaseVm
     {
         #region Properties & Commands
 
@@ -37,8 +39,16 @@ namespace Amareat.Components.Popups.Building
         public bool IsListViewVisible
         {
             get => _isListViewVisible;
-            set => SetProperty(ref _isListViewVisible, value);
+
+            set
+            {
+                SetProperty(ref _isListViewVisible, value);
+                OnPropertyChanged(nameof(RoomsToSaveList));
+            }
         }
+
+        public ObservableCollection<SimpleRoom> RoomsToSaveList
+            => RoomsToAddWrapper.RoomsToAddList;
 
         #endregion
 
@@ -55,6 +65,10 @@ namespace Amareat.Components.Popups.Building
                 await ExecuteClosePopupCommand());
             AddRoomCommand = new Command(async () =>
                 await ExecuteAddRoomCommand());
+
+            if (RoomsToSaveList is null)
+                RoomsToAddWrapper.RoomsToAddList = 
+                    new ObservableCollection<SimpleRoom>();
 
             //var model = new SimpleRoom
             //{
@@ -75,6 +89,11 @@ namespace Amareat.Components.Popups.Building
             catch (Exception ex)
             {
                 _crashReporting.TrackError(ex);
+            }
+            finally
+            {
+                if (RoomsToSaveList.Count > 0)
+                    RoomsToSaveList.Clear(); 
             }
 
         }
