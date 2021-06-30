@@ -20,7 +20,6 @@ namespace Amareat.Components.Popups.Building
         private readonly ICrashReporting _crashReporting;
 
         private string _buildingName;
-        private bool _isListViewVisible;
 
         #endregion
 
@@ -36,19 +35,11 @@ namespace Amareat.Components.Popups.Building
             set => SetProperty(ref _buildingName, value);
         }
 
-        public bool IsListViewVisible
-        {
-            get => _isListViewVisible;
-
-            set
-            {
-                SetProperty(ref _isListViewVisible, value);
-                OnPropertyChanged(nameof(RoomsToSaveList));
-            }
-        }
-
         public ObservableCollection<SimpleRoom> RoomsToSaveList
-            => RoomsToAddWrapper.RoomsToAddList;
+            => RoomsToAddWrapper.RoomsToSaveList;
+
+        public RoomsFlagsWrapper RoomsFlagsWrapper =>
+            RoomsToAddWrapper.RoomsFlagsWrapper;
 
         #endregion
 
@@ -66,16 +57,15 @@ namespace Amareat.Components.Popups.Building
             AddRoomCommand = new Command(async () =>
                 await ExecuteAddRoomCommand());
 
-            if (RoomsToSaveList is null)
-                RoomsToAddWrapper.RoomsToAddList = 
-                    new ObservableCollection<SimpleRoom>();
+            if(RoomsToAddWrapper.RoomsToSaveList is null)
+            {
+                RoomsToAddWrapper.RoomsToSaveList = new ObservableCollection<SimpleRoom>();
+            }
 
-            //var model = new SimpleRoom
-            //{
-            //    Name = "Salón del maaaal"
-            //};
-
-            //RoomsToSaveList.Add(model);
+            if (RoomsToAddWrapper.RoomsFlagsWrapper is null)
+            {
+                RoomsToAddWrapper.RoomsFlagsWrapper = new RoomsFlagsWrapper(false, true);
+            }
         }
 
         #region Public Methods
@@ -93,7 +83,10 @@ namespace Amareat.Components.Popups.Building
             finally
             {
                 if (RoomsToSaveList.Count > 0)
-                    RoomsToSaveList.Clear(); 
+                    RoomsToSaveList.Clear();
+
+                RoomsToAddWrapper.RoomsFlagsWrapper.IsListViewVisible = false;
+                RoomsToAddWrapper.RoomsFlagsWrapper.IsLabelVisible = true;
             }
 
         }
@@ -104,15 +97,6 @@ namespace Amareat.Components.Popups.Building
             {
                 await _popupNavigationService.
                     PresentPopupPage<AddedBuildingRoomViewModel>();
-
-                if(RoomsToSaveList.Count > 0)
-                {
-                    IsListViewVisible = true; 
-                }
-                else
-                {
-                    IsListViewVisible = false; 
-                }
             }
             catch (Exception ex)
             {

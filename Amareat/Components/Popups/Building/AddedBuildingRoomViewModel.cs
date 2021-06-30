@@ -76,10 +76,10 @@ namespace Amareat.Components.Popups.Building
                         Name = RoomName 
                     };
 
-                    var RoomsToAdd = RoomsToAddWrapper.RoomsToAddList;
-                    RoomsToAdd.Add(model);
+                    RoomsToAddWrapper.RoomsToSaveList.Add(model);
 
-                    OnPropertyChanged(nameof(RoomsToAdd));
+                    RoomsToAddWrapper.RoomsFlagsWrapper.IsListViewVisible = true;
+                    RoomsToAddWrapper.RoomsFlagsWrapper.IsLabelVisible = false;
 
                     await ExecuteClosePopupCommand();
                 }

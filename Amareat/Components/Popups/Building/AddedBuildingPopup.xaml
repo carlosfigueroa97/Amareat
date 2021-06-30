@@ -46,7 +46,7 @@
                     BackgroundColor="AntiqueWhite"
                     HeightRequest="100"
                     ItemsSource="{Binding RoomsToSaveList}"
-                    IsVisible="{Binding IsListViewVisible}">
+                    IsVisible="{Binding RoomsFlagsWrapper.IsListViewVisible}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -64,8 +64,7 @@
                 <Label 
                     Text="{x:Static local:AppResources.EmptyRoomLV}"
                     Style="{StaticResource NormalBlackGrayLabel}"
-                    IsVisible="{Binding IsListViewVisible, 
-                        Converter={StaticResource InverseBoolConverter}}"/>
+                    IsVisible="{Binding RoomsFlagsWrapper.IsLabelVisible}"/>
 
                 <!-- Add Button -->
                 <Button
