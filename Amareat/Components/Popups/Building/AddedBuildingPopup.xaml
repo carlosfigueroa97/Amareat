@@ -43,18 +43,30 @@
                 <!-- Room List View-->
                 <ListView
                     x:Name="roomsAddedLV"
-                    BackgroundColor="AntiqueWhite"
+                    BackgroundColor="{StaticResource SecondLightBlueSkyColor}"
                     HeightRequest="100"
                     ItemsSource="{Binding RoomsToSaveList}"
-                    IsVisible="{Binding RoomsFlagsWrapper.IsListViewVisible}">
+                    IsVisible="{Binding RoomsFlagsWrapper.IsListViewVisible}"
+                    SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <Label 
                                     Text="{Binding Name}"
                                     TextColor="{StaticResource BlackColor}"
-                                    Margin="10"
-                                    Padding="5"/>
+                                     Margin="10">
+                                    <Label.Padding>
+                                        <OnPlatform
+                                            x:TypeArguments="Thickness">
+                                            <On
+                                                Platform="iOS"
+                                                Value="10"/>
+                                            <On
+                                                Platform="Android"
+                                                Value="0"/>
+                                        </OnPlatform>
+                                    </Label.Padding>
+                                </Label>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
