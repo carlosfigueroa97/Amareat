@@ -15,7 +15,7 @@
         <ScrollView
 	        VerticalScrollBarVisibility="Never">
 
-            <!-- Desgin -->
+            <!-- Desing -->
             <StackLayout
 		        Margin="{StaticResource HorizontalShortPadding}">
 
@@ -37,16 +37,37 @@
                 <!-- Add Room Button -->
                 <Button
                     Text="{x:Static local:AppResources.AddRoom}"
-                    Style="{StaticResource SecondaryButton}"/>
+                    Style="{StaticResource SecondaryButton}"
+                    Command="{Binding AddRoomCommand}"/>
 
                 <!-- Room List View-->
                 <ListView
                     x:Name="roomsAddedLV"
+                    BackgroundColor="{StaticResource SecondLightBlueSkyColor}"
+                    HeightRequest="100"
                     ItemsSource="{Binding RoomsToSaveList}"
-                    IsVisible="{Binding isListViewVisible}">
+                    IsVisible="{Binding RoomsFlagsWrapper.IsListViewVisible}"
+                    SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Name}"/>
+                            <ViewCell>
+                                <Label 
+                                    Text="{Binding Name}"
+                                    TextColor="{StaticResource BlackColor}"
+                                     Margin="10">
+                                    <Label.Padding>
+                                        <OnPlatform
+                                            x:TypeArguments="Thickness">
+                                            <On
+                                                Platform="iOS"
+                                                Value="10"/>
+                                            <On
+                                                Platform="Android"
+                                                Value="0"/>
+                                        </OnPlatform>
+                                    </Label.Padding>
+                                </Label>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -55,15 +76,14 @@
                 <Label 
                     Text="{x:Static local:AppResources.EmptyRoomLV}"
                     Style="{StaticResource NormalBlackGrayLabel}"
-                    IsVisible="{Binding isListViewVisible, 
-                        Converter={StaticResource InverseBoolConverter}}"/>
+                    IsVisible="{Binding RoomsFlagsWrapper.IsLabelVisible}"/>
 
                 <!-- Add Button -->
                 <Button
 					Text="{x:Static local:AppResources.Add}"
 					Style="{StaticResource OrangeButton}"
 					VerticalOptions="End"
-					Margin="{StaticResource ShortDownPadding}"/>
+					Margin="{StaticResource VerticalShortPadding}"/>
 
             </StackLayout>
         </ScrollView>
