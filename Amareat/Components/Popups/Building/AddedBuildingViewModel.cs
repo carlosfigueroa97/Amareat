@@ -93,16 +93,7 @@ namespace Amareat.Components.Popups.Building
             SaveRoomsCommand = new Command(async () =>
                 await ExecuteValidateData());
 
-            // TODO: Move next verifications to a dedicated method
-            if (RoomsToAddWrapper.RoomsToSaveList is null)
-            {
-                RoomsToAddWrapper.RoomsToSaveList = new ObservableCollection<SimpleRoom>();
-            }
-
-            if (RoomsToAddWrapper.RoomsFlagsWrapper is null)
-            {
-                RoomsToAddWrapper.RoomsFlagsWrapper = new RoomsFlagsWrapper(false, true);
-            }
+            InitializeRoomsWrapper();
         }
 
         #region Public Methods
@@ -205,6 +196,19 @@ namespace Amareat.Components.Popups.Building
         #endregion
 
         #region Private Methods
+
+        private void InitializeRoomsWrapper()
+        {
+            if (RoomsToAddWrapper.RoomsToSaveList is null)
+            {
+                RoomsToAddWrapper.RoomsToSaveList = new ObservableCollection<SimpleRoom>();
+            }
+
+            if (RoomsToAddWrapper.RoomsFlagsWrapper is null)
+            {
+                RoomsToAddWrapper.RoomsFlagsWrapper = new RoomsFlagsWrapper(false, true);
+            }
+        }
 
         private void InitializeErrorMessage()
         {
