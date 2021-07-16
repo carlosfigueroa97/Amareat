@@ -86,7 +86,7 @@
 					Style="{StaticResource OrangeButton}"
 					VerticalOptions="End"
 					Margin="{StaticResource VerticalShortPadding}"
-                    Command="{Binding SaveRoomsCommand}"/>
+                    Command="{Binding SaveBuildingCommand}"/>
 
             </StackLayout>
         </ScrollView>

@@ -37,7 +37,7 @@ namespace Amareat.Components.Popups.Building
 
         public Command ClosePopup { get; set; }
         public Command AddRoomCommand { get; set; }
-        public Command SaveRoomsCommand { get; set; }
+        public Command SaveBuildingCommand { get; set; }
 
         public string BuildingName
         {
@@ -90,7 +90,7 @@ namespace Amareat.Components.Popups.Building
                 await ExecuteClosePopupCommand());
             AddRoomCommand = new Command(async () =>
                 await ExecuteAddRoomCommand());
-            SaveRoomsCommand = new Command(async () =>
+            SaveBuildingCommand = new Command(async () =>
                 await ExecuteValidateData());
 
             InitializeRoomsWrapper();
@@ -148,7 +148,7 @@ namespace Amareat.Components.Popups.Building
 
                 BuildingName = BuildingName.TrimEnd();
 
-                await ExecuteSaveRoomsCommand();
+                await ExecuteSaveBuildingCommand();
 
             }
             catch (Exception ex)
@@ -157,7 +157,7 @@ namespace Amareat.Components.Popups.Building
             }
         }
 
-        async Task ExecuteSaveRoomsCommand()
+        async Task ExecuteSaveBuildingCommand()
         {
             try
             {
@@ -168,7 +168,6 @@ namespace Amareat.Components.Popups.Building
                 {
                     Name = BuildingName,
                     Rooms = RoomsToSaveList 
-                    // TODO: Test if a list of empty Rooms can be saved
                 };
 
                 var isBuildingSaved = await _buildingsService.
@@ -183,6 +182,7 @@ namespace Amareat.Components.Popups.Building
                 }
 
                 await ExecuteClosePopupCommand();
+                // TODO: When data is saved, update home screen
 
                 await _popupNavigationService.
                     ShowToastDialog(Resources.BuildingSaved, 2000);
