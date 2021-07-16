@@ -32,7 +32,9 @@
 					x:Name="building"
 					TextLabel="{x:Static local:AppResources.Building}"
 					PlaceholderEntry="{x:Static 
-		                local:AppResources.InsertBuildingName}"/>
+		                local:AppResources.InsertBuildingName}"
+                    IsEntryWrong="{Binding IsBuildingNameEmpty}"
+                    ErrorMessage="{Binding ErrorBuildingNameMessage}"/>
 
                 <!-- Add Room Button -->
                 <Button

@@ -144,6 +144,7 @@
     <data name="BuildingSaved" xml:space="preserve">
 		<value>¡Edificio guardado exitosamente!</value>
 	</data>
-
-
+    <data name="BuildingNameEmpty" xml:space="preserve">
+		<value>Nombre del edificio es requerido</value>
+	</data>
 </root>

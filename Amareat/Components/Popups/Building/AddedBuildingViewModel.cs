@@ -28,6 +28,8 @@ namespace Amareat.Components.Popups.Building
             new CancellationTokenSource().Token;
 
         private string _buildingName;
+        private bool _isBuildingNameEmpty;
+        private string _errorBuildingNameMessage = string.Empty;
 
         #endregion
 
@@ -36,11 +38,33 @@ namespace Amareat.Components.Popups.Building
         public Command ClosePopup { get; set; }
         public Command AddRoomCommand { get; set; }
         public Command SaveRoomsCommand { get; set; }
-        
+
         public string BuildingName
         {
             get => _buildingName;
             set => SetProperty(ref _buildingName, value);
+        }
+
+        public bool IsBuildingNameEmpty
+        {
+            get => _isBuildingNameEmpty;
+
+            set
+            {
+                SetProperty(ref _isBuildingNameEmpty, value);
+                OnPropertyChanged(nameof(BuildingName));
+            }
+        }
+
+        public string ErrorBuildingNameMessage
+        {
+            get => _errorBuildingNameMessage;
+
+            set
+            {
+                SetProperty(ref _errorBuildingNameMessage, value);
+                OnPropertyChanged(nameof(BuildingName));
+            }
         }
 
         public ObservableCollection<SimpleRoom> RoomsToSaveList
@@ -67,10 +91,10 @@ namespace Amareat.Components.Popups.Building
             AddRoomCommand = new Command(async () =>
                 await ExecuteAddRoomCommand());
             SaveRoomsCommand = new Command(async () =>
-                await ExecuteSaveRoomsCommand());
+                await ExecuteValidateData());
 
             // TODO: Move next verifications to a dedicated method
-            if(RoomsToAddWrapper.RoomsToSaveList is null)
+            if (RoomsToAddWrapper.RoomsToSaveList is null)
             {
                 RoomsToAddWrapper.RoomsToSaveList = new ObservableCollection<SimpleRoom>();
             }
@@ -117,40 +141,60 @@ namespace Amareat.Components.Popups.Building
             }
         }
 
+        async Task ExecuteValidateData()
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(BuildingName))
+                {
+                    InitializeErrorMessage();
+
+                    IsBuildingNameEmpty = true;
+                    ErrorBuildingNameMessage = Resources.BuildingNameEmpty;
+
+                    return;
+                }
+
+                BuildingName = BuildingName.TrimEnd();
+
+                await ExecuteSaveRoomsCommand();
+
+            }
+            catch (Exception ex)
+            {
+                _crashReporting.TrackError(ex);
+            }
+        }
+
         async Task ExecuteSaveRoomsCommand()
         {
             try
             {
-                // TODO: Add error message whenever BuildingName is empty
-                if (!string.IsNullOrEmpty(BuildingName))
+                List<SimpleRoom> RoomsToSaveList =
+                    new List<SimpleRoom>(RoomsToAddWrapper.RoomsToSaveList);
+
+                var BuildingToSave = new SaveBuilding
                 {
+                    Name = BuildingName,
+                    Rooms = RoomsToSaveList 
+                    // TODO: Test if a list of empty Rooms can be saved
+                };
 
-                    List<SimpleRoom> RoomsToSaveList =
-                        new List<SimpleRoom>(RoomsToAddWrapper.RoomsToSaveList);
+                var isBuildingSaved = await _buildingsService.
+                    SaveBuilding(BuildingToSave, _cancellationToken);
 
-                    var BuildingToSave = new SaveBuilding
-                    {
-                        Name = BuildingName,
-                        Rooms = RoomsToSaveList
-                    };
-
-                    var isBuildingSaved = await _buildingsService.
-                        SaveBuilding(BuildingToSave, _cancellationToken);
-
-                    if(!isBuildingSaved)
-                    {
-                        await _popupNavigationService
-                           .ShowErrorDialog(Resources.BuildingNotSaved,
-                           Resources.PleaseContactAdministrator);
-                        return;
-                    }
-
-                    await ExecuteClosePopupCommand();
-
-                    await _popupNavigationService.
-                        ShowToastDialog(Resources.BuildingSaved, 2000);
-
+                if (!isBuildingSaved)
+                {
+                    await _popupNavigationService
+                       .ShowErrorDialog(Resources.BuildingNotSaved,
+                       Resources.PleaseContactAdministrator);
+                    return;
                 }
+
+                await ExecuteClosePopupCommand();
+
+                await _popupNavigationService.
+                    ShowToastDialog(Resources.BuildingSaved, 2000);
             }
             catch (Exception ex)
             {
@@ -161,6 +205,13 @@ namespace Amareat.Components.Popups.Building
         #endregion
 
         #region Private Methods
+
+        private void InitializeErrorMessage()
+        {
+            IsBuildingNameEmpty = false;
+            ErrorBuildingNameMessage = string.Empty;
+        }
+
         #endregion
     }
 }
