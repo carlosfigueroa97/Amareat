@@ -83,7 +83,8 @@
 					Text="{x:Static local:AppResources.Add}"
 					Style="{StaticResource OrangeButton}"
 					VerticalOptions="End"
-					Margin="{StaticResource VerticalShortPadding}"/>
+					Margin="{StaticResource VerticalShortPadding}"
+                    Command="{Binding SaveRoomsCommand}"/>
 
             </StackLayout>
         </ScrollView>

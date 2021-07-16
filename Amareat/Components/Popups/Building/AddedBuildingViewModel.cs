@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
+using Amareat.Models.API.Requests.Buildings;
 using Amareat.Models.API.Requests.Rooms;
 using Amareat.Models.Wrappers;
+using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
 using MvvmHelpers.Commands;
@@ -18,6 +22,9 @@ namespace Amareat.Components.Popups.Building
 
         private readonly IPopupNavigationService _popupNavigationService;
         private readonly ICrashReporting _crashReporting;
+        private IBuildingsService _buildingsService;
+        private CancellationToken _cancellationToken =
+            new CancellationTokenSource().Token;
 
         private string _buildingName;
 
@@ -26,8 +33,8 @@ namespace Amareat.Components.Popups.Building
         #region Public Properties
 
         public Command ClosePopup { get; set; }
-
         public Command AddRoomCommand { get; set; }
+        public Command SaveRoomsCommand { get; set; }
         
         public string BuildingName
         {
@@ -47,16 +54,21 @@ namespace Amareat.Components.Popups.Building
 
         public AddedBuildingViewModel(
             IPopupNavigationService popupNavigationService,
-            ICrashReporting crashReporting)
+            ICrashReporting crashReporting,
+            IBuildingsService buildingsService)
         {
             _popupNavigationService = popupNavigationService;
             _crashReporting = crashReporting;
+            _buildingsService = buildingsService;
 
             ClosePopup = new Command(async () =>
                 await ExecuteClosePopupCommand());
             AddRoomCommand = new Command(async () =>
                 await ExecuteAddRoomCommand());
+            SaveRoomsCommand = new Command(async () =>
+                await ExecuteSaveRoomsCommand());
 
+            // TODO: Move next verifications to a dedicated method
             if(RoomsToAddWrapper.RoomsToSaveList is null)
             {
                 RoomsToAddWrapper.RoomsToSaveList = new ObservableCollection<SimpleRoom>();
@@ -97,6 +109,32 @@ namespace Amareat.Components.Popups.Building
             {
                 await _popupNavigationService.
                     PresentPopupPage<AddedBuildingRoomViewModel>();
+            }
+            catch (Exception ex)
+            {
+                _crashReporting.TrackError(ex);
+            }
+        }
+
+        async Task ExecuteSaveRoomsCommand()
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(BuildingName))
+                {
+
+                    List<SimpleRoom> RoomsToSaveList =
+                        new List<SimpleRoom>(RoomsToAddWrapper.RoomsToSaveList);
+
+                    var BuildingToSave = new SaveBuilding
+                    {
+                        Name = BuildingName,
+                        Rooms = RoomsToSaveList
+                    };
+
+                    var isBuildingSaved = await _buildingsService.
+                        SaveBuilding(BuildingToSave, _cancellationToken);
+                }
             }
             catch (Exception ex)
             {
