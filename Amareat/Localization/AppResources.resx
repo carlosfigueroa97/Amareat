@@ -138,5 +138,12 @@
     <data name="EmptyRoomLV" xml:space="preserve">
 		<value>No se ha agregado ninguna sala aún</value>
 	</data>
+    <data name="BuildingNotSaved" xml:space="preserve">
+		<value>No se pudo guardar el Edificio</value>
+	</data>
+    <data name="BuildingSaved" xml:space="preserve">
+		<value>¡Edificio guardado exitosamente!</value>
+	</data>
+
 
 </root>

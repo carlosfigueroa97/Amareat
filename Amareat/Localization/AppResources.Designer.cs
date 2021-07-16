@@ -298,5 +298,17 @@ namespace Amareat.Localization {
                 return ResourceManager.GetString("EmptyRoomLV", resourceCulture);
             }
         }
+        
+        internal static string BuildingNotSaved {
+            get {
+                return ResourceManager.GetString("BuildingNotSaved", resourceCulture);
+            }
+        }
+        
+        internal static string BuildingSaved {
+            get {
+                return ResourceManager.GetString("BuildingSaved", resourceCulture);
+            }
+        }
     }
 }

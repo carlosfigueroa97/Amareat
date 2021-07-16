@@ -37,6 +37,8 @@ namespace Amareat.Helpers
         public static string Cancel = GetResources("Cancel");
         public static string ShortPasswordError = GetResources("ShortPasswordError");
         public static string InvalidEmailError = GetResources("InvalidEmailError");
+        public static string BuildingNotSaved = GetResources("BuildingNotSaved");
+        public static string BuildingSaved = GetResources("BuildingSaved");
 
         private static string GetResources(string key)
         {

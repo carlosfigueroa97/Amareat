@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
+using Amareat.Helpers;
 using Amareat.Models.API.Requests.Buildings;
 using Amareat.Models.API.Requests.Rooms;
 using Amareat.Models.Wrappers;
@@ -120,6 +121,7 @@ namespace Amareat.Components.Popups.Building
         {
             try
             {
+                // TODO: Add error message whenever BuildingName is empty
                 if (!string.IsNullOrEmpty(BuildingName))
                 {
 
@@ -134,6 +136,20 @@ namespace Amareat.Components.Popups.Building
 
                     var isBuildingSaved = await _buildingsService.
                         SaveBuilding(BuildingToSave, _cancellationToken);
+
+                    if(!isBuildingSaved)
+                    {
+                        await _popupNavigationService
+                           .ShowErrorDialog(Resources.BuildingNotSaved,
+                           Resources.PleaseContactAdministrator);
+                        return;
+                    }
+
+                    await ExecuteClosePopupCommand();
+
+                    await _popupNavigationService.
+                        ShowToastDialog(Resources.BuildingSaved, 2000);
+
                 }
             }
             catch (Exception ex)
