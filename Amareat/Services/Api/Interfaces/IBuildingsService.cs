@@ -7,7 +7,7 @@ namespace Amareat.Services.Api.Interfaces
 {
     public interface IBuildingsService
     {
-        Task<bool> SaveBuilding(SaveBuilding building, CancellationToken cancellationToken);
+        Task<BuildingData> SaveBuilding(SaveBuilding building, CancellationToken cancellationToken);
 
         Task<BuildingList> GetBuildings(string status, CancellationToken cancellationToken);
 
