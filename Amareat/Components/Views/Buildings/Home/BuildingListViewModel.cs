@@ -9,7 +9,6 @@ using Amareat.Models.Wrappers;
 using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.Navigation.Interfaces;
-using Amareat.Services.Preferences.Interfaces;
 using Xamarin.Forms;
 
 namespace Amareat.Components.Views.Buildings.Home
@@ -26,7 +25,7 @@ namespace Amareat.Components.Views.Buildings.Home
 
         private bool _isEmpty;
 
-        private ObservableCollection<Building> _buildingList;
+        //private ObservableCollection<Building> _buildingList;
 
         private Building _selectedItem;
 
@@ -43,11 +42,11 @@ namespace Amareat.Components.Views.Buildings.Home
             set => SetProperty(ref _isEmpty, value);
         }
 
-        public ObservableCollection<Building> BuildingMainList
-        {
-            get => _buildingList;
-            set => SetProperty(ref _buildingList, value);
-        }
+        //public ObservableCollection<Building> BuildingMainList
+        //{
+        //    get => _buildingList;
+        //    set => SetProperty(ref _buildingList, value);
+        //}
 
         public Building SelectedItem
         {
@@ -107,15 +106,17 @@ namespace Amareat.Components.Views.Buildings.Home
                 if (response?.Data?.Count == 0)
                 {
                     IsEmpty = true;
-                    BuildingMainList = new ObservableCollection<Building>();
+                    //BuildingMainList = new ObservableCollection<Building>();
+                    BuildingsListMainMenuWrapper.BuildingList = new ObservableCollection<Building>();
                 }
                 else
                 {
-                    BuildingMainList = new ObservableCollection<Building>(response.Data);
-                    InitializeBuildingsWrapper(BuildingMainList);
+                    //BuildingMainList = new ObservableCollection<Building>(response.Data);
+                    BuildingsListMainMenuWrapper.BuildingList = new ObservableCollection<Building>(response.Data);
+                    //InitializeBuildingsWrapper(BuildingMainList);
                 }
-
-                OnPropertyChanged(nameof(BuildingMainList));
+                OnPropertyChanged(nameof(BuildingList));
+                //OnPropertyChanged(nameof(BuildingMainList));
             }
             catch (Exception ex)
             {
@@ -127,18 +128,18 @@ namespace Amareat.Components.Views.Buildings.Home
             }
         }
 
-        private void InitializeBuildingsWrapper(ObservableCollection<Building> Buildings)
-        {
-            if (BuildingsListMainMenuWrapper.BuildingList is null)
-                BuildingsListMainMenuWrapper.BuildingList = 
-                    new ObservableCollection<Building>();
+        //private void InitializeBuildingsWrapper(ObservableCollection<Building> Buildings)
+        //{
+        //    if (BuildingsListMainMenuWrapper.BuildingList is null)
+        //        BuildingsListMainMenuWrapper.BuildingList = 
+        //            new ObservableCollection<Building>();
 
-            foreach (var item in Buildings)
-            {
-                BuildingsListMainMenuWrapper.BuildingList.Add(item);
-            }
-            //Console.WriteLine("Here!");
-        }
+        //    foreach (var item in Buildings)
+        //    {
+        //        BuildingsListMainMenuWrapper.BuildingList.Add(item);
+        //    }
+        //    //Console.WriteLine("Here!");
+        //}
 
         #endregion
     }
