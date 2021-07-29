@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Amareat.Components.Base;
 using Amareat.Components.Views.Rooms.Home;
 using Amareat.Models.API.Responses.Buildings;
+using Amareat.Models.Wrappers;
 using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.Navigation.Interfaces;
@@ -42,7 +43,7 @@ namespace Amareat.Components.Views.Buildings.Home
             set => SetProperty(ref _isEmpty, value);
         }
 
-        public ObservableCollection<Building> BuildingList
+        public ObservableCollection<Building> BuildingMainList
         {
             get => _buildingList;
             set => SetProperty(ref _buildingList, value);
@@ -53,6 +54,9 @@ namespace Amareat.Components.Views.Buildings.Home
             get => _selectedItem;
             set => SetProperty(ref _selectedItem, value);
         }
+
+        public ObservableCollection<Building> BuildingList
+            => BuildingsListMainMenuWrapper.BuildingList;
 
         #endregion
 
@@ -103,14 +107,15 @@ namespace Amareat.Components.Views.Buildings.Home
                 if (response?.Data?.Count == 0)
                 {
                     IsEmpty = true;
-                    BuildingList = new ObservableCollection<Building>();
+                    BuildingMainList = new ObservableCollection<Building>();
                 }
                 else
                 {
-                    BuildingList = new ObservableCollection<Building>(response.Data);
+                    BuildingMainList = new ObservableCollection<Building>(response.Data);
+                    InitializeBuildingsWrapper(BuildingMainList);
                 }
 
-                OnPropertyChanged(nameof(BuildingList));
+                OnPropertyChanged(nameof(BuildingMainList));
             }
             catch (Exception ex)
             {
@@ -120,6 +125,19 @@ namespace Amareat.Components.Views.Buildings.Home
             {
                 IsBusy = false;
             }
+        }
+
+        private void InitializeBuildingsWrapper(ObservableCollection<Building> Buildings)
+        {
+            if (BuildingsListMainMenuWrapper.BuildingList is null)
+                BuildingsListMainMenuWrapper.BuildingList = 
+                    new ObservableCollection<Building>();
+
+            foreach (var item in Buildings)
+            {
+                BuildingsListMainMenuWrapper.BuildingList.Add(item);
+            }
+            //Console.WriteLine("Here!");
         }
 
         #endregion

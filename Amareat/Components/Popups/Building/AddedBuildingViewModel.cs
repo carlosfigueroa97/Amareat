@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
 using Amareat.Helpers;
+using Model = Amareat.Models.API.Responses.Buildings;
 using Amareat.Models.API.Requests.Buildings;
 using Amareat.Models.API.Requests.Rooms;
 using Amareat.Models.Wrappers;
@@ -170,10 +171,10 @@ namespace Amareat.Components.Popups.Building
                     Rooms = RoomsToSaveList 
                 };
 
-                var isBuildingSaved = await _buildingsService.
+                var newBuilding = await _buildingsService.
                     SaveBuilding(BuildingToSave, _cancellationToken);
 
-                if (!isBuildingSaved)
+                if (newBuilding.Data is null)
                 {
                     await _popupNavigationService
                        .ShowErrorDialog(Resources.BuildingNotSaved,
@@ -181,8 +182,9 @@ namespace Amareat.Components.Popups.Building
                     return;
                 }
 
+                RegisterNewBuilding(newBuilding.Data);
+
                 await ExecuteClosePopupCommand();
-                // TODO: When data is saved, update home screen
 
                 await _popupNavigationService.
                     ShowToastDialog(Resources.BuildingSaved, 2000);
@@ -214,6 +216,11 @@ namespace Amareat.Components.Popups.Building
         {
             IsBuildingNameEmpty = false;
             ErrorBuildingNameMessage = string.Empty;
+        }
+
+        private void RegisterNewBuilding(Model.Building BuildingToSave)
+        {
+            BuildingsListMainMenuWrapper.BuildingList.Add(BuildingToSave);
         }
 
         #endregion
