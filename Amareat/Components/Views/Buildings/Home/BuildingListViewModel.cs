@@ -25,8 +25,6 @@ namespace Amareat.Components.Views.Buildings.Home
 
         private bool _isEmpty;
 
-        //private ObservableCollection<Building> _buildingList;
-
         private Building _selectedItem;
 
         #endregion
@@ -41,12 +39,6 @@ namespace Amareat.Components.Views.Buildings.Home
             get => _isEmpty;
             set => SetProperty(ref _isEmpty, value);
         }
-
-        //public ObservableCollection<Building> BuildingMainList
-        //{
-        //    get => _buildingList;
-        //    set => SetProperty(ref _buildingList, value);
-        //}
 
         public Building SelectedItem
         {
@@ -106,17 +98,15 @@ namespace Amareat.Components.Views.Buildings.Home
                 if (response?.Data?.Count == 0)
                 {
                     IsEmpty = true;
-                    //BuildingMainList = new ObservableCollection<Building>();
-                    BuildingsListMainMenuWrapper.BuildingList = new ObservableCollection<Building>();
+                    BuildingsListMainMenuWrapper.BuildingList = 
+                        new ObservableCollection<Building>();
                 }
                 else
                 {
-                    //BuildingMainList = new ObservableCollection<Building>(response.Data);
-                    BuildingsListMainMenuWrapper.BuildingList = new ObservableCollection<Building>(response.Data);
-                    //InitializeBuildingsWrapper(BuildingMainList);
+                    BuildingsListMainMenuWrapper.BuildingList = 
+                        new ObservableCollection<Building>(response.Data);
                 }
                 OnPropertyChanged(nameof(BuildingList));
-                //OnPropertyChanged(nameof(BuildingMainList));
             }
             catch (Exception ex)
             {
@@ -127,19 +117,6 @@ namespace Amareat.Components.Views.Buildings.Home
                 IsBusy = false;
             }
         }
-
-        //private void InitializeBuildingsWrapper(ObservableCollection<Building> Buildings)
-        //{
-        //    if (BuildingsListMainMenuWrapper.BuildingList is null)
-        //        BuildingsListMainMenuWrapper.BuildingList = 
-        //            new ObservableCollection<Building>();
-
-        //    foreach (var item in Buildings)
-        //    {
-        //        BuildingsListMainMenuWrapper.BuildingList.Add(item);
-        //    }
-        //    //Console.WriteLine("Here!");
-        //}
 
         #endregion
     }
