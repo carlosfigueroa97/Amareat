@@ -62,6 +62,7 @@ namespace Amareat.Services.Api.Implementations
         public async Task<string> GetAsync(string url, CancellationToken cancellatonToken)
         {
             HttpResponseMessage httpResponseMessage = null;
+            string readString = string.Empty;
 
             if (!_connectivityService.UserHasInternetConnection)
             {
@@ -83,7 +84,7 @@ namespace Amareat.Services.Api.Implementations
 
                 cancellatonToken.ThrowIfCancellationRequested();
 
-                var readString = await httpResponseMessage.Content.ReadAsStringAsync();
+                readString = await httpResponseMessage.Content.ReadAsStringAsync();
 
 #if DEBUG
                 Debug.WriteLine(readString);
@@ -117,13 +118,16 @@ namespace Amareat.Services.Api.Implementations
 
             throw new ApiErrorException
             {
-                StatusCode = httpResponseMessage == null ? System.Net.HttpStatusCode.Ambiguous : httpResponseMessage.StatusCode
+                StatusCode = httpResponseMessage == null ? System.Net.HttpStatusCode.Ambiguous : httpResponseMessage.StatusCode,
+                ApiMessageResponse = readString,
+                ReasonPhrase = httpResponseMessage.ReasonPhrase
             };
         }
 
         public async Task<string> PostAsync(string url, object item, CancellationToken cancellatonToken, bool isAuthorizedCall = true)
         {
             HttpResponseMessage httpResponseMessage = null;
+            string readString = string.Empty;
 
             if (!_connectivityService.UserHasInternetConnection)
             {
@@ -153,7 +157,7 @@ namespace Amareat.Services.Api.Implementations
 
                 cancellatonToken.ThrowIfCancellationRequested();
 
-                var readString = await httpResponseMessage.Content.ReadAsStringAsync();
+                readString = await httpResponseMessage.Content.ReadAsStringAsync();
 #if DEBUG
                 Debug.WriteLine(readString);
 #endif
@@ -186,13 +190,16 @@ namespace Amareat.Services.Api.Implementations
 
             throw new ApiErrorException
             {
-                StatusCode = httpResponseMessage == null ? System.Net.HttpStatusCode.Ambiguous : httpResponseMessage.StatusCode
+                StatusCode = httpResponseMessage == null ? System.Net.HttpStatusCode.Ambiguous : httpResponseMessage.StatusCode,
+                ApiMessageResponse = readString,
+                ReasonPhrase = httpResponseMessage.ReasonPhrase
             };
         }
 
         public async Task<string> PutAsync(string url, object item, CancellationToken cancellationToken, bool isAuthorizedCall = true)
         {
             HttpResponseMessage httpResponseMessage = null;
+            string readString = string.Empty;
 
             if (!_connectivityService.UserHasInternetConnection)
             {
@@ -221,7 +228,7 @@ namespace Amareat.Services.Api.Implementations
 
                 cancellationToken.ThrowIfCancellationRequested();
 
-                var readString = await httpResponseMessage.Content.ReadAsStringAsync();
+                readString = await httpResponseMessage.Content.ReadAsStringAsync();
 
 #if DEBUG
                 Debug.WriteLine(readString);
@@ -255,7 +262,9 @@ namespace Amareat.Services.Api.Implementations
 
             throw new ApiErrorException
             {
-                StatusCode = httpResponseMessage == null ? System.Net.HttpStatusCode.Ambiguous : httpResponseMessage.StatusCode
+                StatusCode = httpResponseMessage == null ? System.Net.HttpStatusCode.Ambiguous : httpResponseMessage.StatusCode,
+                ApiMessageResponse = readString,
+                ReasonPhrase = httpResponseMessage.ReasonPhrase
             };
         }
 

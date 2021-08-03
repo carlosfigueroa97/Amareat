@@ -7,6 +7,10 @@ namespace Amareat.Exceptions
     {
         public HttpStatusCode StatusCode { get; set; }
 
+        public string ApiMessageResponse { get; set; }
+
+        public string ReasonPhrase { get; set; }
+
         public ApiErrorException()
         {
         }

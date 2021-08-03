@@ -52,8 +52,7 @@ namespace Amareat.Services.Api.Implementations
             }
             catch (ApiErrorException ex)
             {
-                Debug.WriteLine(ex);
-                throw ex;
+                await _crashReporting.TrackApiError(ex);
             }
             catch (RefreshTokenException ex)
             {
@@ -87,8 +86,7 @@ namespace Amareat.Services.Api.Implementations
             }
             catch (ApiErrorException ex)
             {
-                Debug.WriteLine(ex);
-                throw ex;
+                await _crashReporting.TrackApiError(ex);
             }
             catch (RefreshTokenException ex)
             {
