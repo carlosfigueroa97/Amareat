@@ -134,7 +134,7 @@ namespace Amareat.Services.Api.Implementations
             throw new ApiErrorException();
         }
 
-        public async Task<bool> SaveBuilding(SaveBuilding building, CancellationToken cancellationToken)
+        public async Task<BuildingData> SaveBuilding(SaveBuilding building, CancellationToken cancellationToken)
         {
             try
             {
@@ -142,10 +142,10 @@ namespace Amareat.Services.Api.Implementations
 
                 if (string.IsNullOrEmpty(response))
                 {
-                    return false;
+                    return null;
                 }
 
-                return true;
+                return JsonConvert.DeserializeObject<BuildingData>(response);
             }
             catch (NoInternetConnectionException ex)
             {

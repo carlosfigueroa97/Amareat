@@ -16,4 +16,5 @@
     <Color x:Key="SecondLightBlueSkyColor">#EEF0F3</Color>
     <Color x:Key="PurpleColor">#6C63FF</Color>
     <Color x:Key="RedColor">#ff0000</Color>
+    <Color x:Key="BlueSecondaryButton">#3DABF5</Color>
 </ResourceDictionary>

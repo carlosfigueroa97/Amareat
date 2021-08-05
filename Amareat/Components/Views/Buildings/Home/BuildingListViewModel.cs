@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Amareat.Components.Base;
 using Amareat.Components.Views.Rooms.Home;
 using Amareat.Models.API.Responses.Buildings;
+using Amareat.Models.Wrappers;
 using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.Navigation.Interfaces;
-using Amareat.Services.Preferences.Interfaces;
 using Xamarin.Forms;
 
 namespace Amareat.Components.Views.Buildings.Home
@@ -25,8 +25,6 @@ namespace Amareat.Components.Views.Buildings.Home
 
         private bool _isEmpty;
 
-        private ObservableCollection<Building> _buildingList;
-
         private Building _selectedItem;
 
         #endregion
@@ -42,17 +40,14 @@ namespace Amareat.Components.Views.Buildings.Home
             set => SetProperty(ref _isEmpty, value);
         }
 
-        public ObservableCollection<Building> BuildingList
-        {
-            get => _buildingList;
-            set => SetProperty(ref _buildingList, value);
-        }
-
         public Building SelectedItem
         {
             get => _selectedItem;
             set => SetProperty(ref _selectedItem, value);
         }
+
+        public ObservableCollection<Building> BuildingList
+            => BuildingsListMainMenuWrapper.BuildingList;
 
         #endregion
 
@@ -103,13 +98,14 @@ namespace Amareat.Components.Views.Buildings.Home
                 if (response?.Data?.Count == 0)
                 {
                     IsEmpty = true;
-                    BuildingList = new ObservableCollection<Building>();
+                    BuildingsListMainMenuWrapper.BuildingList = 
+                        new ObservableCollection<Building>();
                 }
                 else
                 {
-                    BuildingList = new ObservableCollection<Building>(response.Data);
+                    BuildingsListMainMenuWrapper.BuildingList = 
+                        new ObservableCollection<Building>(response.Data);
                 }
-
                 OnPropertyChanged(nameof(BuildingList));
             }
             catch (Exception ex)

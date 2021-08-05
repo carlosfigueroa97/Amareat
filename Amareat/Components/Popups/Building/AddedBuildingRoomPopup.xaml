@@ -3,5 +3,42 @@
     xmlns:base="clr-namespace:Amareat.Components.Popups.Base"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Amareat.Components.Popups.Building.AddedBuildingRoomPopup">
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+    xmlns:controls="clr-namespace:Amareat.Controls"
+    xmlns:local="clr-namespace:Amareat.Localization"
+    x:Class="Amareat.Components.Popups.Building.AddedBuildingRoomPopup"
+    x:Name="addBuildingRoomPopup">
+
+    <pancake:PancakeView
+        Style="{StaticResource InputMenuPopupPancake}">
+
+        <!-- Desing -->
+        <StackLayout>
+
+            <!-- Close popup icon-->
+            <Label Style="{StaticResource ClosePopup}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+					    Command="{Binding ClosePopup}"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <!-- Room entry -->
+            <controls:TitleAndEntry
+                x:Name="room"
+                TextLabel="{x:Static local:AppResources.Room}"
+                PlaceholderEntry="{x:Static
+                    local:AppResources.InsertRoomName}"
+                Margin="{StaticResource NormalPadding}"/>
+
+            <!-- Add Button -->
+            <Button
+                Text="{x:Static local:AppResources.Add}"
+                Style="{StaticResource OrangeButton}"
+                VerticalOptions="End"
+                Margin="{StaticResource ShortDownPadding}"
+                Command="{Binding AddRoom}"/>
+
+        </StackLayout>
+    </pancake:PancakeView>
 </base:BasePopupPage>

@@ -3,5 +3,92 @@
     xmlns:base="clr-namespace:Amareat.Components.Popups.Base"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Amareat.Components.Popups.Building.AddedBuildingPopup">
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+    xmlns:controls="clr-namespace:Amareat.Controls"
+    xmlns:local="clr-namespace:Amareat.Localization"
+    x:Class="Amareat.Components.Popups.Building.AddedBuildingPopup"
+	x:Name="addBuildingPopup">
+
+    <pancake:PancakeView
+	    Style="{StaticResource InputMenuPopupPancake}">
+
+        <ScrollView
+	        VerticalScrollBarVisibility="Never">
+
+            <!-- Desing -->
+            <StackLayout
+		        Margin="{StaticResource HorizontalShortPadding}">
+
+                <!-- Close popup icon-->
+                <Label Style="{StaticResource ClosePopup}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+						    Command="{Binding ClosePopup}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <!-- Building -->
+                <controls:TitleAndEntry
+					x:Name="building"
+					TextLabel="{x:Static local:AppResources.Building}"
+					PlaceholderEntry="{x:Static 
+		                local:AppResources.InsertBuildingName}"
+                    IsEntryWrong="{Binding IsBuildingNameEmpty}"
+                    ErrorMessage="{Binding ErrorBuildingNameMessage}"/>
+
+                <!-- Add Room Button -->
+                <Button
+                    Text="{x:Static local:AppResources.AddRoom}"
+                    Style="{StaticResource SecondaryButton}"
+                    Command="{Binding AddRoomCommand}"/>
+
+                <!-- Room List View-->
+                <ListView
+                    x:Name="roomsAddedLV"
+                    BackgroundColor="{StaticResource SecondLightBlueSkyColor}"
+                    HeightRequest="100"
+                    ItemsSource="{Binding RoomsToSaveList}"
+                    IsVisible="{Binding RoomsFlagsWrapper.IsListViewVisible}"
+                    SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label 
+                                    Text="{Binding Name}"
+                                    TextColor="{StaticResource BlackColor}"
+                                     Margin="10">
+                                    <Label.Padding>
+                                        <OnPlatform
+                                            x:TypeArguments="Thickness">
+                                            <On
+                                                Platform="iOS"
+                                                Value="10"/>
+                                            <On
+                                                Platform="Android"
+                                                Value="0"/>
+                                        </OnPlatform>
+                                    </Label.Padding>
+                                </Label>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <!-- Empty List View Message -->
+                <Label 
+                    Text="{x:Static local:AppResources.EmptyRoomLV}"
+                    Style="{StaticResource NormalBlackGrayLabel}"
+                    IsVisible="{Binding RoomsFlagsWrapper.IsLabelVisible}"/>
+
+                <!-- Add Button -->
+                <Button
+					Text="{x:Static local:AppResources.Add}"
+					Style="{StaticResource OrangeButton}"
+					VerticalOptions="End"
+					Margin="{StaticResource VerticalShortPadding}"
+                    Command="{Binding SaveBuildingCommand}"/>
+
+            </StackLayout>
+        </ScrollView>
+    </pancake:PancakeView>
 </base:BasePopupPage>

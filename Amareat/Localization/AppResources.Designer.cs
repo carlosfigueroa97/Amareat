@@ -268,5 +268,53 @@ namespace Amareat.Localization {
                 return ResourceManager.GetString("Admin", resourceCulture);
             }
         }
+        
+        internal static string Building {
+            get {
+                return ResourceManager.GetString("Building", resourceCulture);
+            }
+        }
+        
+        internal static string InsertBuildingName {
+            get {
+                return ResourceManager.GetString("InsertBuildingName", resourceCulture);
+            }
+        }
+        
+        internal static string Room {
+            get {
+                return ResourceManager.GetString("Room", resourceCulture);
+            }
+        }
+        
+        internal static string InsertRoomName {
+            get {
+                return ResourceManager.GetString("InsertRoomName", resourceCulture);
+            }
+        }
+        
+        internal static string EmptyRoomLV {
+            get {
+                return ResourceManager.GetString("EmptyRoomLV", resourceCulture);
+            }
+        }
+        
+        internal static string BuildingNotSaved {
+            get {
+                return ResourceManager.GetString("BuildingNotSaved", resourceCulture);
+            }
+        }
+        
+        internal static string BuildingSaved {
+            get {
+                return ResourceManager.GetString("BuildingSaved", resourceCulture);
+            }
+        }
+        
+        internal static string BuildingNameEmpty {
+            get {
+                return ResourceManager.GetString("BuildingNameEmpty", resourceCulture);
+            }
+        }
     }
 }

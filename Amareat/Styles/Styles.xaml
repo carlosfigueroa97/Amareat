@@ -122,6 +122,19 @@
         <Setter Property="CornerRadius" Value="10"/>
     </Style>
 
+    <Style
+        TargetType="Button"
+        x:Key="SecondaryButton">
+        <Setter Property="BackgroundColor" Value="{StaticResource BlueSecondaryButton}"/>
+        <Setter Property="FontSize" Value="{StaticResource BigSize}"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontFamily" Value="{StaticResource RalewayBoldFont}"/>
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Margin" Value="{StaticResource NormalPadding}"/>
+    </Style>
+
     <!-- Custom History Changes Control -->
     <Style
 	    TargetType="pancake:PancakeView"
