@@ -92,7 +92,7 @@ namespace Amareat.Components.Popups.Building
             AddRoomCommand = new Command(async () =>
                 await ExecuteAddRoomCommand());
             SaveBuildingCommand = new Command(async () =>
-                await ExecuteValidateData());
+                await ExecuteSaveBuildingCommand());
 
             InitializeRoomsWrapper();
         }
@@ -133,42 +133,23 @@ namespace Amareat.Components.Popups.Building
             }
         }
 
-        async Task ExecuteValidateData()
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(BuildingName))
-                {
-                    InitializeErrorMessage();
-
-                    IsBuildingNameEmpty = true;
-                    ErrorBuildingNameMessage = Resources.BuildingNameEmpty;
-
-                    return;
-                }
-
-                BuildingName = BuildingName.TrimEnd();
-
-                await ExecuteSaveBuildingCommand();
-
-            }
-            catch (Exception ex)
-            {
-                _crashReporting.TrackError(ex);
-            }
-        }
-
         async Task ExecuteSaveBuildingCommand()
         {
             try
             {
+                var IsEmpty = BuildingNameEmpty();
+
+                if (IsEmpty) return;
+
+                BuildingName = BuildingName.TrimEnd();
+
                 List<SimpleRoom> RoomsToSaveList =
                     new List<SimpleRoom>(RoomsToAddWrapper.RoomsToSaveList);
 
                 var BuildingToSave = new SaveBuilding
                 {
                     Name = BuildingName,
-                    Rooms = RoomsToSaveList 
+                    Rooms = RoomsToSaveList
                 };
 
                 var newBuilding = await _buildingsService.
@@ -210,6 +191,22 @@ namespace Amareat.Components.Popups.Building
             {
                 RoomsToAddWrapper.RoomsFlagsWrapper = new RoomsFlagsWrapper(false, true);
             }
+        }
+
+        private bool BuildingNameEmpty()
+        {
+            if (string.IsNullOrEmpty(BuildingName))
+            {
+                InitializeErrorMessage();
+
+                IsBuildingNameEmpty = true;
+                ErrorBuildingNameMessage = Resources.BuildingNameEmpty;
+
+                return IsBuildingNameEmpty;
+            }
+
+            IsBuildingNameEmpty = false;
+            return IsBuildingNameEmpty;
         }
 
         private void InitializeErrorMessage()
