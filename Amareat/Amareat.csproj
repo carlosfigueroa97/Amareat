@@ -111,6 +111,7 @@
     <Folder Include="Services\Api\Auth\Interfaces\" />
     <Folder Include="Services\Api\Auth\Implementations\" />
     <Folder Include="Components\Popups\Dialogs\" />
+    <Folder Include="Models\API\BindingData\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Localization\AppResources.resx">
@@ -125,5 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Components\Popups\Dialogs\" />
+    <None Remove="Models\API\BindingData\" />
   </ItemGroup>
 </Project>
