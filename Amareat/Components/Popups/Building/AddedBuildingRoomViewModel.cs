@@ -21,8 +21,8 @@ namespace Amareat.Components.Popups.Building
         private readonly ICrashReporting _crashReporting;
 
         private string _roomName;
+        private string _idBuilding;
         private string _buildingName;
-        private bool _isEditable;
 
         #endregion
 
@@ -37,16 +37,16 @@ namespace Amareat.Components.Popups.Building
             set => SetProperty(ref _roomName, value);
         }
 
+        public string IdBuilding
+        {
+            get => _idBuilding;
+            set => SetProperty(ref _idBuilding, value); 
+        }
+
         public string BuildingName
         {
             get => _buildingName;
             set => SetProperty(ref _buildingName, value);
-        }
-
-        public bool IsEditable
-        {
-            get => _isEditable;
-            set => SetProperty(ref _isEditable, value); 
         }
 
         #endregion
@@ -71,7 +71,7 @@ namespace Amareat.Components.Popups.Building
         public override Task Init(BindingBuildingAndRoom data)
         {
             BuildingName = data.BuildingName;
-            IsEditable = data.IsEditable;
+            IdBuilding = data.IdBuilding;
 
             return base.Init();
         }

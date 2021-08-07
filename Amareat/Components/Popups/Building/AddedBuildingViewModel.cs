@@ -129,11 +129,11 @@ namespace Amareat.Components.Popups.Building
                 if (IsEmpty) return;
                 BuildingName = BuildingName.TrimEnd();
 
-                BindingBuildingAndRoom dataBinding = 
+                BindingBuildingAndRoom dataBinding =
                     new BindingBuildingAndRoom
-                {
-                    BuildingName = BuildingName,
-                    IsEditable = false
+                    {
+                        IdBuilding = string.Empty,
+                        BuildingName = BuildingName,
                 };
 
                 await _popupNavigationService.
