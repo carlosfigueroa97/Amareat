@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
+using Amareat.Models.API.BindingData;
 using Amareat.Models.API.Requests.Rooms;
 using Amareat.Models.Wrappers;
 using Amareat.Services.Crash.Interfaces;
@@ -9,7 +10,8 @@ using MvvmHelpers.Commands;
 
 namespace Amareat.Components.Popups.Building
 {
-    public class AddedBuildingRoomViewModel : BaseVm
+    public class AddedBuildingRoomViewModel : 
+        BaseViewModel<BindingBuildingAndRoom>
     {
         #region Properties & Commands
         
@@ -19,6 +21,8 @@ namespace Amareat.Components.Popups.Building
         private readonly ICrashReporting _crashReporting;
 
         private string _roomName;
+        private string _buildingName;
+        private bool _isEditable;
 
         #endregion
 
@@ -31,6 +35,18 @@ namespace Amareat.Components.Popups.Building
         {
             get => _roomName;
             set => SetProperty(ref _roomName, value);
+        }
+
+        public string BuildingName
+        {
+            get => _buildingName;
+            set => SetProperty(ref _buildingName, value);
+        }
+
+        public bool IsEditable
+        {
+            get => _isEditable;
+            set => SetProperty(ref _isEditable, value); 
         }
 
         #endregion
@@ -51,6 +67,14 @@ namespace Amareat.Components.Popups.Building
         }
 
         #region Public Methods
+
+        public override Task Init(BindingBuildingAndRoom data)
+        {
+            BuildingName = data.BuildingName;
+            IsEditable = data.IsEditable;
+
+            return base.Init();
+        }
 
         async Task ExecuteClosePopupCommand()
         {

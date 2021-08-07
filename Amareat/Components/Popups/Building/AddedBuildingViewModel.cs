@@ -13,6 +13,7 @@ using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
 using MvvmHelpers.Commands;
+using Amareat.Models.API.BindingData;
 
 namespace Amareat.Components.Popups.Building
 {
@@ -124,8 +125,20 @@ namespace Amareat.Components.Popups.Building
         {
             try
             {
+                var IsEmpty = BuildingNameEmpty();
+                if (IsEmpty) return;
+                BuildingName = BuildingName.TrimEnd();
+
+                BindingBuildingAndRoom dataBinding = 
+                    new BindingBuildingAndRoom
+                {
+                    BuildingName = BuildingName,
+                    IsEditable = false
+                };
+
                 await _popupNavigationService.
-                    PresentPopupPage<AddedBuildingRoomViewModel>();
+                    PresentPopupPage<AddedBuildingRoomViewModel,
+                        BindingBuildingAndRoom>(dataBinding);
             }
             catch (Exception ex)
             {
