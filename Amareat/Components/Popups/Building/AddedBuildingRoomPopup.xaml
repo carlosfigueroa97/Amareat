@@ -26,7 +26,8 @@
             <!-- BuildingName Picker -->
             <Picker
                 x:Name="buildingNamePicker"
-                Title="Selecciona un edificio"
+                Title="{x:Static 
+                    local:AppResources.SelectOneBuilding}"
                 ItemDisplayBinding="{Binding Name}"
                 ItemsSource="{Binding BuildingList, 
                     Mode=TwoWay}"

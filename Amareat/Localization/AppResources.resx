@@ -147,4 +147,10 @@
     <data name="BuildingNameEmpty" xml:space="preserve">
 		<value>Nombre del edificio es requerido</value>
 	</data>
+    <data name="NoBuildingFound" xml:space="preserve">
+		<value>¡No hay ningún edificio aún!</value>
+	</data>
+    <data name="SelectOneBuilding" xml:space="preserve">
+		<value>Selecciona un edificio</value>
+	</data>
 </root>

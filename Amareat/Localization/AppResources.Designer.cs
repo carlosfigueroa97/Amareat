@@ -316,5 +316,17 @@ namespace Amareat.Localization {
                 return ResourceManager.GetString("BuildingNameEmpty", resourceCulture);
             }
         }
+        
+        internal static string NoBuildingFound {
+            get {
+                return ResourceManager.GetString("NoBuildingFound", resourceCulture);
+            }
+        }
+        
+        internal static string SelectOneBuilding {
+            get {
+                return ResourceManager.GetString("SelectOneBuilding", resourceCulture);
+            }
+        }
     }
 }
