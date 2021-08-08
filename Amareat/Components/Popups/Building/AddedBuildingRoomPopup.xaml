@@ -27,7 +27,7 @@
             <Picker
                 x:Name="buildingNamePicker"
                 Title="Fuck this shit!"
-                ItemDisplayBinding="{Binding BuildingName}"
+                ItemDisplayBinding="{Binding Name}"
                 ItemsSource="{Binding BuildingList}"
                 SelectedIndex="0"
                 TextColor="Black"

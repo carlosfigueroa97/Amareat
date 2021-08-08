@@ -2,8 +2,8 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
-using Amareat.Models.API.BindingData;
 using Amareat.Models.API.Requests.Rooms;
+using Model = Amareat.Models.API.Responses.Buildings;
 using Amareat.Models.Wrappers;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
@@ -12,7 +12,7 @@ using MvvmHelpers.Commands;
 namespace Amareat.Components.Popups.Building
 {
     public class AddedBuildingRoomViewModel : 
-        BaseViewModel<BindingBuildingAndRoomList>
+        BaseViewModel<Model.BuildingList>
     {
         #region Properties & Commands
         
@@ -22,9 +22,7 @@ namespace Amareat.Components.Popups.Building
         private readonly ICrashReporting _crashReporting;
 
         private string _roomName;
-        //private string _idBuilding;
-        //private string _buildingName;
-        private ObservableCollection<BindingBuildingAndRoom> 
+        private ObservableCollection<Model.Building> 
             _buildingList;
         private string _selectedBuilding;
 
@@ -41,19 +39,7 @@ namespace Amareat.Components.Popups.Building
             set => SetProperty(ref _roomName, value);
         }
 
-        /*public string IdBuilding
-        {
-            get => _idBuilding;
-            set => SetProperty(ref _idBuilding, value); 
-        }
-
-        public string BuildingName
-        {
-            get => _buildingName;
-            set => SetProperty(ref _buildingName, value);
-        }*/
-
-        public ObservableCollection<BindingBuildingAndRoom> 
+        public ObservableCollection<Model.Building> 
             BuildingList 
         { 
             get => _buildingList; 
@@ -85,14 +71,12 @@ namespace Amareat.Components.Popups.Building
 
         #region Public Methods
 
-        public override Task Init(BindingBuildingAndRoomList data)
+        public override Task Init(Model.BuildingList listData)
         {
-            /*BuildingName = data.BuildingName;
-            IdBuilding = data.IdBuilding;*/
             BuildingList = 
-                new ObservableCollection<BindingBuildingAndRoom>();
+                new ObservableCollection<Model.Building>();
 
-            foreach (var item in data.BindingBuildingList)
+            foreach (var item in listData.Data)
             {
                 BuildingList.Add(item);
             }

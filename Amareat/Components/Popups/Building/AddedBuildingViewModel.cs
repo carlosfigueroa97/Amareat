@@ -13,7 +13,7 @@ using Amareat.Services.Api.Interfaces;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
 using MvvmHelpers.Commands;
-using Amareat.Models.API.BindingData;
+using Amareat.Models.API.Responses.Buildings;
 
 namespace Amareat.Components.Popups.Building
 {
@@ -134,7 +134,7 @@ namespace Amareat.Components.Popups.Building
 
                 await _popupNavigationService.
                     PresentPopupPage<AddedBuildingRoomViewModel,
-                    BindingBuildingAndRoomList>(dataBinding);
+                    BuildingList>(dataBinding);
             }
             catch (Exception ex)
             {
@@ -229,22 +229,24 @@ namespace Amareat.Components.Popups.Building
             BuildingsListMainMenuWrapper.BuildingList.Add(BuildingToSave);
         }
 
-        private BindingBuildingAndRoomList PreparateDataBinding()
+        private BuildingList PreparateDataBinding()
         {
-            BindingBuildingAndRoom dataBinding =
-                new BindingBuildingAndRoom
+            Model.Building dataBinding =
+                new Model.Building
                 {
-                    IdBuilding = string.Empty,
-                    BuildingName = BuildingName,
+                    Id = string.Empty,
+                    Name = BuildingName,
+                    status = "0",
+                    CreatedAt = DateTime.Now,
                 };
 
-            BindingBuildingAndRoomList dataList =
-                new BindingBuildingAndRoomList();
+            BuildingList dataList =
+                new BuildingList();
 
-            dataList.BindingBuildingList =
-                new ObservableCollection<BindingBuildingAndRoom>();
+            dataList.Data =
+                new List<Model.Building>();
 
-            dataList.BindingBuildingList.Add(dataBinding);
+            dataList.Data.Add(dataBinding);
 
             return dataList;
         }
