@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
 using Amareat.Models.API.BindingData;
@@ -11,7 +12,7 @@ using MvvmHelpers.Commands;
 namespace Amareat.Components.Popups.Building
 {
     public class AddedBuildingRoomViewModel : 
-        BaseViewModel<BindingBuildingAndRoom>
+        BaseViewModel<BindingBuildingAndRoomList>
     {
         #region Properties & Commands
         
@@ -21,8 +22,11 @@ namespace Amareat.Components.Popups.Building
         private readonly ICrashReporting _crashReporting;
 
         private string _roomName;
-        private string _idBuilding;
-        private string _buildingName;
+        //private string _idBuilding;
+        //private string _buildingName;
+        private ObservableCollection<BindingBuildingAndRoom> 
+            _buildingList;
+        private string _selectedBuilding;
 
         #endregion
 
@@ -37,7 +41,7 @@ namespace Amareat.Components.Popups.Building
             set => SetProperty(ref _roomName, value);
         }
 
-        public string IdBuilding
+        /*public string IdBuilding
         {
             get => _idBuilding;
             set => SetProperty(ref _idBuilding, value); 
@@ -47,6 +51,19 @@ namespace Amareat.Components.Popups.Building
         {
             get => _buildingName;
             set => SetProperty(ref _buildingName, value);
+        }*/
+
+        public ObservableCollection<BindingBuildingAndRoom> 
+            BuildingList 
+        { 
+            get => _buildingList; 
+            set => SetProperty(ref _buildingList, value); 
+        }
+
+        public string SelectedBuilding
+        {
+            get => _selectedBuilding;
+            set => SetProperty(ref _selectedBuilding, value); 
         }
 
         #endregion
@@ -63,15 +80,22 @@ namespace Amareat.Components.Popups.Building
             ClosePopup = new Command(async () =>
                 await ExecuteClosePopupCommand());
             AddRoom = new Command(async () =>
-                await ExecuteAddRoomCommand());
+                await VerifyData());
         }
 
         #region Public Methods
 
-        public override Task Init(BindingBuildingAndRoom data)
+        public override Task Init(BindingBuildingAndRoomList data)
         {
-            BuildingName = data.BuildingName;
-            IdBuilding = data.IdBuilding;
+            /*BuildingName = data.BuildingName;
+            IdBuilding = data.IdBuilding;*/
+            BuildingList = 
+                new ObservableCollection<BindingBuildingAndRoom>();
+
+            foreach (var item in data.BindingBuildingList)
+            {
+                BuildingList.Add(item);
+            }
 
             return base.Init();
         }
@@ -114,9 +138,23 @@ namespace Amareat.Components.Popups.Building
             }
         }
 
+        async Task ExecuteSaveRoomCommand()
+        {
+            //TODO: Call the saving method 
+        }
+
         #endregion
 
         #region Private Methods
+
+        private async Task VerifyData()
+        {
+            if (BuildingList.Count == 1)
+                await ExecuteAddRoomCommand();
+            else
+                await ExecuteSaveRoomCommand(); 
+        }
+
         #endregion
     }
 }

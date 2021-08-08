@@ -129,16 +129,12 @@ namespace Amareat.Components.Popups.Building
                 if (IsEmpty) return;
                 BuildingName = BuildingName.TrimEnd();
 
-                BindingBuildingAndRoom dataBinding =
-                    new BindingBuildingAndRoom
-                    {
-                        IdBuilding = string.Empty,
-                        BuildingName = BuildingName,
-                };
+
+                var dataBinding = PreparateDataBinding();
 
                 await _popupNavigationService.
                     PresentPopupPage<AddedBuildingRoomViewModel,
-                        BindingBuildingAndRoom>(dataBinding);
+                    BindingBuildingAndRoomList>(dataBinding);
             }
             catch (Exception ex)
             {
@@ -233,6 +229,25 @@ namespace Amareat.Components.Popups.Building
             BuildingsListMainMenuWrapper.BuildingList.Add(BuildingToSave);
         }
 
+        private BindingBuildingAndRoomList PreparateDataBinding()
+        {
+            BindingBuildingAndRoom dataBinding =
+                new BindingBuildingAndRoom
+                {
+                    IdBuilding = string.Empty,
+                    BuildingName = BuildingName,
+                };
+
+            BindingBuildingAndRoomList dataList =
+                new BindingBuildingAndRoomList();
+
+            dataList.BindingBuildingList =
+                new ObservableCollection<BindingBuildingAndRoom>();
+
+            dataList.BindingBuildingList.Add(dataBinding);
+
+            return dataList;
+        }
         #endregion
     }
 }
