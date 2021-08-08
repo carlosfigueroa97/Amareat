@@ -26,12 +26,14 @@
             <!-- BuildingName Picker -->
             <Picker
                 x:Name="buildingNamePicker"
-                Title="Fuck this shit!"
+                Title="Selecciona un edificio"
                 ItemDisplayBinding="{Binding Name}"
-                ItemsSource="{Binding BuildingList}"
-                SelectedIndex="0"
+                ItemsSource="{Binding BuildingList, 
+                    Mode=TwoWay}"
+                SelectedItem="{Binding SelectedBuilding, 
+                    Mode=TwoWay}"
                 TextColor="Black"
-                />
+                TitleColor="WhiteSmoke"/>
 
             <!-- Room entry -->
             <controls:TitleAndEntry

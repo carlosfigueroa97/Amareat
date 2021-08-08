@@ -8,6 +8,7 @@ using Amareat.Models.Wrappers;
 using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
 using MvvmHelpers.Commands;
+using Amareat.Helpers;
 
 namespace Amareat.Components.Popups.Building
 {
@@ -24,7 +25,7 @@ namespace Amareat.Components.Popups.Building
         private string _roomName;
         private ObservableCollection<Model.Building> 
             _buildingList;
-        private string _selectedBuilding;
+        private Model.Building _selectedBuilding;
 
         #endregion
 
@@ -46,10 +47,15 @@ namespace Amareat.Components.Popups.Building
             set => SetProperty(ref _buildingList, value); 
         }
 
-        public string SelectedBuilding
+        public Model.Building SelectedBuilding
         {
             get => _selectedBuilding;
-            set => SetProperty(ref _selectedBuilding, value); 
+
+            set
+            {
+                SetProperty(ref _selectedBuilding, value);
+                OnPropertyChanged();
+            }
         }
 
         #endregion
@@ -80,6 +86,11 @@ namespace Amareat.Components.Popups.Building
             {
                 BuildingList.Add(item);
             }
+
+            if (BuildingList.Count >= 1)
+                SelectedBuilding = BuildingList[0];
+            //else
+            //    SelectedBuilding = Resources.NoBuildingFound;
 
             return base.Init();
         }
@@ -127,6 +138,11 @@ namespace Amareat.Components.Popups.Building
             //TODO: Call the saving method 
         }
 
+        async Task ExecuteNoBuildingCommand()
+        {
+            //TODO: Add code when no building is found 
+        }
+
         #endregion
 
         #region Private Methods
@@ -135,8 +151,10 @@ namespace Amareat.Components.Popups.Building
         {
             if (BuildingList.Count == 1)
                 await ExecuteAddRoomCommand();
+            else if (BuildingList.Count > 1)
+                await ExecuteSaveRoomCommand();
             else
-                await ExecuteSaveRoomCommand(); 
+                await ExecuteNoBuildingCommand();
         }
 
         #endregion
