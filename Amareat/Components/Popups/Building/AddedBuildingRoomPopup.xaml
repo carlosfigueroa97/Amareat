@@ -23,6 +23,16 @@
                 </Label.GestureRecognizers>
             </Label>
 
+            <!-- BuildingName Picker -->
+            <Picker
+                x:Name="buildingNamePicker"
+                Title="Fuck this shit!"
+                ItemDisplayBinding="{Binding BuildingName}"
+                ItemsSource="{Binding BuildingList}"
+                SelectedIndex="0"
+                TextColor="Black"
+                />
+
             <!-- Room entry -->
             <controls:TitleAndEntry
                 x:Name="room"
