@@ -261,4 +261,15 @@
         <Setter Property="Margin" Value="{StaticResource ShortPadding}"/>
     </Style>
 
+    <!-- Picker style -->
+    <Style
+        TargetType="Picker"
+        x:Key="PickerStyle">
+        <Setter Property="TitleColor" Value="{StaticResource WhiteColor}"/>
+        <Setter Property="TextColor" Value="{StaticResource BlackColor}"/>
+        <Setter Property="Margin" Value="{StaticResource HorizontalNormalPadding}"/>
+        <Setter Property="FontSize" Value="{StaticResource BigSize}"/>
+        <Setter Property="BackgroundColor" Value="GhostWhite"/>
+    </Style>
+
 </ResourceDictionary>
