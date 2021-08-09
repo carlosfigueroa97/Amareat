@@ -328,5 +328,11 @@ namespace Amareat.Localization {
                 return ResourceManager.GetString("SelectOneBuilding", resourceCulture);
             }
         }
+        
+        internal static string RoomNameEmpty {
+            get {
+                return ResourceManager.GetString("RoomNameEmpty", resourceCulture);
+            }
+        }
     }
 }

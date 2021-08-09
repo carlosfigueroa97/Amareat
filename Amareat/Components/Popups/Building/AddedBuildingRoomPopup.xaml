@@ -49,7 +49,9 @@
                 TextLabel="{x:Static local:AppResources.Room}"
                 PlaceholderEntry="{x:Static
                     local:AppResources.InsertRoomName}"
-                Margin="{StaticResource NormalPadding}"/>
+                Margin="{StaticResource NormalPadding}"
+                IsEntryWrong="{Binding IsRoomNameEmpty}"
+                ErrorMessage="{Binding ErrorRoomNameMessage}"/>
 
             <!-- Add Button -->
             <Button

@@ -153,4 +153,7 @@
     <data name="SelectOneBuilding" xml:space="preserve">
 		<value>Selecciona un edificio</value>
 	</data>
+    <data name="RoomNameEmpty" xml:space="preserve">
+		<value>Nombre de la sala es requerido</value>
+	</data>
 </root>

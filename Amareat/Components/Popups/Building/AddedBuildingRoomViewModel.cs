@@ -26,6 +26,8 @@ namespace Amareat.Components.Popups.Building
         private ObservableCollection<Model.Building> 
             _buildingList;
         private Model.Building _selectedBuilding;
+        private bool _isRoomNameEmpty;
+        private string _errorRoomNameMessage;
 
         #endregion
 
@@ -55,6 +57,28 @@ namespace Amareat.Components.Popups.Building
             {
                 SetProperty(ref _selectedBuilding, value);
                 OnPropertyChanged();
+            }
+        }
+
+        public bool IsRoomNameEmpty
+        {
+            get => _isRoomNameEmpty;
+            
+            set
+            {
+                SetProperty(ref _isRoomNameEmpty, value);
+                OnPropertyChanged(nameof(RoomName)); 
+            } 
+        }
+
+        public string ErrorRoomNameMessage
+        {
+            get => _errorRoomNameMessage;
+            
+            set
+            {
+                SetProperty(ref _errorRoomNameMessage, value);
+                OnPropertyChanged(nameof(RoomName));
             }
         }
 
@@ -112,20 +136,21 @@ namespace Amareat.Components.Popups.Building
         {
             try
             {
-                if (!string.IsNullOrEmpty(RoomName))
+                var IsEmpty = RoomNameEmpty();
+                if (IsEmpty) return;
+                RoomName = RoomName.Trim();
+
+                var model = new SimpleRoom
                 {
-                    var model = new SimpleRoom
-                    {
-                        Name = RoomName 
-                    };
+                    Name = RoomName 
+                };
 
-                    RoomsToAddWrapper.RoomsToSaveList.Add(model);
+                RoomsToAddWrapper.RoomsToSaveList.Add(model);
 
-                    RoomsToAddWrapper.RoomsFlagsWrapper.IsListViewVisible = true;
-                    RoomsToAddWrapper.RoomsFlagsWrapper.IsLabelVisible = false;
+                RoomsToAddWrapper.RoomsFlagsWrapper.IsListViewVisible = true;
+                RoomsToAddWrapper.RoomsFlagsWrapper.IsLabelVisible = false;
 
-                    await ExecuteClosePopupCommand();
-                }
+                await ExecuteClosePopupCommand();
             }
             catch (Exception ex)
             {
@@ -155,6 +180,28 @@ namespace Amareat.Components.Popups.Building
                 await ExecuteSaveRoomCommand();
             else
                 await ExecuteNoBuildingCommand();
+        }
+
+        private bool RoomNameEmpty() 
+        {
+            if(string.IsNullOrEmpty(RoomName))
+            {
+                InitializeErrorMessage();
+
+                IsRoomNameEmpty = true;
+                ErrorRoomNameMessage = Resources.RoomNameEmpty;
+
+                return IsRoomNameEmpty;
+            }
+
+            InitializeErrorMessage();
+            return IsRoomNameEmpty;
+        }
+
+        private void InitializeErrorMessage() 
+        {
+            IsRoomNameEmpty = false;
+            ErrorRoomNameMessage = string.Empty;
         }
 
         #endregion
