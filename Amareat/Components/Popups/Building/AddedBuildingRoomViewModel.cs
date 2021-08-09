@@ -9,6 +9,7 @@ using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
 using MvvmHelpers.Commands;
 using Amareat.Helpers;
+using Amareat.Services.Api.Interfaces;
 
 namespace Amareat.Components.Popups.Building
 {
@@ -21,6 +22,7 @@ namespace Amareat.Components.Popups.Building
 
         private readonly IPopupNavigationService _popupNavigationService;
         private readonly ICrashReporting _crashReporting;
+        private readonly IRoomsService _roomsService;
 
         private string _roomName;
         private ObservableCollection<Model.Building> 
@@ -113,10 +115,12 @@ namespace Amareat.Components.Popups.Building
 
         public AddedBuildingRoomViewModel(
             IPopupNavigationService popupNavigationService,
-            ICrashReporting crashReporting)
+            ICrashReporting crashReporting,
+            IRoomsService roomsService)
         {
             _popupNavigationService = popupNavigationService;
             _crashReporting = crashReporting;
+            _roomsService = roomsService;
 
             ClosePopup = new Command(async () =>
                 await ExecuteClosePopupCommand());
@@ -185,7 +189,38 @@ namespace Amareat.Components.Popups.Building
 
         async Task ExecuteSaveRoomCommand()
         {
-            //TODO: Call the saving method 
+			try
+			{
+                var IsEmpty = RoomNameEmpty();
+                if (IsEmpty) return;
+                RoomName = RoomName.Trim();
+
+                var model = new SaveRoom
+                {
+                    IdBuilding = SelectedBuilding.Id,
+                    Name = RoomName,
+                };
+
+                var isRoomSaved = await _roomsService.
+                    SaveRoom(model, default);
+				
+                if (!isRoomSaved) 
+                {
+                    await _popupNavigationService.
+                        ShowErrorDialog(Resources.RoomNotSaved,
+                        Resources.PleaseContactAdministrator);
+                    return;
+                }
+
+                await ExecuteClosePopupCommand();
+
+                await _popupNavigationService.
+                    ShowToastDialog(Resources.RoomSaved, 2000);
+			}
+			catch (Exception ex)
+			{
+                _crashReporting.TrackError(ex);
+			}
         }
 
         void ExecuteNoBuildingCommand()
