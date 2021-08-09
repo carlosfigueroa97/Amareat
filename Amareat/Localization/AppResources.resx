@@ -156,4 +156,7 @@
     <data name="RoomNameEmpty" xml:space="preserve">
 		<value>Nombre de la sala es requerido</value>
 	</data>
+    <data name="BuildingEmptyMessage" xml:space="preserve">
+		<value>No existen edificios, cree uno primero</value>
+	</data>
 </root>

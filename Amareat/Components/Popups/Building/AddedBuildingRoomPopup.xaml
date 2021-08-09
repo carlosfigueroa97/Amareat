@@ -29,7 +29,11 @@
                     local:AppResources.SelectOneBuilding}"
                 Style="{StaticResource TitleSemiBoldBlackLabel}"
                 FontAttributes="Bold"
-                Margin="{StaticResource HorizontalNormalPadding}"/>
+                Margin="{StaticResource HorizontalNormalPadding}"
+                IsVisible="{Binding IsPickerEmpty, 
+                    Converter={StaticResource InverseBoolConverter}}"/>
+
+
 
             <!-- BuildingName Picker -->
             <Picker
@@ -41,7 +45,17 @@
                     Mode=TwoWay}"
                 SelectedItem="{Binding SelectedBuilding, 
                     Mode=TwoWay}"
-                Style="{StaticResource PickerStyle}"/>
+                Style="{StaticResource PickerStyle}"
+                IsVisible="{Binding IsPickerEmpty, 
+                    Converter={StaticResource InverseBoolConverter}}"/>
+
+            <!-- Empty Picker -->
+            <Label
+                x:Name="emptyPicker"
+                Text="{Binding ErrorPickerEmptyMessage}"
+                Style="{StaticResource InvalidEntryLabel}"
+                Margin="{StaticResource NormalPadding}"
+                IsVisible="{Binding IsPickerEmpty}"/>
 
             <!-- Room entry -->
             <controls:TitleAndEntry
@@ -59,7 +73,9 @@
                 Style="{StaticResource OrangeButton}"
                 VerticalOptions="End"
                 Margin="{StaticResource ShortDownPadding}"
-                Command="{Binding AddRoom}"/>
+                Command="{Binding AddRoom}"
+                IsEnabled="{Binding IsPickerEmpty, 
+                    Converter={StaticResource InverseBoolConverter}}"/>
 
         </StackLayout>
     </pancake:PancakeView>

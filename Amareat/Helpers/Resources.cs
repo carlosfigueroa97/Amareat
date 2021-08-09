@@ -42,6 +42,7 @@ namespace Amareat.Helpers
         public static string BuildingNameEmpty = GetResources("BuildingNameEmpty");
         public static string NoBuildingFound = GetResources("NoBuildingFound");
         public static string RoomNameEmpty = GetResources("RoomNameEmpty");
+        public static string BuildingEmptyMessage = GetResources("BuildingEmptyMessage");
 
         private static string GetResources(string key)
         {

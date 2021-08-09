@@ -28,6 +28,8 @@ namespace Amareat.Components.Popups.Building
         private Model.Building _selectedBuilding;
         private bool _isRoomNameEmpty;
         private string _errorRoomNameMessage;
+        private bool _isPickerEmpty;
+        private string _errorPickerEmptyMessage;
 
         #endregion
 
@@ -82,6 +84,29 @@ namespace Amareat.Components.Popups.Building
             }
         }
 
+        public bool IsPickerEmpty
+        {
+            get => _isPickerEmpty;
+
+            set
+            {
+                SetProperty(ref _isPickerEmpty, value);
+                OnPropertyChanged(nameof(BuildingList));
+            }
+        }
+
+        public string ErrorPickerEmptyMessage
+        {
+            get => _errorPickerEmptyMessage;
+
+            set
+            {
+                SetProperty(ref _errorPickerEmptyMessage, value);
+                OnPropertyChanged(nameof(BuildingList)); 
+            }
+                
+        }
+
         #endregion
 
         #endregion
@@ -113,8 +138,8 @@ namespace Amareat.Components.Popups.Building
 
             if (BuildingList.Count >= 1)
                 SelectedBuilding = BuildingList[0];
-            //else
-            //    SelectedBuilding = Resources.NoBuildingFound;
+            else
+                ExecuteNoBuildingCommand();
 
             return base.Init();
         }
@@ -163,9 +188,10 @@ namespace Amareat.Components.Popups.Building
             //TODO: Call the saving method 
         }
 
-        async Task ExecuteNoBuildingCommand()
+        void ExecuteNoBuildingCommand()
         {
-            //TODO: Add code when no building is found 
+            IsPickerEmpty = true;
+            ErrorPickerEmptyMessage = Resources.BuildingEmptyMessage;
         }
 
         #endregion
@@ -179,7 +205,7 @@ namespace Amareat.Components.Popups.Building
             else if (BuildingList.Count > 1)
                 await ExecuteSaveRoomCommand();
             else
-                await ExecuteNoBuildingCommand();
+                ExecuteNoBuildingCommand();
         }
 
         private bool RoomNameEmpty() 
