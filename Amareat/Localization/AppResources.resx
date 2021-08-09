@@ -159,4 +159,10 @@
     <data name="BuildingEmptyMessage" xml:space="preserve">
 		<value>No existen edificios, cree uno primero</value>
 	</data>
+    <data name="RoomNotSaved" xml:space="preserve">
+		<value>No se pudo guardar la sala</value>
+	</data>
+    <data name="RoomSaved" xml:space="preserve">
+		<value>¡Sala guardada exitosamente!</value>
+	</data>
 </root>

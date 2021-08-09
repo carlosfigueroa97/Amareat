@@ -33,8 +33,6 @@
                 IsVisible="{Binding IsPickerEmpty, 
                     Converter={StaticResource InverseBoolConverter}}"/>
 
-
-
             <!-- BuildingName Picker -->
             <Picker
                 x:Name="buildingNamePicker"
