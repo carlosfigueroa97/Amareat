@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Amareat.Components.Base;
@@ -10,6 +11,7 @@ using Amareat.Services.Crash.Interfaces;
 using Amareat.Services.PopupNavigation.Interfaces;
 using Amareat.Services.Preferences.Interfaces;
 using MvvmHelpers.Commands;
+using Model = Amareat.Models.API.Responses.Buildings;
 
 namespace Amareat.Components.Popups.Add
 {
@@ -24,6 +26,7 @@ namespace Amareat.Components.Popups.Add
         private readonly ICrashReporting _crashReporting;
 
         private AddMainMenuWrapper _itemSelected;
+        private BuildingPickerWrapper _pickerWrapper;
 
         #endregion
 
@@ -37,6 +40,15 @@ namespace Amareat.Components.Popups.Add
         {
             get => _itemSelected;
             set => SetProperty(ref _itemSelected, value);
+        }
+
+        public ObservableCollection<Model.Building> BuildingList
+            => BuildingsListMainMenuWrapper.BuildingList;
+
+        public BuildingPickerWrapper PickerWrapper
+        {
+            get => _pickerWrapper;
+            set => SetProperty(ref _pickerWrapper, value);
         }
 
         #endregion
@@ -138,7 +150,11 @@ namespace Amareat.Components.Popups.Add
 
         private async Task OnRoomVm()
         {
-            await _popupNavigationService.PresentPopupPage<AddedBuildingRoomViewModel>();
+            PreparateData();
+
+            await _popupNavigationService.
+                PresentPopupPage<AddedBuildingRoomViewModel, 
+                BuildingPickerWrapper>(PickerWrapper);
         }
 
         private async Task OnDeviceVm()
@@ -150,6 +166,22 @@ namespace Amareat.Components.Popups.Add
         private async Task OnCancelVm()
         {
             await _popupNavigationService.DismissPopupPage();
+        }
+
+        private void PreparateData()
+        {
+            PickerWrapper = new BuildingPickerWrapper
+            {
+                IsCalledFromAddPopup = true,
+            };
+
+            PickerWrapper.Data = 
+                new List<Model.Building>();
+
+            foreach (var item in BuildingList) 
+            {
+                PickerWrapper.Data.Add(item);
+            }
         }
 
         #endregion

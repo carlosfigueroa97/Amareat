@@ -14,7 +14,7 @@ using Amareat.Services.Api.Interfaces;
 namespace Amareat.Components.Popups.Building
 {
     public class AddedBuildingRoomViewModel : 
-        BaseViewModel<Model.BuildingList>
+        BaseViewModel<BuildingPickerWrapper>
     {
         #region Properties & Commands
         
@@ -27,6 +27,7 @@ namespace Amareat.Components.Popups.Building
         private string _roomName;
         private ObservableCollection<Model.Building> 
             _buildingList;
+        private bool _isCalledFromAddPopup;
         private Model.Building _selectedBuilding;
         private bool _isRoomNameEmpty;
         private string _errorRoomNameMessage;
@@ -51,6 +52,12 @@ namespace Amareat.Components.Popups.Building
         { 
             get => _buildingList; 
             set => SetProperty(ref _buildingList, value); 
+        }
+
+        public bool IsCallledFromAddPopup
+        {
+            get => _isCalledFromAddPopup;
+            set => SetProperty(ref _isCalledFromAddPopup, value); 
         }
 
         public Model.Building SelectedBuilding
@@ -130,7 +137,7 @@ namespace Amareat.Components.Popups.Building
 
         #region Public Methods
 
-        public override Task Init(Model.BuildingList listData)
+        public override Task Init(BuildingPickerWrapper listData)
         {
             BuildingList = 
                 new ObservableCollection<Model.Building>();
@@ -139,6 +146,8 @@ namespace Amareat.Components.Popups.Building
             {
                 BuildingList.Add(item);
             }
+
+            IsCallledFromAddPopup = listData.IsCalledFromAddPopup;
 
             if (BuildingList.Count >= 1)
                 SelectedBuilding = BuildingList[0];
@@ -235,12 +244,12 @@ namespace Amareat.Components.Popups.Building
 
         private async Task VerifyData()
         {
-            if (BuildingList.Count == 1)
+            if (!IsCallledFromAddPopup)
+                //Add Room into Room List
                 await ExecuteAddRoomCommand();
-            else if (BuildingList.Count > 1)
+            else 
+                //Save Room into database
                 await ExecuteSaveRoomCommand();
-            else
-                ExecuteNoBuildingCommand();
         }
 
         private bool RoomNameEmpty() 

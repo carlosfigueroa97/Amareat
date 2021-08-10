@@ -134,7 +134,7 @@ namespace Amareat.Components.Popups.Building
 
                 await _popupNavigationService.
                     PresentPopupPage<AddedBuildingRoomViewModel,
-                    BuildingList>(dataBinding);
+                    BuildingPickerWrapper>(dataBinding);
             }
             catch (Exception ex)
             {
@@ -229,7 +229,7 @@ namespace Amareat.Components.Popups.Building
             BuildingsListMainMenuWrapper.BuildingList.Add(BuildingToSave);
         }
 
-        private BuildingList PreparateDataBinding()
+        private BuildingPickerWrapper PreparateDataBinding()
         {
             Model.Building dataBinding =
                 new Model.Building
@@ -240,15 +240,17 @@ namespace Amareat.Components.Popups.Building
                     CreatedAt = DateTime.Now,
                 };
 
-            BuildingList dataList =
-                new BuildingList();
+            BuildingPickerWrapper PickerWrapper =
+                new BuildingPickerWrapper();
 
-            dataList.Data =
+            PickerWrapper.Data =
                 new List<Model.Building>();
 
-            dataList.Data.Add(dataBinding);
+            PickerWrapper.Data.Add(dataBinding);
 
-            return dataList;
+            PickerWrapper.IsCalledFromAddPopup = false;
+
+            return PickerWrapper;
         }
         #endregion
     }
